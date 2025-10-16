@@ -12,7 +12,7 @@ export const Board: React.FC<Props> = ({ board, validMoves, onCellClick }) => {
     validMoves.some((pos) => pos.x === x && pos.y === y);
 
   return (
-    <div className="grid grid-cols-8 gap-0 w-[640px] h-[640px]">
+    <div className="grid grid-cols-8 gap-0">
       {board.map((row, y) =>
         row.map((color, x) => (
           <Cell

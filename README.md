@@ -1,26 +1,36 @@
-# ButterCatOthello
-## 概要
-『バター猫のパラドックス』より生まれたオセロゲームです。
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## ルール
+## Getting Started
 
-- 4枚の手駒から1つを選んで場に置いてください
-- 置き方は通常のオセロと同じです
-- 手駒を置くと新しい駒が追加されます
-- 手駒を置くと特殊駒[バター,猫,バター猫]がランダムに出現します
-- 特殊駒は中央16マスには置けません
+First, run the development server:
 
-## 特殊駒
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-- 🧈 バター駒
-    - 置くと相手の色になります
-    - 自分の色に挟まれた相手の駒は裏返せます
-    - 裏返しても360度回転して元に戻ります（『選択的重力の法則』による）
-- 🐈 猫駒
-    - 置くと自分の色になります
-    - 自分の色で挟んでも駒を返せません
-    - 裏返しても360度回転して元に戻ります（『ネコひねり問題』による）
-- 🧈🐈 バター猫駒
-    - 置くとZ軸回転し続けます
-    - 相手でも自分でもない色扱いとなります
-    - バター猫駒を挟んで駒を裏返すことはできません
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

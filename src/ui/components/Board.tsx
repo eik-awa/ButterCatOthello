@@ -17,6 +17,7 @@ export const Board: React.FC<Props> = ({ board, onCellClick }) => {
             x={cell.x}
             y={cell.y}
             color={cell.color}
+            discType={cell.discType}
             isValidMove={cell.isValidMove}
             isFlipping={cell.isFlipping}
             onClick={() => onCellClick(cell.x, cell.y)}

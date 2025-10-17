@@ -1,9 +1,11 @@
 import { Color } from "@/domains/othello/valueObjects/Color";
+import { DiscType } from "@/domains/othello/valueObjects/DiscType";
 import { HandDisc } from "./HandDisc";
 
 type HandDiscData = {
   id: number;
   color: Color;
+  type: DiscType;
   isUsed: boolean;
 };
 
@@ -50,6 +52,7 @@ export const Hand: React.FC<Props> = ({
             key={disc.id}
             id={disc.id}
             color={disc.color}
+            type={disc.type}
             isUsed={disc.isUsed}
             isSelected={selectedDiscId === disc.id}
             onClick={() => onSelectDisc(disc.id)}

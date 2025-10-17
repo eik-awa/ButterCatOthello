@@ -14,9 +14,11 @@ export class PlaceMoveUseCase {
    * @param command 石を置く位置
    * @returns 更新後のゲーム状態とフリップする石の位置
    */
-  execute(
-    command: PlaceMoveCommand
-  ): { success: boolean; flippedPositions: Position[]; gameState: GameStateDto } {
+  execute(command: PlaceMoveCommand): {
+    success: boolean;
+    flippedPositions: Position[];
+    gameState: GameStateDto;
+  } {
     const position = new Position(command.x, command.y);
     const currentTurn = this.game.getCurrentTurn();
 
@@ -51,7 +53,7 @@ export class PlaceMoveUseCase {
   }
 
   /**
-   * 手札のディスクを選択
+   * 手札の駒を選択
    */
   selectHandDisc(discId: number): GameStateDto {
     this.game.selectHandDisc(discId);
@@ -73,9 +75,7 @@ export class PlaceMoveUseCase {
     const board = this.game.getBoardAsArray();
     const currentTurn = this.game.getCurrentTurn();
     const validMoves = this.game.getValidMoves(currentTurn);
-    const validMoveSet = new Set(
-      validMoves.map((pos) => `${pos.x},${pos.y}`)
-    );
+    const validMoveSet = new Set(validMoves.map((pos) => `${pos.x},${pos.y}`));
 
     const cellDtos: CellDto[][] = board.map((row, y) =>
       row.map((disk, x) => {
@@ -84,6 +84,7 @@ export class PlaceMoveUseCase {
           x,
           y,
           color: disk?.color || null,
+          discType: disk?.type || null,
           isValidMove: validMoveSet.has(`${x},${y}`),
           isFlipping: this.game.isFlipping(position),
         };
@@ -99,6 +100,7 @@ export class PlaceMoveUseCase {
       discs: blackHand.getDiscs().map((d) => ({
         id: d.id,
         color: d.color,
+        type: d.type,
         isUsed: d.isUsed,
       })),
       selectedDiscId: blackHand.getSelectedDiscId(),
@@ -110,6 +112,7 @@ export class PlaceMoveUseCase {
       discs: whiteHand.getDiscs().map((d) => ({
         id: d.id,
         color: d.color,
+        type: d.type,
         isUsed: d.isUsed,
       })),
       selectedDiscId: whiteHand.getSelectedDiscId(),

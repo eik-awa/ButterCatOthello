@@ -1,4 +1,5 @@
 import { Color } from "@/domains/othello/valueObjects/Color";
+import { DiscType } from "@/domains/othello/valueObjects/DiscType";
 
 /**
  * ゲーム状態のDTO
@@ -20,6 +21,7 @@ export type CellDto = {
   x: number;
   y: number;
   color: Color | null;
+  discType: DiscType | null;
   isValidMove: boolean;
   isFlipping: boolean;
 };
@@ -35,10 +37,11 @@ export type HandDto = {
 };
 
 /**
- * 手札のディスクのDTO
+ * 手札の駒のDTO
  */
 export type HandDiscDto = {
   id: number;
   color: Color;
+  type: DiscType;
   isUsed: boolean;
 };

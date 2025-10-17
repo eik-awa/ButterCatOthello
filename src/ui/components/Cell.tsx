@@ -1,10 +1,12 @@
 import GuideDotStyles from "./GuideDot.module.css";
 import { Disc } from "./Disc";
+import { DiscType } from "@/domains/othello/valueObjects/DiscType";
 
 type Props = {
   x: number;
   y: number;
   color: "black" | "white" | null;
+  discType: DiscType | null;
   isValidMove: boolean;
   isFlipping: boolean;
   onClick: () => void;
@@ -14,6 +16,7 @@ export const Cell: React.FC<Props> = ({
   x,
   y,
   color,
+  discType,
   isValidMove,
   isFlipping,
   onClick,
@@ -33,7 +36,7 @@ export const Cell: React.FC<Props> = ({
 
   return (
     <div className={`${baseClass} ${bgClass} ${cursor}`} onClick={onClick}>
-      {color && <Disc color={color} isFlipping={isFlipping} />}
+      {color && <Disc color={color} discType={discType || "normal"} isFlipping={isFlipping} />}
       {!color && isValidMove && (
         <div className="rounded-full w-4 h-4 bg-yellow-300" />
       )}

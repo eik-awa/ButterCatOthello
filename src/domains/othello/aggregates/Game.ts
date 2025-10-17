@@ -26,7 +26,7 @@ export class Game {
   }
 
   /**
-   * 手札からディスクを選択する
+   * 手札から駒を選択する
    */
   selectHandDisc(discId: number): void {
     const hand = this.getCurrentHand();
@@ -45,7 +45,7 @@ export class Game {
 
   /**
    * 指定位置に石を置く
-   * @returns 置いた石と裏返した石の位置配列（置いた石が先頭）
+   * @returns 裏返された石の位置配列
    */
   placeDisk(pos: Position, color: Color): Position[] | null {
     // 操作がロックされている場合は実行不可
@@ -58,9 +58,21 @@ export class Game {
       return null;
     }
 
-    // 手札からディスクが選択されていない場合は実行不可
+    // 手札から駒が選択されていない場合は実行不可
     const hand = this.getCurrentHand();
     if (!hand.hasSelection()) {
+      return null;
+    }
+
+    // 選択された駒の情報を取得
+    const selectedDiscId = hand.getSelectedDiscId();
+    if (selectedDiscId === null) return null;
+
+    const selectedDisc = hand.getDiscs()[selectedDiscId];
+    const discType = selectedDisc.type;
+
+    // 特殊駒は中央16マスに置けない
+    if (discType !== "normal" && pos.isInCenter16()) {
       return null;
     }
 
@@ -68,11 +80,37 @@ export class Game {
       return null;
     }
 
-    const newDisk = new Disk(color);
+    // 駒の配置色を決定
+    let placedColor: Color = color;
+    if (discType === "butter") {
+      // バター駒：相手の色になる
+      placedColor = oppositeColor(color);
+    } else if (discType === "buttercat") {
+      // バター猫駒：とりあえず自分の色（後でUIで表現）
+      placedColor = color;
+    }
+
+    const newDisk = new Disk(placedColor, discType);
     this.board.setDisk(pos, newDisk);
 
-    // 裏返された石のみを含める（置いた石は含めない）
+    // 裏返された石のみを含める
     const flippedPositions: Position[] = [];
+
+    // バター猫駒の場合は挟めない
+    if (discType === "buttercat") {
+      // 選択した駒を使用（使用後に全駒補充）
+      const currentHand = this.getCurrentHand();
+      const newHand = currentHand.useSelectedDisc();
+      this.setCurrentHand(newHand);
+
+      // ターンを次のプレイヤーに変更
+      this.currentTurn = oppositeColor(this.currentTurn);
+
+      return flippedPositions;
+    }
+
+    // 裏返しの基準色を決定（バター駒の場合は元のプレイヤーの色で裏返す）
+    const flipBaseColor = discType === "butter" ? color : placedColor;
 
     for (const dir of Position.directionOffsets()) {
       const disksToFlip: Position[] = [];
@@ -81,12 +119,33 @@ export class Game {
       while (current) {
         const disk = this.board.getDisk(current);
         if (!disk) break;
-        if (disk.color === oppositeColor(color)) {
+
+        // バター猫駒は挟めない
+        if (disk.isButterCat()) break;
+
+        if (disk.color === oppositeColor(flipBaseColor)) {
+          // 猫駒とバター駒も含めて挟める対象とする
           disksToFlip.push(current);
-        } else if (disk.color === color) {
+        } else if (disk.color === flipBaseColor) {
           for (const flipPos of disksToFlip) {
-            this.board.setDisk(flipPos, new Disk(color));
-            flippedPositions.push(flipPos);
+            const flippedDisk = this.board.getDisk(flipPos);
+            if (flippedDisk) {
+              // 猫駒とバター駒は360度回転で元に戻る（色もタイプも保持）
+              if (flippedDisk.isCat() || flippedDisk.isButter()) {
+                // 色とタイプをそのまま保持（見た目は回転するが元に戻る）
+                this.board.setDisk(
+                  flipPos,
+                  new Disk(flippedDisk.color, flippedDisk.type)
+                );
+              } else {
+                // 通常駒は色を変更
+                this.board.setDisk(
+                  flipPos,
+                  new Disk(flipBaseColor, flippedDisk.type)
+                );
+              }
+              flippedPositions.push(flipPos);
+            }
           }
           break;
         } else {
@@ -96,7 +155,7 @@ export class Game {
       }
     }
 
-    // 選択したディスクを使用（使用後に全ディスク補充）
+    // 選択した駒を使用（使用後に全駒補充）
     const currentHand = this.getCurrentHand();
     const newHand = currentHand.useSelectedDisc();
     this.setCurrentHand(newHand);
@@ -168,7 +227,8 @@ export class Game {
 
       while (current) {
         const disk = this.board.getDisk(current);
-        if (!disk) break;
+        // バター猫駒は空欄として扱う（通過できない）
+        if (!disk || disk.isButterCat()) break;
         if (disk.color === oppositeColor(color)) {
           foundOpponent = true;
         } else if (disk.color === color && foundOpponent) {

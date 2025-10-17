@@ -32,4 +32,11 @@ export class Position {
     if (nx < 0 || nx > 7 || ny < 0 || ny > 7) return null;
     return new Position(nx, ny);
   }
+
+  /**
+   * 中央16マス（2-5行、2-5列）に含まれるかどうか
+   */
+  isInCenter16(): boolean {
+    return this.x >= 2 && this.x <= 5 && this.y >= 2 && this.y <= 5;
+  }
 }

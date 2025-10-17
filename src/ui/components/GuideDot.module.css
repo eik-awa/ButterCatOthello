@@ -1,0 +1,30 @@
+.guideDot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: black;
+}
+
+.topLeft {
+  top: -3px;
+  left: -3px;
+  border-bottom-right-radius: 100%;
+}
+
+.topRight {
+  top: -3px;
+  right: -3px;
+  border-bottom-left-radius: 100%;
+}
+
+.bottomLeft {
+  bottom: -3px;
+  left: -3px;
+  border-top-right-radius: 100%;
+}
+
+.bottomRight {
+  bottom: -3px;
+  right: -3px;
+  border-top-left-radius: 100%;
+}

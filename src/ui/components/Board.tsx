@@ -1,27 +1,25 @@
 import React from "react";
 import { Cell } from "./Cell";
+import { CellDto } from "@/application/othello/dto/GameStateDto";
 
 type Props = {
-  board: (string | null)[][];
-  validMoves: { x: number; y: number }[];
+  board: CellDto[][];
   onCellClick: (x: number, y: number) => void;
 };
 
-export const Board: React.FC<Props> = ({ board, validMoves, onCellClick }) => {
-  const isValidMove = (x: number, y: number) =>
-    validMoves.some((pos) => pos.x === x && pos.y === y);
-
+export const Board: React.FC<Props> = ({ board, onCellClick }) => {
   return (
-    <div className="grid grid-cols-8 gap-0">
+    <div className="grid grid-cols-8 gap-0 border-4 border-neutral-900">
       {board.map((row, y) =>
-        row.map((color, x) => (
+        row.map((cell, x) => (
           <Cell
             key={`${x}-${y}`}
-            x={x}
-            y={y}
-            color={color as "black" | "white" | null}
-            isValidMove={isValidMove(x, y)}
-            onClick={() => onCellClick(x, y)}
+            x={cell.x}
+            y={cell.y}
+            color={cell.color}
+            isValidMove={cell.isValidMove}
+            isFlipping={cell.isFlipping}
+            onClick={() => onCellClick(cell.x, cell.y)}
           />
         ))
       )}

@@ -1,0 +1,44 @@
+import { Color } from "@/domains/othello/valueObjects/Color";
+
+/**
+ * ゲーム状態のDTO
+ * プレゼンテーション層に渡すためのデータ構造
+ */
+export type GameStateDto = {
+  board: CellDto[][];
+  currentTurn: Color;
+  isGameOver: boolean;
+  isLocked: boolean;
+  blackHand: HandDto;
+  whiteHand: HandDto;
+};
+
+/**
+ * セルのDTO
+ */
+export type CellDto = {
+  x: number;
+  y: number;
+  color: Color | null;
+  isValidMove: boolean;
+  isFlipping: boolean;
+};
+
+/**
+ * 手札のDTO
+ */
+export type HandDto = {
+  color: Color;
+  discs: HandDiscDto[];
+  selectedDiscId: number | null;
+  hasSelection: boolean;
+};
+
+/**
+ * 手札のディスクのDTO
+ */
+export type HandDiscDto = {
+  id: number;
+  color: Color;
+  isUsed: boolean;
+};

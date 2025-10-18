@@ -29,9 +29,21 @@ export class Game {
    * 手札から駒を選択する
    */
   selectHandDisc(discId: number): void {
-    const hand = this.getCurrentHand();
-    const newHand = hand.selectDisc(discId);
-    this.setCurrentHand(newHand);
+    // 選択された駒がどちらのプレイヤーのものかを判定
+    const blackDisc = this.blackHand.getDiscs().find(d => d.id === discId);
+    const whiteDisc = this.whiteHand.getDiscs().find(d => d.id === discId);
+
+    if (blackDisc) {
+      // 黒の駒が選択された場合、白の選択を解除してから黒を選択
+      this.whiteHand = this.whiteHand.deselectDisc();
+      const newHand = this.blackHand.selectDisc(discId);
+      this.blackHand = newHand;
+    } else if (whiteDisc) {
+      // 白の駒が選択された場合、黒の選択を解除してから白を選択
+      this.blackHand = this.blackHand.deselectDisc();
+      const newHand = this.whiteHand.selectDisc(discId);
+      this.whiteHand = newHand;
+    }
   }
 
   /**
@@ -68,7 +80,8 @@ export class Game {
     const selectedDiscId = hand.getSelectedDiscId();
     if (selectedDiscId === null) return null;
 
-    const selectedDisc = hand.getDiscs()[selectedDiscId];
+    const selectedDisc = hand.getDiscs().find(d => d.id === selectedDiscId);
+    if (!selectedDisc) return null;
     const discType = selectedDisc.type;
 
     // 特殊駒は中央16マスに置けない
@@ -204,9 +217,27 @@ export class Game {
    */
   getValidMoves(color: Color): Position[] {
     const positions: Position[] = [];
+    const hand = this.getHand(color);
+    const selectedDiscId = hand.getSelectedDiscId();
+
+    // 選択された駒のタイプを取得
+    let discType: string | null = null;
+    if (selectedDiscId !== null) {
+      const selectedDisc = hand.getDiscs().find(d => d.id === selectedDiscId);
+      if (selectedDisc) {
+        discType = selectedDisc.type;
+      }
+    }
+
     for (let y = 0; y < 8; y++) {
       for (let x = 0; x < 8; x++) {
         const pos = new Position(x, y);
+
+        // 特殊駒が選択されている場合、中央16マスを除外
+        if (discType && discType !== "normal" && pos.isInCenter16()) {
+          continue;
+        }
+
         if (this.canPlaceDisk(pos, color)) {
           positions.push(pos);
         }
@@ -245,11 +276,60 @@ export class Game {
 
   /**
    * ゲームが終了しているか判定
+   * 両プレイヤーが置ける場所がない場合にゲーム終了
    */
   isGameOver(): boolean {
-    const blackMoves = this.getValidMoves("black");
-    const whiteMoves = this.getValidMoves("white");
-    return blackMoves.length === 0 && whiteMoves.length === 0;
+    // 現在のプレイヤーの有効な手を確認
+    const currentMoves = this.getValidMoves(this.currentTurn);
+
+    // 現在のプレイヤーが置けない場合、相手プレイヤーの有効な手を確認
+    if (currentMoves.length === 0) {
+      const oppositeTurn = oppositeColor(this.currentTurn);
+      const oppositeMoves = this.getValidMoves(oppositeTurn);
+
+      // 両プレイヤーが置けない場合はゲーム終了
+      return oppositeMoves.length === 0;
+    }
+
+    return false;
+  }
+
+  /**
+   * 指定色の駒の数を取得
+   */
+  getDiscCount(color: Color): number {
+    let count = 0;
+    for (let y = 0; y < 8; y++) {
+      for (let x = 0; x < 8; x++) {
+        const pos = new Position(x, y);
+        const disk = this.board.getDisk(pos);
+        if (disk && disk.color === color) {
+          count++;
+        }
+      }
+    }
+    return count;
+  }
+
+  /**
+   * 勝者を取得（ゲーム終了時のみ有効）
+   * @returns "black" | "white" | "draw"
+   */
+  getWinner(): "black" | "white" | "draw" | null {
+    if (!this.isGameOver()) {
+      return null;
+    }
+
+    const blackCount = this.getDiscCount("black");
+    const whiteCount = this.getDiscCount("white");
+
+    if (blackCount > whiteCount) {
+      return "black";
+    } else if (whiteCount > blackCount) {
+      return "white";
+    } else {
+      return "draw";
+    }
   }
 
   /**

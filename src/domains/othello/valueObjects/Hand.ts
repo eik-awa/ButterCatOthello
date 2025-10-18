@@ -18,11 +18,13 @@ export class Hand {
     if (discs) {
       this.discs = discs;
     } else {
+      // 黒は0-3、白は4-7のIDを使用
+      const baseId = color === "black" ? 0 : 4;
       this.discs = [
-        new HandDisc(0, color),
-        new HandDisc(1, color),
-        new HandDisc(2, color),
-        new HandDisc(3, color),
+        new HandDisc(baseId + 0, color),
+        new HandDisc(baseId + 1, color),
+        new HandDisc(baseId + 2, color),
+        new HandDisc(baseId + 3, color),
       ];
     }
     this.selectedDiscId = selectedDiscId;
@@ -31,8 +33,21 @@ export class Hand {
   /**
    * ランダムに駒タイプを決定
    * 通常: 70%, バター: 10%, 猫: 10%, バター猫: 10%
+   * 全駒が通常の場合は必ず特殊駒を出す
    */
-  private static randomDiscType(): DiscType {
+  private randomDiscType(): DiscType {
+    // 全駒が通常駒かチェック
+    const allNormal = this.discs.every((disc) => disc.type === "normal");
+
+    if (allNormal) {
+      // 全部通常駒の場合は必ず特殊駒を出す
+      const rand = Math.random();
+      if (rand < 0.33) return "butter";
+      if (rand < 0.66) return "cat";
+      return "buttercat";
+    }
+
+    // 通常のランダム選択
     const rand = Math.random();
     if (rand < 0.7) return "normal";
     if (rand < 0.8) return "butter";
@@ -44,10 +59,12 @@ export class Hand {
    * 駒を選択する
    */
   selectDisc(id: number): Hand {
-    if (id < 0 || id > 3) {
-      throw new Error("Disc id must be between 0 and 3");
+    // IDから配列インデックスを取得（黒:0-3, 白:4-7）
+    const index = this.discs.findIndex(d => d.id === id);
+    if (index === -1) {
+      throw new Error(`Disc with id ${id} not found`);
     }
-    const disc = this.discs[id];
+    const disc = this.discs[index];
     if (disc.isUsed) {
       throw new Error("Cannot select a used disc");
     }
@@ -75,11 +92,11 @@ export class Hand {
     }
     const newHand = this.clone();
     // 選択した駒だけを新しいタイプで補充
-    newHand.discs = this.discs.map((disc, index) => {
-      if (index === this.selectedDiscId) {
+    newHand.discs = this.discs.map((disc) => {
+      if (disc.id === this.selectedDiscId) {
         // 使用した駒を新しいランダムタイプで補充
-        const type = Hand.randomDiscType();
-        return new HandDisc(index, disc.color, type, false);
+        const type = newHand.randomDiscType();
+        return new HandDisc(disc.id, disc.color, type, false);
       }
       // それ以外の駒はそのまま
       return disc;

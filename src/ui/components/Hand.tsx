@@ -1,6 +1,8 @@
 import { Color } from "@/domains/othello/valueObjects/Color";
 import { DiscType } from "@/domains/othello/valueObjects/DiscType";
 import { HandDisc } from "./HandDisc";
+import { TEXTS } from "@/constants/texts";
+import { STYLES } from "@/constants/styles";
 
 type HandDiscData = {
   id: number;
@@ -18,6 +20,9 @@ type Props = {
   onSelectDisc: (id: number) => void;
 };
 
+/**
+ * プレイヤーの手札を表示するコンポーネント
+ */
 export const Hand: React.FC<Props> = ({
   color,
   discs,
@@ -26,27 +31,47 @@ export const Hand: React.FC<Props> = ({
   isCurrent,
   onSelectDisc,
 }) => {
-  const containerClass = `p-4 rounded-lg border-2 ${
-    isCurrent && !hasSelection
-      ? "border-gray-300"
-      : "bg-gray-50 border-gray-300"
-  }`;
+  /**
+   * コンテナのスタイルを取得
+   */
+  const getContainerClass = () => {
+    const baseClass = STYLES.HAND.CONTAINER_BASE;
+    const stateClass =
+      isCurrent && !hasSelection
+        ? STYLES.HAND.CONTAINER_ACTIVE
+        : STYLES.HAND.CONTAINER_INACTIVE;
+    return `${baseClass} ${stateClass}`;
+  };
 
-  const bgClass = isCurrent && !hasSelection ? "animate-pulse bg-yellow-200" : "";
+  /**
+   * 背景のスタイルを取得
+   */
+  const getBgClass = () => {
+    return isCurrent && !hasSelection ? STYLES.HAND.BG_PULSE : "";
+  };
+
+  /**
+   * プレイヤー名を取得
+   */
+  const getPlayerName = () => {
+    return color === "black" ? TEXTS.BLACK_PLAYER : TEXTS.WHITE_PLAYER;
+  };
 
   return (
-    <div className={`${containerClass} ${bgClass}`}>
-      <div className="mb-2 font-bold text-lg h-7">
-        {color === "black" ? "黒プレイヤー" : "白プレイヤー"}
-        {isCurrent && " (現在のターン)"}
+    <div className={`${getContainerClass()} ${getBgClass()}`}>
+      <div className={STYLES.HAND.TITLE}>
+        {getPlayerName()}
+        {isCurrent && TEXTS.CURRENT_TURN_SUFFIX}
       </div>
       {/* 固定高さのメッセージエリア */}
-      <div className="mb-2 h-5">
+      <div className={STYLES.HAND.MESSAGE_CONTAINER}>
         {isCurrent && !hasSelection && (
-          <div className="text-sm text-red-600">手札からディスクを選択してください</div>
+          <div className={STYLES.HAND.MESSAGE_TEXT}>
+            {TEXTS.SELECT_DISC_MESSAGE}
+          </div>
         )}
       </div>
-      <div className="flex gap-2">
+      <div className={STYLES.HAND.DISCS_CONTAINER}>
         {discs.map((disc) => (
           <HandDisc
             key={disc.id}
@@ -55,6 +80,7 @@ export const Hand: React.FC<Props> = ({
             type={disc.type}
             isUsed={disc.isUsed}
             isSelected={selectedDiscId === disc.id}
+            isDisabled={!isCurrent}
             onClick={() => onSelectDisc(disc.id)}
           />
         ))}

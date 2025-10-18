@@ -7,13 +7,13 @@ import { DiscType } from "./DiscType";
  */
 export class HandDisc {
   constructor(
-    public readonly id: number, // 0-3の識別子
+    public readonly id: number, // 黒:0-3, 白:4-7の識別子
     public readonly color: Color,
     public readonly type: DiscType = "normal",
     public readonly isUsed: boolean = false
   ) {
-    if (id < 0 || id > 3) {
-      throw new Error("HandDisc id must be between 0 and 3");
+    if (id < 0 || id > 7) {
+      throw new Error("HandDisc id must be between 0 and 7");
     }
   }
 

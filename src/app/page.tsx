@@ -6,18 +6,29 @@ import { Hand } from "@/ui/components/Hand";
 import { Game } from "@/domains/othello/aggregates/Game";
 import { PlaceMoveUseCase } from "@/application/othello/usecases/PlaceMoveUseCase";
 import { GameStateDto } from "@/application/othello/dto/GameStateDto";
+import { TEXTS } from "@/constants/texts";
+import { STYLES } from "@/constants/styles";
 
+/**
+ * オセロゲームのメインページコンポーネント
+ */
 export default function Home() {
   const [useCase] = useState(() => new PlaceMoveUseCase(new Game()));
   const [gameState, setGameState] = useState<GameStateDto>(
     useCase.getGameState()
   );
 
+  /**
+   * 手札の駒を選択したときのハンドラー
+   */
   const handleSelectHandDisc = (discId: number) => {
     const newState = useCase.selectHandDisc(discId);
     setGameState(newState);
   };
 
+  /**
+   * ボードのセルをクリックしたときのハンドラー
+   */
   const handleCellClick = (x: number, y: number) => {
     if (gameState.isGameOver || gameState.isLocked) return;
 
@@ -36,22 +47,53 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center bg-orange-200 p-8">
-      <h1 className="text-3xl text-neutral-900 font-bold mb-4">
-        オセロゲーム
-      </h1>
+    <main className={STYLES.PAGE.MAIN}>
+      <h1 className={STYLES.PAGE.TITLE}>{TEXTS.GAME_TITLE}</h1>
 
-      <div className="mb-4 text-xl text-neutral-900">
-        現在のターン: {gameState.currentTurn === "black" ? "黒" : "白"}
+      {/* 駒数表示 */}
+      <div className={STYLES.PAGE.DISC_COUNT_CONTAINER}>
+        <div className={STYLES.PAGE.DISC_COUNT_TITLE}>
+          {TEXTS.DISC_COUNT_LABEL}
+        </div>
+        <div className={STYLES.PAGE.DISC_COUNT_ROW}>
+          <div className={STYLES.PAGE.DISC_COUNT_ITEM}>
+            <span>{TEXTS.BLACK_DISC_COUNT}</span>
+            <span className="font-bold">{gameState.blackDiscCount}</span>
+          </div>
+          <div className={STYLES.PAGE.DISC_COUNT_ITEM}>
+            <span>{TEXTS.WHITE_DISC_COUNT}</span>
+            <span className="font-bold">{gameState.whiteDiscCount}</span>
+          </div>
+        </div>
       </div>
 
+      {/* ターン表示 */}
+      {!gameState.isGameOver && (
+        <div className={STYLES.PAGE.TURN_DISPLAY}>
+          {TEXTS.CURRENT_TURN_LABEL}{" "}
+          {gameState.currentTurn === "black" ? TEXTS.BLACK : TEXTS.WHITE}
+        </div>
+      )}
+
+      {/* ゲーム終了と勝者表示 */}
       {gameState.isGameOver && (
-        <p className="mb-4 text-2xl text-red-600 font-bold">ゲーム終了！</p>
+        <>
+          <p className={STYLES.PAGE.GAME_OVER}>{TEXTS.GAME_OVER}</p>
+          {gameState.winner === "black" && (
+            <p className={STYLES.PAGE.WINNER_MESSAGE}>{TEXTS.BLACK_WINS}</p>
+          )}
+          {gameState.winner === "white" && (
+            <p className={STYLES.PAGE.WINNER_MESSAGE}>{TEXTS.WHITE_WINS}</p>
+          )}
+          {gameState.winner === "draw" && (
+            <p className={STYLES.PAGE.WINNER_MESSAGE}>{TEXTS.DRAW}</p>
+          )}
+        </>
       )}
 
       {/* 手札表示エリア */}
-      <div className="flex gap-8 mb-8 w-full max-w-4xl">
-        <div className="flex-1">
+      <div className={STYLES.PAGE.HANDS_CONTAINER}>
+        <div className={STYLES.PAGE.HANDS_ITEM}>
           <Hand
             color="black"
             discs={gameState.blackHand.discs}
@@ -61,7 +103,7 @@ export default function Home() {
             onSelectDisc={handleSelectHandDisc}
           />
         </div>
-        <div className="flex-1">
+        <div className={STYLES.PAGE.HANDS_ITEM}>
           <Hand
             color="white"
             discs={gameState.whiteHand.discs}
@@ -75,6 +117,56 @@ export default function Home() {
 
       {/* ボード */}
       <Board board={gameState.board} onCellClick={handleCellClick} />
+
+      {/* 特殊駒の説明 */}
+      <div className={STYLES.SPECIAL_DISCS.CONTAINER}>
+        <h2 className={STYLES.SPECIAL_DISCS.TITLE}>
+          {TEXTS.SPECIAL_DISCS_TITLE}
+        </h2>
+        <div className={STYLES.SPECIAL_DISCS.GRID}>
+          <div className={`${STYLES.SPECIAL_DISCS.CARD_BASE} ${STYLES.SPECIAL_DISCS.CARD_BUTTER}`}>
+            <div className={STYLES.SPECIAL_DISCS.CARD_HEADER}>
+              <span className={STYLES.SPECIAL_DISCS.CARD_EMOJI}>
+                {TEXTS.BUTTER_EMOJI}
+              </span>
+              <h3 className={STYLES.SPECIAL_DISCS.CARD_TITLE}>
+                {TEXTS.BUTTER_DISC_TITLE}
+              </h3>
+            </div>
+            <p className={STYLES.SPECIAL_DISCS.CARD_TEXT}>
+              {TEXTS.BUTTER_DISC_DESCRIPTION}
+            </p>
+          </div>
+
+          <div className={`${STYLES.SPECIAL_DISCS.CARD_BASE} ${STYLES.SPECIAL_DISCS.CARD_CAT}`}>
+            <div className={STYLES.SPECIAL_DISCS.CARD_HEADER}>
+              <span className={STYLES.SPECIAL_DISCS.CARD_EMOJI}>
+                {TEXTS.CAT_EMOJI}
+              </span>
+              <h3 className={STYLES.SPECIAL_DISCS.CARD_TITLE}>
+                {TEXTS.CAT_DISC_TITLE}
+              </h3>
+            </div>
+            <p className={STYLES.SPECIAL_DISCS.CARD_TEXT}>
+              {TEXTS.CAT_DISC_DESCRIPTION}
+            </p>
+          </div>
+
+          <div className={`${STYLES.SPECIAL_DISCS.CARD_BASE} ${STYLES.SPECIAL_DISCS.CARD_BUTTERCAT}`}>
+            <div className={STYLES.SPECIAL_DISCS.CARD_HEADER}>
+              <span className={STYLES.SPECIAL_DISCS.CARD_EMOJI}>
+                {TEXTS.BUTTERCAT_EMOJI}
+              </span>
+              <h3 className={STYLES.SPECIAL_DISCS.CARD_TITLE}>
+                {TEXTS.BUTTERCAT_DISC_TITLE}
+              </h3>
+            </div>
+            <p className={STYLES.SPECIAL_DISCS.CARD_TEXT}>
+              {TEXTS.BUTTERCAT_DISC_DESCRIPTION}
+            </p>
+          </div>
+        </div>
+      </div>
     </main>
   );
 }

@@ -126,6 +126,9 @@ export class PlaceMoveUseCase {
       isLocked: this.game.isLocked(),
       blackHand: blackHandDto,
       whiteHand: whiteHandDto,
+      blackDiscCount: this.game.getDiscCount("black"),
+      whiteDiscCount: this.game.getDiscCount("white"),
+      winner: this.game.getWinner(),
     };
   }
 }

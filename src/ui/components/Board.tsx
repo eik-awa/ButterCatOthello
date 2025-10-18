@@ -1,15 +1,19 @@
 import React from "react";
 import { Cell } from "./Cell";
 import { CellDto } from "@/application/othello/dto/GameStateDto";
+import { STYLES } from "@/constants/styles";
 
 type Props = {
   board: CellDto[][];
   onCellClick: (x: number, y: number) => void;
 };
 
+/**
+ * オセロボードを表示するコンポーネント
+ */
 export const Board: React.FC<Props> = ({ board, onCellClick }) => {
   return (
-    <div className="grid grid-cols-8 gap-0 border-4 border-neutral-900">
+    <div className={STYLES.BOARD.GRID}>
       {board.map((row, y) =>
         row.map((cell, x) => (
           <Cell

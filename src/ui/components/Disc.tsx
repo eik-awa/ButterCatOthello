@@ -1,5 +1,6 @@
 import { Color } from "@/domains/othello/valueObjects/Color";
 import { DiscType } from "@/domains/othello/valueObjects/DiscType";
+import { TEXTS } from "@/constants/texts";
 import DiscStyles from "./Disc.module.css";
 
 type Props = {
@@ -8,8 +9,13 @@ type Props = {
   isFlipping: boolean;
 };
 
+/**
+ * ボード上の駒を3D表示するコンポーネント
+ */
 export const Disc: React.FC<Props> = ({ color, discType, isFlipping }) => {
-  // 駒の色クラスを決定
+  /**
+   * 駒の色クラスを決定
+   */
   const getDiscColorClass = () => {
     if (discType === "buttercat") {
       return DiscStyles.buttercat;
@@ -18,15 +24,18 @@ export const Disc: React.FC<Props> = ({ color, discType, isFlipping }) => {
     return color === "black" ? DiscStyles.black : DiscStyles.white;
   };
 
-  // 絵文字を決定
+  /**
+   * 駒の絵文字を決定
+   */
   const getEmoji = () => {
-    if (discType === "butter") return "🧈";
-    if (discType === "cat") return "🐈";
+    if (discType === "butter") return TEXTS.BUTTER_EMOJI;
+    if (discType === "cat") return TEXTS.CAT_EMOJI;
     return null;
   };
 
   const colorClass = getDiscColorClass();
-  const buttercatAnimation = discType === "buttercat" ? DiscStyles.buttercatRotate : "";
+  const buttercatAnimation =
+    discType === "buttercat" ? DiscStyles.buttercatRotate : "";
   const emoji = getEmoji();
 
   return (

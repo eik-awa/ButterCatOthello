@@ -12,6 +12,9 @@ export type GameStateDto = {
   isLocked: boolean;
   blackHand: HandDto;
   whiteHand: HandDto;
+  blackDiscCount: number;
+  whiteDiscCount: number;
+  winner: "black" | "white" | "draw" | null;
 };
 
 /**

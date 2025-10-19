@@ -4,7 +4,7 @@
 
 export const TEXTS = {
   // ゲームタイトル
-  GAME_TITLE: "オセロゲーム",
+  GAME_TITLE: "ButterCatOthello",
 
   // プレイヤー表示
   BLACK_PLAYER: "黒プレイヤー",
@@ -19,11 +19,9 @@ export const TEXTS = {
   // メッセージ
   GAME_OVER: "ゲーム終了！",
   SELECT_DISC_MESSAGE: "手札からディスクを選択してください",
-
-  // 駒数表示
-  DISC_COUNT_LABEL: "駒数:",
-  BLACK_DISC_COUNT: "黒:",
-  WHITE_DISC_COUNT: "白:",
+  NO_VALID_MOVES: "置ける場所がありません",
+  PASS_MESSAGE: "がパスしました",
+  PLAY_AGAIN_BUTTON: "もう一度やる",
 
   // 勝利メッセージ
   BLACK_WINS: "黒の勝利！",
@@ -46,4 +44,15 @@ export const TEXTS = {
   BUTTER_EMOJI: "🧈",
   CAT_EMOJI: "🐈",
   BUTTERCAT_EMOJI: "🧈🐈",
+
+  // 設定メニュー
+  SETTINGS_TITLE: "ゲーム設定",
+  GAME_MODE_LABEL: "ゲームモード:",
+  MODE_PVP: "対戦モード",
+  MODE_CPU_EASY: "CPU (Easy)",
+  MODE_CPU_HARD: "CPU (Hard)",
+  CPU_COLOR_LABEL: "CPUの色:",
+  NEW_GAME_BUTTON: "新しいゲームを開始",
+  CLOSE_SETTINGS_BUTTON: "閉じる",
+  OPEN_SETTINGS_BUTTON: "設定",
 } as const;

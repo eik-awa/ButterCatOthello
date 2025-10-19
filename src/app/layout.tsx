@@ -1,15 +1,18 @@
 import "./globals.css";
 import { ReactNode } from "react";
+import { GameSettingsProvider } from "@/contexts/GameSettingsContext";
 
 export const metadata = {
-  title: "Othello",
-  description: "A simple Othello game",
+  title: "ButterCatOthello",
+  description: "A simple Othello game with special discs",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <body>
+        <GameSettingsProvider>{children}</GameSettingsProvider>
+      </body>
     </html>
   );
 }

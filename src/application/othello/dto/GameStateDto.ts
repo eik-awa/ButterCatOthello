@@ -15,6 +15,7 @@ export type GameStateDto = {
   blackDiscCount: number;
   whiteDiscCount: number;
   winner: "black" | "white" | "draw" | null;
+  hasValidMoves: boolean;
 };
 
 /**

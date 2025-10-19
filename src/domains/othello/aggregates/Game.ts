@@ -275,6 +275,25 @@ export class Game {
   }
 
   /**
+   * 現在のプレイヤーが有効な手を持っているか
+   */
+  hasValidMoves(): boolean {
+    const currentMoves = this.getValidMoves(this.currentTurn);
+    return currentMoves.length > 0;
+  }
+
+  /**
+   * パス（ターンを相手に渡す）
+   * 駒を選択している場合は選択を解除する
+   */
+  pass(): void {
+    // 選択を解除
+    this.deselectHandDisc();
+    // ターンを次のプレイヤーに変更
+    this.currentTurn = oppositeColor(this.currentTurn);
+  }
+
+  /**
    * ゲームが終了しているか判定
    * 両プレイヤーが置ける場所がない場合にゲーム終了
    */

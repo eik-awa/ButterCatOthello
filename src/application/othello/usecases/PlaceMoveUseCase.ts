@@ -69,6 +69,28 @@ export class PlaceMoveUseCase {
   }
 
   /**
+   * パス（ターンを相手に渡す）
+   */
+  pass(): GameStateDto {
+    this.game.pass();
+    return this.getGameState();
+  }
+
+  /**
+   * 現在のプレイヤーが有効な手を持っているか
+   */
+  hasValidMoves(): boolean {
+    return this.game.hasValidMoves();
+  }
+
+  /**
+   * Gameインスタンスを取得（CPU戦略用）
+   */
+  getGame(): Game {
+    return this.game;
+  }
+
+  /**
    * 現在のゲーム状態を取得
    */
   getGameState(): GameStateDto {
@@ -129,6 +151,7 @@ export class PlaceMoveUseCase {
       blackDiscCount: this.game.getDiscCount("black"),
       whiteDiscCount: this.game.getDiscCount("white"),
       winner: this.game.getWinner(),
+      hasValidMoves: this.game.hasValidMoves(),
     };
   }
 }

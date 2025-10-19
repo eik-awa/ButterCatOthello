@@ -18,6 +18,8 @@ type Props = {
   hasSelection: boolean;
   isCurrent: boolean;
   onSelectDisc: (id: number) => void;
+  discCount: number;
+  isCpu?: boolean;
 };
 
 /**
@@ -30,6 +32,8 @@ export const Hand: React.FC<Props> = ({
   hasSelection,
   isCurrent,
   onSelectDisc,
+  discCount,
+  isCpu = false,
 }) => {
   /**
    * コンテナのスタイルを取得
@@ -54,7 +58,8 @@ export const Hand: React.FC<Props> = ({
    * プレイヤー名を取得
    */
   const getPlayerName = () => {
-    return color === "black" ? TEXTS.BLACK_PLAYER : TEXTS.WHITE_PLAYER;
+    const baseName = color === "black" ? TEXTS.BLACK_PLAYER : TEXTS.WHITE_PLAYER;
+    return isCpu ? `${baseName} (CPU)` : baseName;
   };
 
   return (
@@ -63,7 +68,9 @@ export const Hand: React.FC<Props> = ({
         {getPlayerName()}
         {isCurrent && TEXTS.CURRENT_TURN_SUFFIX}
       </div>
-      {/* 固定高さのメッセージエリア */}
+      <div className={STYLES.HAND.DISC_COUNT}>
+        {color === "black" ? TEXTS.BLACK : TEXTS.WHITE}: {discCount}
+      </div>
       <div className={STYLES.HAND.MESSAGE_CONTAINER}>
         {isCurrent && !hasSelection && (
           <div className={STYLES.HAND.MESSAGE_TEXT}>

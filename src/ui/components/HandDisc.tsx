@@ -108,6 +108,7 @@ export const HandDisc: React.FC<Props> = ({
               width={32}
               height={32}
               className={STYLES.HAND_DISC.EMOJI}
+              unoptimized
             />
           )}
         </div>

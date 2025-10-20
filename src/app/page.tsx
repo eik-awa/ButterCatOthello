@@ -195,6 +195,7 @@ export default function Home() {
           width={48}
           height={48}
           style={{ display: 'inline-block', marginLeft: '0.5rem', verticalAlign: 'middle' }}
+          unoptimized
         />
       </h1>
 
@@ -281,6 +282,7 @@ export default function Home() {
                   alt="butter"
                   width={40}
                   height={40}
+                  unoptimized
                 />
               </span>
               <h3 className={STYLES.SPECIAL_DISCS.CARD_TITLE}>
@@ -300,6 +302,7 @@ export default function Home() {
                   alt="cat"
                   width={40}
                   height={40}
+                  unoptimized
                 />
               </span>
               <h3 className={STYLES.SPECIAL_DISCS.CARD_TITLE}>
@@ -319,6 +322,7 @@ export default function Home() {
                   alt="buttercat"
                   width={40}
                   height={40}
+                  unoptimized
                 />
               </span>
               <h3 className={STYLES.SPECIAL_DISCS.CARD_TITLE}>

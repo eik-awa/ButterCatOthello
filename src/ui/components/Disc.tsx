@@ -37,10 +37,22 @@ export const Disc: React.FC<Props> = ({ color, discType, isFlipping }) => {
     return null;
   };
 
+  /**
+   * 猫駒の反対側の画像パスを取得（フリップアニメーション用）
+   */
+  const getAlternateImagePath = () => {
+    if (discType === "cat") {
+      // 反対側の色の猫を返す
+      return color === "white" ? "/whitecat.svg" : "/cat.svg";
+    }
+    return null;
+  };
+
   const colorClass = getDiscColorClass();
   const buttercatAnimation =
     discType === "buttercat" ? DiscStyles.buttercatRotate : "";
   const imagePath = getImagePath();
+  const alternateImagePath = getAlternateImagePath();
 
   return (
     <div
@@ -53,14 +65,28 @@ export const Disc: React.FC<Props> = ({ color, discType, isFlipping }) => {
       {/* 上面 */}
       <div className={DiscStyles.top}>
         {imagePath && (
-          <Image
-            src={imagePath}
-            alt={discType}
-            width={32}
-            height={32}
-            className={DiscStyles.emoji}
-            priority
-          />
+          <>
+            <Image
+              src={imagePath}
+              alt={discType}
+              width={32}
+              height={32}
+              className={`${DiscStyles.emoji} ${discType === "cat" && isFlipping ? DiscStyles.primaryImage : ""}`}
+              priority
+              unoptimized
+            />
+            {alternateImagePath && isFlipping && (
+              <Image
+                src={alternateImagePath}
+                alt={discType}
+                width={32}
+                height={32}
+                className={`${DiscStyles.emoji} ${DiscStyles.alternateImage}`}
+                priority
+                unoptimized
+              />
+            )}
+          </>
         )}
       </div>
       {/* 側面 */}
@@ -68,14 +94,28 @@ export const Disc: React.FC<Props> = ({ color, discType, isFlipping }) => {
       {/* 下面 */}
       <div className={DiscStyles.bottom}>
         {imagePath && (
-          <Image
-            src={imagePath}
-            alt={discType}
-            width={32}
-            height={32}
-            className={DiscStyles.emoji}
-            priority
-          />
+          <>
+            <Image
+              src={imagePath}
+              alt={discType}
+              width={32}
+              height={32}
+              className={`${DiscStyles.emoji} ${discType === "cat" && isFlipping ? DiscStyles.primaryImage : ""}`}
+              priority
+              unoptimized
+            />
+            {alternateImagePath && isFlipping && (
+              <Image
+                src={alternateImagePath}
+                alt={discType}
+                width={32}
+                height={32}
+                className={`${DiscStyles.emoji} ${DiscStyles.alternateImage}`}
+                priority
+                unoptimized
+              />
+            )}
+          </>
         )}
       </div>
     </div>

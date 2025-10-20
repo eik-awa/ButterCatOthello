@@ -128,6 +128,41 @@
   }
 }
 
+/* 猫駒の画像切り替えアニメーション */
+/* プライマリ画像: 0-25%と75-100%で表示、25-75%で非表示 */
+.disc.flipping[data-disc-type="cat"] .primaryImage {
+  animation: catPrimaryImageFade 1s ease-in-out forwards;
+}
+
+@keyframes catPrimaryImageFade {
+  0%, 25% {
+    opacity: 1;
+  }
+  25.1%, 75% {
+    opacity: 0;
+  }
+  75.1%, 100% {
+    opacity: 1;
+  }
+}
+
+/* 代替画像: 25-75%で表示、それ以外で非表示 */
+.disc.flipping[data-disc-type="cat"] .alternateImage {
+  animation: catAlternateImageFade 1s ease-in-out forwards;
+}
+
+@keyframes catAlternateImageFade {
+  0%, 25% {
+    opacity: 0;
+  }
+  25.1%, 75% {
+    opacity: 1;
+  }
+  75.1%, 100% {
+    opacity: 0;
+  }
+}
+
 /* バター猫駒の連続回転時の画像回転 */
 .disc.buttercatRotate .emoji {
   animation: imageRotateWithDisc 2s linear infinite;

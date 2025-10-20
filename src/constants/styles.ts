@@ -42,12 +42,12 @@ export const STYLES = {
 
   // Boardコンポーネント
   BOARD: {
-    GRID: "grid grid-cols-8 gap-0 border-2 sm:border-4 border-neutral-900",
+    GRID: "grid grid-cols-8 gap-0 border-2 sm:border-4 border-neutral-900 max-w-[320px] sm:max-w-none mx-auto",
   },
 
   // ページレイアウト
   PAGE: {
-    MAIN: "min-h-screen flex flex-col items-center justify-center bg-orange-200 p-2 sm:p-4 md:p-8 overflow-x-hidden",
+    MAIN: "min-h-screen flex flex-col items-center justify-center bg-orange-200 p-4 sm:p-4 md:p-8 overflow-x-hidden",
     TITLE:
       "text-xl sm:text-2xl md:text-3xl text-neutral-900 font-bold mb-2 sm:mb-4 flex items-center justify-center",
     TURN_DISPLAY:
@@ -55,7 +55,7 @@ export const STYLES = {
     GAME_OVER:
       "mb-2 sm:mb-4 text-lg sm:text-xl md:text-2xl text-red-600 font-bold",
     HANDS_CONTAINER:
-      "flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-8 mb-4 sm:mb-8 w-full max-w-4xl px-2",
+      "flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-8 mb-4 sm:mb-8 w-full max-w-[min(100vw-2rem,64rem)] px-2",
     HANDS_ITEM: "flex-1",
     WINNER_MESSAGE:
       "mb-2 sm:mb-4 text-xl sm:text-2xl md:text-3xl font-bold text-green-600",

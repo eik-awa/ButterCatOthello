@@ -5,13 +5,13 @@ import { oppositeColor, Color } from "../valueObjects/Color";
 
 /**
  * Hard難易度のCPU戦略
- * ミニマックス法（深さ5）で最適な手を選択
+ * ミニマックス法（深さ3）で最適な手を選択
  * - 猫駒を積極的に使用
  * - バター駒は慎重に評価（相手に有利にならない場合のみ使用）
  * - 位置評価、機動性、確定石などを総合的に判断
  */
 export class HardCpuStrategy extends CpuStrategy {
-  private readonly MAX_DEPTH = 5; // 探索深さを5に増加
+  private readonly MAX_DEPTH = 3; // 探索深さを3に増加
   private cpuColor: Color | null = null;
 
   decideMove(game: Game): CpuMove | null {
@@ -31,7 +31,10 @@ export class HardCpuStrategy extends CpuStrategy {
 
       // 駒を選択して配置
       clonedGame.selectHandDisc(move.discId);
-      const flippedPositions = clonedGame.placeDisk(move.position, clonedGame.getCurrentTurn());
+      const flippedPositions = clonedGame.placeDisk(
+        move.position,
+        clonedGame.getCurrentTurn()
+      );
 
       if (!flippedPositions) continue;
 
@@ -45,7 +48,10 @@ export class HardCpuStrategy extends CpuStrategy {
       );
 
       // 駒タイプと配置位置による総合評価
-      const disc = game.getHand(game.getCurrentTurn()).getDiscs().find(d => d.id === move.discId);
+      const disc = game
+        .getHand(game.getCurrentTurn())
+        .getDiscs()
+        .find((d) => d.id === move.discId);
       let adjustedScore = score;
 
       if (disc) {
@@ -53,7 +59,10 @@ export class HardCpuStrategy extends CpuStrategy {
         if (disc.type === "butter") {
           // バター駒は相手の色になるため、慎重に評価
           // 相手にとって悪い位置（角の隣など）に置く場合のみボーナス
-          const positionValue = this.getPositionValue(move.position.x, move.position.y);
+          const positionValue = this.getPositionValue(
+            move.position.x,
+            move.position.y
+          );
 
           if (positionValue < -10) {
             // 相手にとって悪い位置（角の隣など）ならボーナス
@@ -67,7 +76,10 @@ export class HardCpuStrategy extends CpuStrategy {
           }
         } else if (disc.type === "cat") {
           // 猫駒は裏返されないため、重要な位置に置くことで有利
-          const positionValue = this.getPositionValue(move.position.x, move.position.y);
+          const positionValue = this.getPositionValue(
+            move.position.x,
+            move.position.y
+          );
 
           if (positionValue > 50) {
             // 良い位置（角など）なら大きなボーナス
@@ -86,7 +98,8 @@ export class HardCpuStrategy extends CpuStrategy {
         }
 
         // 序盤は特殊駒を温存、中盤以降に使う
-        const totalDiscs = game.getDiscCount("black") + game.getDiscCount("white");
+        const totalDiscs =
+          game.getDiscCount("black") + game.getDiscCount("white");
         if (totalDiscs < 20 && disc.type !== "normal") {
           adjustedScore -= 10; // 序盤は特殊駒を使いにくくする
         }
@@ -222,7 +235,10 @@ export class HardCpuStrategy extends CpuStrategy {
 
     // 5. 角の周辺（C打ち、X打ち）を避ける
     const cpuDangerousPos = this.countDangerousPositions(game, cpuColor);
-    const opponentDangerousPos = this.countDangerousPositions(game, opponentColor);
+    const opponentDangerousPos = this.countDangerousPositions(
+      game,
+      opponentColor
+    );
     score -= cpuDangerousPos * 30;
     score += opponentDangerousPos * 30;
 
@@ -309,7 +325,12 @@ export class HardCpuStrategy extends CpuStrategy {
   /**
    * 角から伸びる確定石をカウント
    */
-  private countStableFromCorner(game: Game, color: string, cornerX: number, cornerY: number): number {
+  private countStableFromCorner(
+    game: Game,
+    color: string,
+    cornerX: number,
+    cornerY: number
+  ): number {
     let count = 0;
     const directions = [
       { dx: cornerX === 0 ? 1 : -1, dy: 0 }, // 横方向
@@ -342,10 +363,18 @@ export class HardCpuStrategy extends CpuStrategy {
   private countDangerousPositions(game: Game, color: string): number {
     let count = 0;
     const dangerousPositions = [
-      { x: 1, y: 0 }, { x: 0, y: 1 }, { x: 1, y: 1 }, // 左上の角の周辺
-      { x: 6, y: 0 }, { x: 7, y: 1 }, { x: 6, y: 1 }, // 右上の角の周辺
-      { x: 0, y: 6 }, { x: 1, y: 7 }, { x: 1, y: 6 }, // 左下の角の周辺
-      { x: 6, y: 6 }, { x: 7, y: 6 }, { x: 6, y: 7 }, // 右下の角の周辺
+      { x: 1, y: 0 },
+      { x: 0, y: 1 },
+      { x: 1, y: 1 }, // 左上の角の周辺
+      { x: 6, y: 0 },
+      { x: 7, y: 1 },
+      { x: 6, y: 1 }, // 右上の角の周辺
+      { x: 0, y: 6 },
+      { x: 1, y: 7 },
+      { x: 1, y: 6 }, // 左下の角の周辺
+      { x: 6, y: 6 },
+      { x: 7, y: 6 },
+      { x: 6, y: 7 }, // 右下の角の周辺
     ];
 
     for (const dangerousPos of dangerousPositions) {
@@ -353,8 +382,13 @@ export class HardCpuStrategy extends CpuStrategy {
       const disk = game.getBoard().getDisk(pos);
       if (disk && disk.color === color) {
         // 対応する角が空いている場合のみペナルティ
-        const corner = this.getCornerForDangerousPosition(dangerousPos.x, dangerousPos.y);
-        const cornerDisk = game.getBoard().getDisk(new Position(corner.x, corner.y));
+        const corner = this.getCornerForDangerousPosition(
+          dangerousPos.x,
+          dangerousPos.y
+        );
+        const cornerDisk = game
+          .getBoard()
+          .getDisk(new Position(corner.x, corner.y));
         if (!cornerDisk) {
           count++;
         }
@@ -367,7 +401,10 @@ export class HardCpuStrategy extends CpuStrategy {
   /**
    * 危険な位置に対応する角を取得
    */
-  private getCornerForDangerousPosition(x: number, y: number): { x: number; y: number } {
+  private getCornerForDangerousPosition(
+    x: number,
+    y: number
+  ): { x: number; y: number } {
     if (x <= 1 && y <= 1) return { x: 0, y: 0 };
     if (x >= 6 && y <= 1) return { x: 7, y: 0 };
     if (x <= 1 && y >= 6) return { x: 0, y: 7 };

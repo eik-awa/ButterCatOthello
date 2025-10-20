@@ -1,7 +1,7 @@
 import { Color } from "@/domains/othello/valueObjects/Color";
 import { DiscType } from "@/domains/othello/valueObjects/DiscType";
-import { TEXTS } from "@/constants/texts";
 import DiscStyles from "./Disc.module.css";
+import Image from "next/image";
 
 type Props = {
   color: Color;
@@ -25,18 +25,22 @@ export const Disc: React.FC<Props> = ({ color, discType, isFlipping }) => {
   };
 
   /**
-   * 駒の絵文字を決定
+   * 画像のパスを決定
    */
-  const getEmoji = () => {
-    if (discType === "butter") return TEXTS.BUTTER_EMOJI;
-    if (discType === "cat") return TEXTS.CAT_EMOJI;
+  const getImagePath = () => {
+    if (discType === "butter") return "/butter.svg";
+    if (discType === "cat") {
+      // 白駒の場合は黒猫、黒駒の場合は白猫を表示（視認性のため）
+      return color === "white" ? "/cat.svg" : "/whitecat.svg";
+    }
+    if (discType === "buttercat") return "/buttercat.svg";
     return null;
   };
 
   const colorClass = getDiscColorClass();
   const buttercatAnimation =
     discType === "buttercat" ? DiscStyles.buttercatRotate : "";
-  const emoji = getEmoji();
+  const imagePath = getImagePath();
 
   return (
     <div
@@ -48,13 +52,31 @@ export const Disc: React.FC<Props> = ({ color, discType, isFlipping }) => {
     >
       {/* 上面 */}
       <div className={DiscStyles.top}>
-        {emoji && <span className={DiscStyles.emoji}>{emoji}</span>}
+        {imagePath && (
+          <Image
+            src={imagePath}
+            alt={discType}
+            width={32}
+            height={32}
+            className={DiscStyles.emoji}
+            priority
+          />
+        )}
       </div>
       {/* 側面 */}
       <div className={DiscStyles.side}></div>
       {/* 下面 */}
       <div className={DiscStyles.bottom}>
-        {emoji && <span className={DiscStyles.emoji}>{emoji}</span>}
+        {imagePath && (
+          <Image
+            src={imagePath}
+            alt={discType}
+            width={32}
+            height={32}
+            className={DiscStyles.emoji}
+            priority
+          />
+        )}
       </div>
     </div>
   );

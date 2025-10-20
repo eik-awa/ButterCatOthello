@@ -13,6 +13,7 @@ import { useGameSettings } from "@/contexts/GameSettingsContext";
 import { EasyCpuStrategy } from "@/domains/othello/services/EasyCpuStrategy";
 import { HardCpuStrategy } from "@/domains/othello/services/HardCpuStrategy";
 import { CpuStrategy } from "@/domains/othello/services/CpuStrategy";
+import Image from "next/image";
 
 /**
  * オセロゲームのメインページコンポーネント
@@ -186,7 +187,16 @@ export default function Home() {
         onNewGame={handleNewGame}
       />
 
-      <h1 className={STYLES.PAGE.TITLE}>{TEXTS.GAME_TITLE}</h1>
+      <h1 className={STYLES.PAGE.TITLE}>
+        {TEXTS.GAME_TITLE}
+        <Image
+          src="/buttercat.svg"
+          alt="buttercat"
+          width={48}
+          height={48}
+          style={{ display: 'inline-block', marginLeft: '0.5rem', verticalAlign: 'middle' }}
+        />
+      </h1>
 
       {/* ターン表示 / パス通知（同じ位置に表示） */}
       {!gameState.isGameOver && (
@@ -266,7 +276,12 @@ export default function Home() {
           <div className={`${STYLES.SPECIAL_DISCS.CARD_BASE} ${STYLES.SPECIAL_DISCS.CARD_BUTTER}`}>
             <div className={STYLES.SPECIAL_DISCS.CARD_HEADER}>
               <span className={STYLES.SPECIAL_DISCS.CARD_EMOJI}>
-                {TEXTS.BUTTER_EMOJI}
+                <Image
+                  src="/butter.svg"
+                  alt="butter"
+                  width={40}
+                  height={40}
+                />
               </span>
               <h3 className={STYLES.SPECIAL_DISCS.CARD_TITLE}>
                 {TEXTS.BUTTER_DISC_TITLE}
@@ -280,7 +295,12 @@ export default function Home() {
           <div className={`${STYLES.SPECIAL_DISCS.CARD_BASE} ${STYLES.SPECIAL_DISCS.CARD_CAT}`}>
             <div className={STYLES.SPECIAL_DISCS.CARD_HEADER}>
               <span className={STYLES.SPECIAL_DISCS.CARD_EMOJI}>
-                {TEXTS.CAT_EMOJI}
+                <Image
+                  src="/cat.svg"
+                  alt="cat"
+                  width={40}
+                  height={40}
+                />
               </span>
               <h3 className={STYLES.SPECIAL_DISCS.CARD_TITLE}>
                 {TEXTS.CAT_DISC_TITLE}
@@ -294,7 +314,12 @@ export default function Home() {
           <div className={`${STYLES.SPECIAL_DISCS.CARD_BASE} ${STYLES.SPECIAL_DISCS.CARD_BUTTERCAT}`}>
             <div className={STYLES.SPECIAL_DISCS.CARD_HEADER}>
               <span className={STYLES.SPECIAL_DISCS.CARD_EMOJI}>
-                {TEXTS.BUTTERCAT_EMOJI}
+                <Image
+                  src="/buttercat.svg"
+                  alt="buttercat"
+                  width={40}
+                  height={40}
+                />
               </span>
               <h3 className={STYLES.SPECIAL_DISCS.CARD_TITLE}>
                 {TEXTS.BUTTERCAT_DISC_TITLE}

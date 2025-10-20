@@ -1,6 +1,8 @@
 .disc {
-  width: 48px;
-  height: 48px;
+  width: 100%;
+  height: 100%;
+  max-width: 48px;
+  max-height: 48px;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.3s ease;
@@ -10,31 +12,38 @@
 .disc .side,
 .disc .bottom {
   position: absolute;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
 }
 
 /* 上面 */
 .disc .top {
-  width: 48px;
-  height: 48px;
   transform: translateZ(6px);
   box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.3);
 }
 
 /* 側面（円柱の厚み） */
 .disc .side {
-  width: 48px;
-  height: 48px;
   transform: translateZ(0px);
   box-shadow: 0 0 0 2px currentColor;
 }
 
 /* 下面 */
 .disc .bottom {
-  width: 48px;
-  height: 48px;
   transform: translateZ(-6px) rotateX(180deg);
   box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* モバイル向けにディスクのZ軸の厚みを調整 */
+@media (max-width: 640px) {
+  .disc .top {
+    transform: translateZ(3px);
+  }
+
+  .disc .bottom {
+    transform: translateZ(-3px) rotateX(180deg);
+  }
 }
 
 /* 黒駒 */
@@ -65,12 +74,72 @@
 /* 絵文字のスタイル */
 .emoji {
   font-size: 24px;
+  width: 50%;
+  height: 50%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
   user-select: none;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+/* モバイル向けに画像サイズを調整 */
+@media (max-width: 640px) {
+  .emoji {
+    font-size: 16px;
+  }
+}
+
+/* 通常のフリップ時の画像回転 */
+.disc.flipping[data-disc-type="normal"] .emoji {
+  animation: imageFlip 1s ease-in-out forwards;
+}
+
+@keyframes imageFlip {
+  0% {
+    transform: translate(-50%, -50%) rotateX(0deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotateX(90deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateX(180deg);
+  }
+}
+
+/* 猫・バター駒のフリップ時の画像360度回転 */
+.disc.flipping[data-disc-type="cat"] .emoji,
+.disc.flipping[data-disc-type="butter"] .emoji {
+  animation: imageSpin360 1s ease-in-out forwards;
+}
+
+@keyframes imageSpin360 {
+  0% {
+    transform: translate(-50%, -50%) rotateX(0deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotateX(180deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateX(360deg);
+  }
+}
+
+/* バター猫駒の連続回転時の画像回転 */
+.disc.buttercatRotate .emoji {
+  animation: imageRotateWithDisc 2s linear infinite;
+}
+
+@keyframes imageRotateWithDisc {
+  0% {
+    transform: translate(-50%, -50%) rotateX(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateX(360deg);
+  }
 }
 
 /* バター猫駒（両面：黄色と小豆色のグラデーション） */

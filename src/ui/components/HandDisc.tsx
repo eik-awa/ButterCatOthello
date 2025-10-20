@@ -1,7 +1,7 @@
 import { Color } from "@/domains/othello/valueObjects/Color";
 import { DiscType } from "@/domains/othello/valueObjects/DiscType";
-import { TEXTS } from "@/constants/texts";
 import { STYLES } from "@/constants/styles";
+import Image from "next/image";
 
 type Props = {
   id: number;
@@ -76,16 +76,23 @@ export const HandDisc: React.FC<Props> = ({
   };
 
   /**
-   * 絵文字を決定
+   * 画像のパスを決定
    */
-  const getEmoji = () => {
-    if (type === "butter") return TEXTS.BUTTER_EMOJI;
-    if (type === "cat") return TEXTS.CAT_EMOJI;
+  const getImagePath = () => {
+    if (type === "butter") return "/butter.svg";
+    if (type === "cat") {
+      // 白駒の場合は黒猫、黒駒の場合は白猫を表示（視認性のため）
+      // 手札の背景色を考慮: 黒プレイヤーの猫駒は白背景上に配置される
+      const discColor = getDiscColor();
+      // 黒背景（黒プレイヤーの猫駒）には白猫、白背景（白プレイヤーの猫駒）には黒猫
+      return discColor === STYLES.DISC_COLORS.BLACK ? "/whitecat.svg" : "/cat.svg";
+    }
+    if (type === "buttercat") return "/buttercat.svg";
     return null;
   };
 
   const discColor = getDiscColor();
-  const emoji = getEmoji();
+  const imagePath = getImagePath();
 
   return (
     <div
@@ -94,7 +101,15 @@ export const HandDisc: React.FC<Props> = ({
     >
       {!isUsed && (
         <div className={`${STYLES.HAND_DISC.DISC_CONTAINER} ${discColor}`}>
-          {emoji && <span className={STYLES.HAND_DISC.EMOJI}>{emoji}</span>}
+          {imagePath && (
+            <Image
+              src={imagePath}
+              alt={type}
+              width={32}
+              height={32}
+              className={STYLES.HAND_DISC.EMOJI}
+            />
+          )}
         </div>
       )}
     </div>

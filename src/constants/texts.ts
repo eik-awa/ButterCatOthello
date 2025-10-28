@@ -19,6 +19,7 @@ export const TEXTS = {
   // メッセージ
   GAME_OVER: "ゲーム終了！",
   SELECT_DISC_MESSAGE: "手札からディスクを選択してください",
+  CPU_THINKING_MESSAGE: "思考中です...",
   NO_VALID_MOVES: "置ける場所がありません",
   PASS_MESSAGE: "がパスしました",
   PLAY_AGAIN_BUTTON: "もう一度やる",

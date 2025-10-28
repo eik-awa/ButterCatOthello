@@ -40,11 +40,16 @@ export const Hand: React.FC<Props> = ({
    */
   const getContainerClass = () => {
     const baseClass = STYLES.HAND.CONTAINER_BASE;
-    const stateClass =
-      isCurrent && !hasSelection
-        ? STYLES.HAND.CONTAINER_ACTIVE
-        : STYLES.HAND.CONTAINER_INACTIVE;
-    return `${baseClass} ${stateClass}`;
+
+    if (isCurrent && !hasSelection) {
+      // アクティブなターンの場合、プレイヤーの色に応じて枠線の色を変える
+      const borderClass = color === "black"
+        ? "border-emerald-600 bg-white"
+        : "border-amber-500 bg-white";
+      return `${baseClass} ${borderClass}`;
+    }
+
+    return `${baseClass} ${STYLES.HAND.CONTAINER_INACTIVE}`;
   };
 
   /**
@@ -68,13 +73,17 @@ export const Hand: React.FC<Props> = ({
         {getPlayerName()}
         {isCurrent && TEXTS.CURRENT_TURN_SUFFIX}
       </div>
-      <div className={STYLES.HAND.DISC_COUNT}>
+      <div
+        className={`${STYLES.HAND.DISC_COUNT} ${
+          color === "black" ? "border-emerald-600" : "border-amber-500"
+        }`}
+      >
         {color === "black" ? TEXTS.BLACK : TEXTS.WHITE}: {discCount}
       </div>
       <div className={STYLES.HAND.MESSAGE_CONTAINER}>
         {isCurrent && !hasSelection && (
           <div className={STYLES.HAND.MESSAGE_TEXT}>
-            {TEXTS.SELECT_DISC_MESSAGE}
+            {isCpu ? TEXTS.CPU_THINKING_MESSAGE : TEXTS.SELECT_DISC_MESSAGE}
           </div>
         )}
       </div>

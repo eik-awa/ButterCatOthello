@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* オーバースクロール時の背景色を設定 */
+html,
+body {
+  background-color: #fef3c7; /* bg-yellow-100 (バターの色) */
+  min-height: 100vh;
+}
+
+/* 背景にバターのパターンを表示（疑似要素を使用） */
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url('/butter.svg');
+  background-repeat: space; /* 余白を持たせる */
+  background-size: 150px 150px; /* 大きめに表示 */
+  opacity: 0.35;
+  transform: rotate(-15deg);
+  z-index: 0;
+  pointer-events: none;
+  filter: none; /* フィルターを解除してバターの色を正しく表示 */
+}
+
+/* メインコンテンツは背景パターンの上に表示 */
+main {
+  position: relative;
+  z-index: 1;
+}

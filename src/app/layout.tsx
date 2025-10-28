@@ -8,7 +8,7 @@ export const metadata = {
   icons: {
     icon: "/buttercat.svg",
   },
-  themeColor: "#fed7aa", // bg-orange-200 に対応する色
+  themeColor: "#fef3c7", // bg-yellow-100 (バターの色) に対応する色
   viewport: {
     width: "device-width",
     initialScale: 1,

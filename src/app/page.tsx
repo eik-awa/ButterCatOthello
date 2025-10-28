@@ -31,6 +31,22 @@ export default function Home() {
   const cpuStrategyRef = useRef<CpuStrategy | null>(null);
 
   /**
+   * 背景画像を設定
+   */
+  useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      body::before {
+        background-image: url('${getAssetPath('/butter.svg')}');
+      }
+    `;
+    document.head.appendChild(style);
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
+  /**
    * CPU戦略を初期化
    */
   useEffect(() => {

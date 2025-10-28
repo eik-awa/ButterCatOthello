@@ -55,14 +55,16 @@ export class HardCpuStrategy extends CpuStrategy {
       let adjustedScore = score;
 
       if (disc) {
+        const isCorner = this.isCornerPosition(move.position.x, move.position.y);
+        const positionValue = this.getPositionValue(
+          move.position.x,
+          move.position.y
+        );
+
         // バター駒の評価を改善
         if (disc.type === "butter") {
           // バター駒は相手の色になるため、慎重に評価
           // 相手にとって悪い位置（角の隣など）に置く場合のみボーナス
-          const positionValue = this.getPositionValue(
-            move.position.x,
-            move.position.y
-          );
 
           if (positionValue < -10) {
             // 相手にとって悪い位置（角の隣など）ならボーナス
@@ -75,21 +77,16 @@ export class HardCpuStrategy extends CpuStrategy {
             adjustedScore -= 15;
           }
         } else if (disc.type === "cat") {
-          // 猫駒は裏返されないため、重要な位置に置くことで有利
-          const positionValue = this.getPositionValue(
-            move.position.x,
-            move.position.y
-          );
-
-          if (positionValue > 50) {
-            // 良い位置（角など）なら大きなボーナス
-            adjustedScore += 40;
+          // 猫駒は裏返されないが、角に置いても意味がない（どの駒でも角は取られない）
+          if (isCorner) {
+            // 角では通常駒を優先（猫駒の特性が活かせない）
+            adjustedScore -= 1000; // 大幅なペナルティで角には置かない
           } else if (positionValue > 0) {
-            // まあまあの位置でもボーナス
-            adjustedScore += 20;
+            // 角以外の良い位置（辺など裏返される可能性がある場所）なら大きなボーナス
+            adjustedScore += 30;
           } else {
-            // 悪い位置でも通常駒よりはマシ
-            adjustedScore += 10;
+            // 中央などの裏返されやすい位置でもボーナス
+            adjustedScore += 15;
           }
         } else if (disc.type === "buttercat") {
           // バター猫駒は挟めないが挟まれもしない
@@ -248,6 +245,18 @@ export class HardCpuStrategy extends CpuStrategy {
     score += (cpuEdges - opponentEdges) * 5;
 
     return score;
+  }
+
+  /**
+   * 角の位置かどうかを判定
+   */
+  private isCornerPosition(x: number, y: number): boolean {
+    return (
+      (x === 0 && y === 0) ||
+      (x === 7 && y === 0) ||
+      (x === 0 && y === 7) ||
+      (x === 7 && y === 7)
+    );
   }
 
   /**

@@ -14,7 +14,9 @@ export const STYLES = {
     DISABLED: "opacity-30",
     DISC_CONTAINER:
       "rounded-full w-8 h-8 sm:w-10 sm:h-10 relative flex items-center justify-center",
-    EMOJI: "text-base sm:text-xl",
+    EMOJI: "text-base sm:text-xl [filter:drop-shadow(2px_4px_6px_rgba(0,0,0,0.4))_drop-shadow(0px_1px_2px_rgba(255,255,255,0.3))]",
+    EMOJI_BUTTER_BLACK: "text-base sm:text-xl [filter:drop-shadow(2px_4px_6px_rgba(0,0,0,0.4))_drop-shadow(0px_1px_2px_rgba(255,255,255,0.3))]",
+    EMOJI_BUTTER_WHITE: "text-base sm:text-xl [filter:invert(1)_drop-shadow(2px_4px_6px_rgba(0,0,0,0.4))_drop-shadow(0px_1px_2px_rgba(255,255,255,0.3))]",
   },
 
   // Handコンポーネント

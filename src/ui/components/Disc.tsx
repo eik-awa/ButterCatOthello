@@ -1,7 +1,7 @@
 import { Color } from "@/domains/othello/valueObjects/Color";
 import { DiscType } from "@/domains/othello/valueObjects/DiscType";
 import DiscStyles from "./Disc.module.css";
-import Image from "next/image";
+import { getAssetPath } from "@/utils/getAssetPath";
 
 type Props = {
   color: Color;
@@ -28,23 +28,35 @@ export const Disc: React.FC<Props> = ({ color, discType, isFlipping }) => {
    * 画像のパスを決定
    */
   const getImagePath = () => {
-    if (discType === "butter") return "/butter.svg";
+    if (discType === "butter") return getAssetPath("/butter.svg");
     if (discType === "cat") {
-      // 白駒の場合は黒猫、黒駒の場合は白猫を表示（視認性のため）
-      return color === "white" ? "/cat.svg" : "/whitecat.svg";
+      // 猫駒は黒猫・白猫の画像を使用
+      return color === "black" ? getAssetPath("/cat.svg") : getAssetPath("/whitecat.svg");
     }
-    if (discType === "buttercat") return "/buttercat.svg";
+    if (discType === "buttercat") return getAssetPath("/buttercat.svg");
     return null;
+  };
+
+  /**
+   * 画像の枠スタイルを決定
+   */
+  const getImageBorderClass = () => {
+    if (discType === "butter") return DiscStyles.blackBorder;
+    if (discType === "cat") {
+      // 黒駒の場合は黒枠、白駒の場合は白枠
+      return color === "black"
+        ? DiscStyles.blackBorder
+        : DiscStyles.whiteBorder;
+    }
+    if (discType === "buttercat") return DiscStyles.whiteBorder;
+    return "";
   };
 
   /**
    * 猫駒の反対側の画像パスを取得（フリップアニメーション用）
    */
   const getAlternateImagePath = () => {
-    if (discType === "cat") {
-      // 反対側の色の猫を返す
-      return color === "white" ? "/whitecat.svg" : "/cat.svg";
-    }
+    // 猫駒はフリップ時に画像切り替えしない
     return null;
   };
 
@@ -53,71 +65,68 @@ export const Disc: React.FC<Props> = ({ color, discType, isFlipping }) => {
     discType === "buttercat" ? DiscStyles.buttercatRotate : "";
   const imagePath = getImagePath();
   const alternateImagePath = getAlternateImagePath();
+  const imageBorderClass = getImageBorderClass();
+
+  // 特殊駒の場合は背景を透明にする
+  const isSpecialDisc = discType !== "normal";
 
   return (
     <div
-      className={`${DiscStyles.disc} ${colorClass} ${
+      className={`${DiscStyles.disc} ${!isSpecialDisc ? colorClass : ""} ${
         isFlipping ? DiscStyles.flipping : ""
       } ${buttercatAnimation}`}
-      data-flipping-to={isFlipping ? (color === "black" ? "black" : "white") : undefined}
+      data-flipping-to={
+        isFlipping ? (color === "black" ? "black" : "white") : undefined
+      }
       data-disc-type={discType}
+      data-color={color}
     >
-      {/* 上面 */}
-      <div className={DiscStyles.top}>
-        {imagePath && (
-          <>
-            <Image
-              src={imagePath}
+      {/* 特殊駒は3D画像表示 */}
+      {isSpecialDisc ? (
+        <>
+          {/* 前面 */}
+          <div className={DiscStyles.imageFront}>
+            <img
+              src={imagePath!}
               alt={discType}
-              width={32}
-              height={32}
-              className={`${DiscStyles.emoji} ${discType === "cat" && isFlipping ? DiscStyles.primaryImage : ""}`}
-              priority
-              unoptimized
+              width={48}
+              height={48}
+              className={`${DiscStyles.flatImage} ${imageBorderClass} ${
+                discType === "cat" && isFlipping ? DiscStyles.primaryImage : ""
+              }`}
             />
             {alternateImagePath && isFlipping && (
-              <Image
+              <img
                 src={alternateImagePath}
                 alt={discType}
-                width={32}
-                height={32}
-                className={`${DiscStyles.emoji} ${DiscStyles.alternateImage}`}
-                priority
-                unoptimized
+                width={48}
+                height={48}
+                className={`${DiscStyles.flatImage} ${imageBorderClass} ${DiscStyles.alternateImage}`}
               />
             )}
-          </>
-        )}
-      </div>
-      {/* 側面 */}
-      <div className={DiscStyles.side}></div>
-      {/* 下面 */}
-      <div className={DiscStyles.bottom}>
-        {imagePath && (
-          <>
-            <Image
-              src={imagePath}
+          </div>
+          {/* 背面 */}
+          <div className={DiscStyles.imageBack}>
+            <img
+              src={imagePath!}
               alt={discType}
-              width={32}
-              height={32}
-              className={`${DiscStyles.emoji} ${discType === "cat" && isFlipping ? DiscStyles.primaryImage : ""}`}
-              priority
-              unoptimized
+              width={48}
+              height={48}
+              className={`${DiscStyles.flatImage} ${imageBorderClass}`}
             />
-            {alternateImagePath && isFlipping && (
-              <Image
-                src={alternateImagePath}
-                alt={discType}
-                width={32}
-                height={32}
-                className={`${DiscStyles.emoji} ${DiscStyles.alternateImage}`}
-                priority
-                unoptimized
-              />
-            )}
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      ) : (
+        <>
+          {/* 通常駒は3D表示 */}
+          {/* 上面 */}
+          <div className={DiscStyles.top}></div>
+          {/* 側面 */}
+          <div className={DiscStyles.side}></div>
+          {/* 下面 */}
+          <div className={DiscStyles.bottom}></div>
+        </>
+      )}
     </div>
   );
 };

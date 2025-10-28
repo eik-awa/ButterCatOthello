@@ -1,7 +1,7 @@
 import { Color } from "@/domains/othello/valueObjects/Color";
 import { DiscType } from "@/domains/othello/valueObjects/DiscType";
 import { STYLES } from "@/constants/styles";
-import Image from "next/image";
+import { getAssetPath } from "@/utils/getAssetPath";
 
 type Props = {
   id: number;
@@ -79,20 +79,23 @@ export const HandDisc: React.FC<Props> = ({
    * 画像のパスを決定
    */
   const getImagePath = () => {
-    if (type === "butter") return "/butter.svg";
+    if (type === "butter") return getAssetPath("/butter.svg");
     if (type === "cat") {
-      // 白駒の場合は黒猫、黒駒の場合は白猫を表示（視認性のため）
-      // 手札の背景色を考慮: 黒プレイヤーの猫駒は白背景上に配置される
-      const discColor = getDiscColor();
-      // 黒背景（黒プレイヤーの猫駒）には白猫、白背景（白プレイヤーの猫駒）には黒猫
-      return discColor === STYLES.DISC_COLORS.BLACK ? "/whitecat.svg" : "/cat.svg";
+      // 猫駒は黒猫・白猫の画像を使用
+      return color === "black" ? getAssetPath("/cat.svg") : getAssetPath("/whitecat.svg");
     }
-    if (type === "buttercat") return "/buttercat.svg";
+    if (type === "buttercat") return getAssetPath("/buttercat.svg");
     return null;
   };
 
   const discColor = getDiscColor();
   const imagePath = getImagePath();
+  const imageClass =
+    type === "butter"
+      ? (color === "white" ? STYLES.HAND_DISC.EMOJI_BUTTER_WHITE : STYLES.HAND_DISC.EMOJI_BUTTER_BLACK)
+      : STYLES.HAND_DISC.EMOJI;
+
+  const isSpecialDisc = type !== "normal";
 
   return (
     <div
@@ -100,18 +103,22 @@ export const HandDisc: React.FC<Props> = ({
       onClick={!isUsed && !isDisabled ? onClick : undefined}
     >
       {!isUsed && (
-        <div className={`${STYLES.HAND_DISC.DISC_CONTAINER} ${discColor}`}>
+        <>
+          {/* 通常駒は背景の丸を表示 */}
+          {!isSpecialDisc && (
+            <div className={`${STYLES.HAND_DISC.DISC_CONTAINER} ${discColor}`} />
+          )}
+          {/* 特殊駒は画像のみ表示 */}
           {imagePath && (
-            <Image
+            <img
               src={imagePath}
               alt={type}
               width={32}
               height={32}
-              className={STYLES.HAND_DISC.EMOJI}
-              unoptimized
+              className={imageClass}
             />
           )}
-        </div>
+        </>
       )}
     </div>
   );

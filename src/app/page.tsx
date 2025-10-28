@@ -13,14 +13,16 @@ import { useGameSettings } from "@/contexts/GameSettingsContext";
 import { EasyCpuStrategy } from "@/domains/othello/services/EasyCpuStrategy";
 import { HardCpuStrategy } from "@/domains/othello/services/HardCpuStrategy";
 import { CpuStrategy } from "@/domains/othello/services/CpuStrategy";
-import Image from "next/image";
+import { getAssetPath } from "@/utils/getAssetPath";
 
 /**
  * オセロゲームのメインページコンポーネント
  */
 export default function Home() {
   const { settings } = useGameSettings();
-  const [useCase, setUseCase] = useState(() => new PlaceMoveUseCase(new Game()));
+  const [useCase, setUseCase] = useState(
+    () => new PlaceMoveUseCase(new Game())
+  );
   const [gameState, setGameState] = useState<GameStateDto>(
     useCase.getGameState()
   );
@@ -67,10 +69,15 @@ export default function Home() {
    * 有効な手がない場合の自動パス処理
    */
   useEffect(() => {
-    if (!gameState.isGameOver && !gameState.isLocked && !gameState.hasValidMoves) {
+    if (
+      !gameState.isGameOver &&
+      !gameState.isLocked &&
+      !gameState.hasValidMoves
+    ) {
       // 1秒後に自動パス
       const timer = setTimeout(() => {
-        const playerName = gameState.currentTurn === "black" ? TEXTS.BLACK : TEXTS.WHITE;
+        const playerName =
+          gameState.currentTurn === "black" ? TEXTS.BLACK : TEXTS.WHITE;
         setPassNotification(`${playerName}${TEXTS.PASS_MESSAGE}`);
         const newState = useCase.pass();
         setGameState(newState);
@@ -94,7 +101,11 @@ export default function Home() {
     }
 
     // ゲームが終了している、ロックされている、または有効な手がない場合は何もしない
-    if (gameState.isGameOver || gameState.isLocked || !gameState.hasValidMoves) {
+    if (
+      gameState.isGameOver ||
+      gameState.isLocked ||
+      !gameState.hasValidMoves
+    ) {
       return;
     }
 
@@ -138,7 +149,10 @@ export default function Home() {
    */
   const handleSelectHandDisc = (discId: number) => {
     // CPUのターンの場合は選択を無効化
-    if (settings.mode !== "pvp" && gameState.currentTurn === settings.cpuColor) {
+    if (
+      settings.mode !== "pvp" &&
+      gameState.currentTurn === settings.cpuColor
+    ) {
       return;
     }
     const newState = useCase.selectHandDisc(discId);
@@ -150,7 +164,10 @@ export default function Home() {
    */
   const handleCellClick = (x: number, y: number) => {
     // CPUのターンの場合はクリックを無効化
-    if (settings.mode !== "pvp" && gameState.currentTurn === settings.cpuColor) {
+    if (
+      settings.mode !== "pvp" &&
+      gameState.currentTurn === settings.cpuColor
+    ) {
       return;
     }
 
@@ -176,8 +193,20 @@ export default function Home() {
       <button
         className={STYLES.SETTINGS.OPEN_BUTTON}
         onClick={() => setIsSettingsOpen(true)}
+        aria-label="設定"
       >
-        {TEXTS.OPEN_SETTINGS_BUTTON}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          className="w-5 h-5 sm:w-6 sm:h-6"
+        >
+          <path
+            fillRule="evenodd"
+            d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567L9.05 4.889c-.02.12-.115.26-.297.348a7.493 7.493 0 00-.986.57c-.166.115-.334.126-.45.083L6.3 5.508a1.875 1.875 0 00-2.282.819l-.922 1.597a1.875 1.875 0 00.432 2.385l.84.692c.095.078.17.229.154.43a7.598 7.598 0 000 1.139c.015.2-.059.352-.153.43l-.841.692a1.875 1.875 0 00-.432 2.385l.922 1.597a1.875 1.875 0 002.282.818l1.019-.382c.115-.043.283-.031.45.082.312.214.641.405.985.57.182.088.277.228.297.35l.178 1.071c.151.904.933 1.567 1.85 1.567h1.844c.916 0 1.699-.663 1.85-1.567l.178-1.072c.02-.12.114-.26.297-.349.344-.165.673-.356.985-.57.167-.114.335-.125.45-.082l1.02.382a1.875 1.875 0 002.28-.819l.923-1.597a1.875 1.875 0 00-.432-2.385l-.84-.692c-.095-.078-.17-.229-.154-.43a7.614 7.614 0 000-1.139c-.016-.2.059-.352.153-.43l.84-.692c.708-.582.891-1.59.433-2.385l-.922-1.597a1.875 1.875 0 00-2.282-.818l-1.02.382c-.114.043-.282.031-.449-.083a7.49 7.49 0 00-.985-.57c-.183-.087-.277-.227-.297-.348l-.179-1.072a1.875 1.875 0 00-1.85-1.567h-1.843zM12 15.75a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5z"
+            clipRule="evenodd"
+          />
+        </svg>
       </button>
 
       {/* 設定メニュー */}
@@ -189,13 +218,16 @@ export default function Home() {
 
       <h1 className={STYLES.PAGE.TITLE}>
         {TEXTS.GAME_TITLE}
-        <Image
-          src="/buttercat.svg"
+        <img
+          src={getAssetPath("/buttercat.svg")}
           alt="buttercat"
           width={48}
           height={48}
-          style={{ display: 'inline-block', marginLeft: '0.5rem', verticalAlign: 'middle' }}
-          unoptimized
+          style={{
+            display: "inline-block",
+            marginLeft: "0.5rem",
+            verticalAlign: "middle",
+          }}
         />
       </h1>
 
@@ -274,15 +306,16 @@ export default function Home() {
           {TEXTS.SPECIAL_DISCS_TITLE}
         </h2>
         <div className={STYLES.SPECIAL_DISCS.GRID}>
-          <div className={`${STYLES.SPECIAL_DISCS.CARD_BASE} ${STYLES.SPECIAL_DISCS.CARD_BUTTER}`}>
+          <div
+            className={`${STYLES.SPECIAL_DISCS.CARD_BASE} ${STYLES.SPECIAL_DISCS.CARD_BUTTER}`}
+          >
             <div className={STYLES.SPECIAL_DISCS.CARD_HEADER}>
               <span className={STYLES.SPECIAL_DISCS.CARD_EMOJI}>
-                <Image
-                  src="/butter.svg"
+                <img
+                  src={getAssetPath("/butter.svg")}
                   alt="butter"
-                  width={40}
-                  height={40}
-                  unoptimized
+                  width={64}
+                  height={64}
                 />
               </span>
               <h3 className={STYLES.SPECIAL_DISCS.CARD_TITLE}>
@@ -294,15 +327,16 @@ export default function Home() {
             </p>
           </div>
 
-          <div className={`${STYLES.SPECIAL_DISCS.CARD_BASE} ${STYLES.SPECIAL_DISCS.CARD_CAT}`}>
+          <div
+            className={`${STYLES.SPECIAL_DISCS.CARD_BASE} ${STYLES.SPECIAL_DISCS.CARD_CAT}`}
+          >
             <div className={STYLES.SPECIAL_DISCS.CARD_HEADER}>
               <span className={STYLES.SPECIAL_DISCS.CARD_EMOJI}>
-                <Image
-                  src="/cat.svg"
+                <img
+                  src={getAssetPath("/cat.svg")}
                   alt="cat"
-                  width={40}
-                  height={40}
-                  unoptimized
+                  width={64}
+                  height={64}
                 />
               </span>
               <h3 className={STYLES.SPECIAL_DISCS.CARD_TITLE}>
@@ -314,15 +348,16 @@ export default function Home() {
             </p>
           </div>
 
-          <div className={`${STYLES.SPECIAL_DISCS.CARD_BASE} ${STYLES.SPECIAL_DISCS.CARD_BUTTERCAT}`}>
+          <div
+            className={`${STYLES.SPECIAL_DISCS.CARD_BASE} ${STYLES.SPECIAL_DISCS.CARD_BUTTERCAT}`}
+          >
             <div className={STYLES.SPECIAL_DISCS.CARD_HEADER}>
               <span className={STYLES.SPECIAL_DISCS.CARD_EMOJI}>
-                <Image
-                  src="/buttercat.svg"
+                <img
+                  src={getAssetPath("/buttercat.svg")}
                   alt="buttercat"
-                  width={40}
-                  height={40}
-                  unoptimized
+                  width={64}
+                  height={64}
                 />
               </span>
               <h3 className={STYLES.SPECIAL_DISCS.CARD_TITLE}>

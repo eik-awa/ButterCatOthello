@@ -6,7 +6,7 @@ export const metadata = {
   title: "ButterCatOthello",
   description: "A simple Othello game with special discs",
   icons: {
-    icon: "/buttercat.svg",
+    icon: "/buttercat.png",
   },
   themeColor: "#fef3c7", // bg-yellow-100 (バターの色) に対応する色
   viewport: {

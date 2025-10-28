@@ -34,10 +34,10 @@ export default function Home() {
    * 背景画像を設定
    */
   useEffect(() => {
-    const style = document.createElement('style');
+    const style = document.createElement("style");
     style.textContent = `
       body::before {
-        background-image: url('${getAssetPath('/butter.svg')}');
+        background-image: url('${getAssetPath("/butter.svg")}');
       }
     `;
     document.head.appendChild(style);
@@ -250,9 +250,7 @@ export default function Home() {
 
       {/* パス通知のみ表示 */}
       {!gameState.isGameOver && passNotification && (
-        <div className={STYLES.PAGE.TURN_DISPLAY}>
-          {passNotification}
-        </div>
+        <div className={STYLES.PAGE.TURN_DISPLAY}>{passNotification}</div>
       )}
 
       {/* ゲーム終了と勝者表示 */}

@@ -79,12 +79,14 @@ export const HandDisc: React.FC<Props> = ({
    * 画像のパスを決定
    */
   const getImagePath = () => {
-    if (type === "butter") return getAssetPath("/butter.svg");
+    if (type === "butter") return getAssetPath("/butter.png");
     if (type === "cat") {
       // 猫駒は黒猫・白猫の画像を使用
-      return color === "black" ? getAssetPath("/cat.svg") : getAssetPath("/whitecat.svg");
+      return color === "black"
+        ? getAssetPath("/cat.png")
+        : getAssetPath("/whitecat.png");
     }
-    if (type === "buttercat") return getAssetPath("/buttercat.svg");
+    if (type === "buttercat") return getAssetPath("/buttercat.png");
     return null;
   };
 
@@ -92,21 +94,27 @@ export const HandDisc: React.FC<Props> = ({
   const imagePath = getImagePath();
   const imageClass =
     type === "butter"
-      ? (color === "white" ? STYLES.HAND_DISC.EMOJI_BUTTER_WHITE : STYLES.HAND_DISC.EMOJI_BUTTER_BLACK)
+      ? color === "white"
+        ? STYLES.HAND_DISC.EMOJI_BUTTER_WHITE
+        : STYLES.HAND_DISC.EMOJI_BUTTER_BLACK
       : STYLES.HAND_DISC.EMOJI;
 
   const isSpecialDisc = type !== "normal";
 
   return (
     <div
-      className={`${STYLES.HAND_DISC.BASE} ${getCursorClass()} ${getBorderClass()} ${getHoverClass()} ${getDisabledClass()}`}
+      className={`${
+        STYLES.HAND_DISC.BASE
+      } ${getCursorClass()} ${getBorderClass()} ${getHoverClass()} ${getDisabledClass()}`}
       onClick={!isUsed && !isDisabled ? onClick : undefined}
     >
       {!isUsed && (
         <>
           {/* 通常駒は背景の丸を表示 */}
           {!isSpecialDisc && (
-            <div className={`${STYLES.HAND_DISC.DISC_CONTAINER} ${discColor}`} />
+            <div
+              className={`${STYLES.HAND_DISC.DISC_CONTAINER} ${discColor}`}
+            />
           )}
           {/* 特殊駒は画像のみ表示 */}
           {imagePath && (

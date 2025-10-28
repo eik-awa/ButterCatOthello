@@ -1,1 +1,1594 @@
-(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,95608,e=>{e.v({bottomLeft:"GuideDot-module__6pWM-a__bottomLeft",bottomRight:"GuideDot-module__6pWM-a__bottomRight",guideDot:"GuideDot-module__6pWM-a__guideDot",topLeft:"GuideDot-module__6pWM-a__topLeft",topRight:"GuideDot-module__6pWM-a__topRight"})},89633,e=>{e.v({alternateImage:"Disc-module__bexTPq__alternateImage",black:"Disc-module__bexTPq__black",blackBorder:"Disc-module__bexTPq__blackBorder",bottom:"Disc-module__bexTPq__bottom",buttercat:"Disc-module__bexTPq__buttercat",buttercatRotate:"Disc-module__bexTPq__buttercatRotate",buttercatSpinX:"Disc-module__bexTPq__buttercatSpinX",catAlternateImageFade:"Disc-module__bexTPq__catAlternateImageFade",catPrimaryImageFade:"Disc-module__bexTPq__catPrimaryImageFade",colorChange:"Disc-module__bexTPq__colorChange",colorChangeToBlackSide:"Disc-module__bexTPq__colorChangeToBlackSide",colorChangeToBlackTop:"Disc-module__bexTPq__colorChangeToBlackTop",colorChangeToWhiteSide:"Disc-module__bexTPq__colorChangeToWhiteSide",colorChangeToWhiteTop:"Disc-module__bexTPq__colorChangeToWhiteTop",disc:"Disc-module__bexTPq__disc",flatImage:"Disc-module__bexTPq__flatImage",flatImageRotateWithDisc:"Disc-module__bexTPq__flatImageRotateWithDisc",flatImageSpin360:"Disc-module__bexTPq__flatImageSpin360",flip:"Disc-module__bexTPq__flip",flipping:"Disc-module__bexTPq__flipping",imageBack:"Disc-module__bexTPq__imageBack",imageFront:"Disc-module__bexTPq__imageFront",primaryImage:"Disc-module__bexTPq__primaryImage",side:"Disc-module__bexTPq__side",specialDiscBlackToWhiteToBlackSide:"Disc-module__bexTPq__specialDiscBlackToWhiteToBlackSide",specialDiscBlackToWhiteToBlackTop:"Disc-module__bexTPq__specialDiscBlackToWhiteToBlackTop",specialDiscWhiteToBlackToWhiteSide:"Disc-module__bexTPq__specialDiscWhiteToBlackToWhiteSide",specialDiscWhiteToBlackToWhiteTop:"Disc-module__bexTPq__specialDiscWhiteToBlackToWhiteTop",spin360X:"Disc-module__bexTPq__spin360X",top:"Disc-module__bexTPq__top",white:"Disc-module__bexTPq__white",whiteBorder:"Disc-module__bexTPq__whiteBorder"})},52683,e=>{"use strict";e.s(["default",()=>N],52683);var t=e.i(43476),s=e.i(71645),i=e.i(95608),l=e.i(89633);e.i(47167);let r=e=>"".concat("/ButterCatOthello").concat(e),a=e=>{let{color:s,discType:i,isFlipping:a}=e,c="buttercat"===i?l.default.buttercat:"black"===s?l.default.black:l.default.white,o="buttercat"===i?l.default.buttercatRotate:"",n="butter"===i?r("/butter.svg"):"cat"===i||"buttercat"===i?r("/buttercat.svg"):null,d="cat"===i?r("/buttercat.svg"):null,u="butter"===i?l.default.blackBorder:"cat"===i?"black"===s?l.default.blackBorder:l.default.whiteBorder:"buttercat"===i?l.default.whiteBorder:"",h="normal"!==i;return(0,t.jsx)("div",{className:"".concat(l.default.disc," ").concat(!h?c:""," ").concat(a?l.default.flipping:""," ").concat(o),"data-flipping-to":a?"black"===s?"black":"white":void 0,"data-disc-type":i,children:h?(0,t.jsxs)(t.Fragment,{children:[(0,t.jsxs)("div",{className:l.default.imageFront,children:[(0,t.jsx)("img",{src:n,alt:i,width:48,height:48,className:"".concat(l.default.flatImage," ").concat(u," ").concat("cat"===i&&a?l.default.primaryImage:"")}),d&&a&&(0,t.jsx)("img",{src:d,alt:i,width:48,height:48,className:"".concat(l.default.flatImage," ").concat(u," ").concat(l.default.alternateImage)})]}),(0,t.jsx)("div",{className:l.default.imageBack,children:(0,t.jsx)("img",{src:n,alt:i,width:48,height:48,className:"".concat(l.default.flatImage," ").concat(u)})})]}):(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)("div",{className:l.default.top}),(0,t.jsx)("div",{className:l.default.side}),(0,t.jsx)("div",{className:l.default.bottom})]})})},c={HAND_DISC:{BASE:"w-12 h-12 sm:w-16 sm:h-16 border-2 flex items-center justify-center transition-all",CURSOR_DISABLED:"cursor-not-allowed",CURSOR_POINTER:"cursor-pointer",BORDER_SELECTED:"border-yellow-400 bg-yellow-100",BORDER_DEFAULT:"border-gray-400 bg-gray-100",HOVER:"hover:bg-gray-200",DISABLED:"opacity-30",DISC_CONTAINER:"rounded-full w-8 h-8 sm:w-10 sm:h-10 relative flex items-center justify-center",EMOJI:"text-base sm:text-xl"},HAND:{CONTAINER_BASE:"p-3 sm:p-4 rounded-lg border-2",CONTAINER_ACTIVE:"border-gray-300",CONTAINER_INACTIVE:"bg-gray-50 border-gray-300",BG_PULSE:"animate-pulse bg-yellow-200",TITLE:"mb-2 font-bold text-base sm:text-lg h-6 sm:h-7",MESSAGE_CONTAINER:"mb-2 h-4 sm:h-5",MESSAGE_TEXT:"text-xs sm:text-sm text-red-600",DISCS_CONTAINER:"flex gap-1 sm:gap-2 flex-wrap justify-center",DISC_COUNT:"text-sm sm:text-base font-semibold mt-2 pt-2 border-t border-gray-300"},CELL:{BASE:"w-10 h-10 sm:w-16 sm:h-16 md:w-20 md:h-20 border border-neutral-900 flex items-center justify-center relative",BG:"bg-emerald-700",HOVER:"cursor-pointer hover:bg-emerald-600",VALID_MOVE_DOT:"rounded-full w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 bg-yellow-300"},BOARD:{GRID:"grid grid-cols-8 gap-0 border-2 sm:border-4 border-neutral-900 max-w-[320px] sm:max-w-none mx-auto"},PAGE:{MAIN:"min-h-screen flex flex-col items-center justify-center bg-orange-200 p-4 sm:p-4 md:p-8 overflow-x-hidden",TITLE:"text-xl sm:text-2xl md:text-3xl text-neutral-900 font-bold mb-2 sm:mb-4 flex items-center justify-center",TURN_DISPLAY:"mb-2 sm:mb-4 text-base sm:text-lg md:text-xl text-neutral-900 font-semibold",GAME_OVER:"mb-2 sm:mb-4 text-lg sm:text-xl md:text-2xl text-red-600 font-bold",HANDS_CONTAINER:"flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-8 mb-4 sm:mb-8 w-full max-w-[min(100vw-2rem,64rem)] px-2",HANDS_ITEM:"flex-1",WINNER_MESSAGE:"mb-2 sm:mb-4 text-xl sm:text-2xl md:text-3xl font-bold text-green-600",PLAY_AGAIN_BUTTON:"mt-4 sm:mt-6 md:mt-8 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg shadow-lg transition-colors text-base sm:text-lg md:text-xl"},SPECIAL_DISCS:{CONTAINER:"mt-4 sm:mt-6 md:mt-8 p-3 sm:p-4 md:p-6 bg-white rounded-lg shadow-lg max-w-4xl w-full",TITLE:"text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 text-neutral-900",GRID:"grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4",CARD_BASE:"p-2 sm:p-3 md:p-4 rounded-lg",CARD_BUTTER:"border-2 border-amber-400",CARD_CAT:"border-2 border-blue-400",CARD_BUTTERCAT:"border-2 border-gradient-to-br from-amber-400 to-red-900",CARD_HEADER:"flex items-center mb-1 sm:mb-2",CARD_EMOJI:"text-xl sm:text-2xl md:text-3xl mr-1 sm:mr-2",CARD_TITLE:"text-sm sm:text-base md:text-lg font-bold text-neutral-900",CARD_TEXT:"text-xs sm:text-sm text-neutral-700"},DISC_COLORS:{BLACK:"bg-black",WHITE:"bg-white border border-gray-300",BUTTERCAT:"bg-gradient-to-br from-amber-400 to-red-900"},SETTINGS:{OVERLAY:"fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4",MODAL:"bg-yellow-50 rounded-lg shadow-xl p-4 sm:p-6 md:p-8 max-w-md w-full border-4 border-amber-800",TITLE:"text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-amber-900",SECTION:"mb-4 sm:mb-6",LABEL:"block text-sm sm:text-base font-semibold mb-2 text-amber-900",SELECT:"w-full p-2 border-2 border-amber-600 rounded-lg text-sm sm:text-base bg-white hover:border-amber-700 focus:border-amber-800 focus:ring-2 focus:ring-amber-300 outline-none transition-colors",BUTTON_PRIMARY:"w-full px-4 py-2 sm:py-3 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg transition-colors text-sm sm:text-base shadow-md",BUTTON_SECONDARY:"w-full px-4 py-2 sm:py-3 bg-amber-200 hover:bg-amber-300 text-amber-900 font-semibold rounded-lg transition-colors mt-2 text-sm sm:text-base",OPEN_BUTTON:"fixed top-2 sm:top-4 right-2 sm:right-4 px-3 sm:px-4 py-1.5 sm:py-2 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg shadow-lg transition-colors text-sm sm:text-base z-10"}},o=e=>{let{x:s,y:l,color:r,discType:o,isValidMove:n,isFlipping:d,onClick:u}=e,h=s%4==2&&l%4==2?i.default.topLeft:s%4==1&&l%4==2?i.default.topRight:s%4==2&&l%4==1?i.default.bottomLeft:s%4==1&&l%4==1?i.default.bottomRight:null;return(0,t.jsxs)("div",{className:"".concat(c.CELL.BASE," ").concat(c.CELL.BG," ").concat(n?c.CELL.HOVER:""),onClick:u,children:[r&&(0,t.jsx)(a,{color:r,discType:o||"normal",isFlipping:d}),!r&&n&&(0,t.jsx)("div",{className:c.CELL.VALID_MOVE_DOT}),h&&(0,t.jsx)("div",{className:"".concat(i.default.guideDot," ").concat(h)})]})},n=e=>{let{board:s,onCellClick:i}=e;return(0,t.jsx)("div",{className:"mb-4 sm:mb-6 w-full flex justify-center px-2",children:(0,t.jsx)("div",{className:c.BOARD.GRID,children:s.map((e,s)=>e.map((e,l)=>(0,t.jsx)(o,{x:e.x,y:e.y,color:e.color,discType:e.discType,isValidMove:e.isValidMove,isFlipping:e.isFlipping,onClick:()=>i(e.x,e.y)},"".concat(l,"-").concat(s))))})})},d=e=>{let{color:s,type:i,isUsed:l,isSelected:a,isDisabled:o,onClick:n}=e,d="buttercat"===i?c.DISC_COLORS.BUTTERCAT:"butter"===i?"black"===s?c.DISC_COLORS.WHITE:c.DISC_COLORS.BLACK:"black"===s?c.DISC_COLORS.BLACK:c.DISC_COLORS.WHITE,u="butter"===i?r("/butter.svg"):"cat"===i?"black"===s?r("/cat.svg"):r("/whitecat.svg"):"buttercat"===i?r("/buttercat.svg"):null;return(0,t.jsx)("div",{className:"".concat(c.HAND_DISC.BASE," ").concat(l||o?c.HAND_DISC.CURSOR_DISABLED:c.HAND_DISC.CURSOR_POINTER," ").concat(a?c.HAND_DISC.BORDER_SELECTED:c.HAND_DISC.BORDER_DEFAULT," ").concat(l||o?"":c.HAND_DISC.HOVER," ").concat(l||o?c.HAND_DISC.DISABLED:""),onClick:l||o?void 0:n,children:!l&&(0,t.jsx)("div",{className:"".concat(c.HAND_DISC.DISC_CONTAINER," ").concat(d),children:u&&(0,t.jsx)("img",{src:u,alt:i,width:32,height:32,className:c.HAND_DISC.EMOJI})})})},u={GAME_TITLE:"ButterCatOthello",BLACK_PLAYER:"黒プレイヤー",WHITE_PLAYER:"白プレイヤー",CURRENT_TURN_SUFFIX:" (現在のターン)",CURRENT_TURN_LABEL:"現在のターン:",BLACK:"黒",WHITE:"白",GAME_OVER:"ゲーム終了！",SELECT_DISC_MESSAGE:"手札からディスクを選択してください",PASS_MESSAGE:"がパスしました",PLAY_AGAIN_BUTTON:"もう一度やる",BLACK_WINS:"黒の勝利！",WHITE_WINS:"白の勝利！",DRAW:"引き分け！",SPECIAL_DISCS_TITLE:"特殊駒の説明",BUTTER_DISC_TITLE:"バター駒",BUTTER_DISC_DESCRIPTION:"配置すると相手の色になります。挟まれても色は変わりません。中央16マスには置けません。",CAT_DISC_TITLE:"猫駒",CAT_DISC_DESCRIPTION:"配置すると自分の色になります。挟まれても色は変わりません。中央16マスには置けません。",BUTTERCAT_DISC_TITLE:"バター猫駒",BUTTERCAT_DISC_DESCRIPTION:"常に回転し続けます。挟むことができませんが、挟まれることもありません。中央16マスには置けません。",SETTINGS_TITLE:"ゲーム設定",GAME_MODE_LABEL:"ゲームモード:",MODE_PVP:"対戦モード",MODE_CPU_EASY:"CPU (Easy)",MODE_CPU_HARD:"CPU (Hard)",CPU_COLOR_LABEL:"CPUの色:",NEW_GAME_BUTTON:"新しいゲームを開始",CLOSE_SETTINGS_BUTTON:"閉じる",OPEN_SETTINGS_BUTTON:"設定"},h=e=>{let{color:s,discs:i,selectedDiscId:l,hasSelection:r,isCurrent:a,onSelectDisc:o,discCount:n,isCpu:h=!1}=e;return(0,t.jsxs)("div",{className:"".concat((()=>{let e=c.HAND.CONTAINER_BASE,t=a&&!r?c.HAND.CONTAINER_ACTIVE:c.HAND.CONTAINER_INACTIVE;return"".concat(e," ").concat(t)})()," ").concat(a&&!r?c.HAND.BG_PULSE:""),children:[(0,t.jsxs)("div",{className:c.HAND.TITLE,children:[(()=>{let e="black"===s?u.BLACK_PLAYER:u.WHITE_PLAYER;return h?"".concat(e," (CPU)"):e})(),a&&u.CURRENT_TURN_SUFFIX]}),(0,t.jsxs)("div",{className:c.HAND.DISC_COUNT,children:["black"===s?u.BLACK:u.WHITE,": ",n]}),(0,t.jsx)("div",{className:c.HAND.MESSAGE_CONTAINER,children:a&&!r&&(0,t.jsx)("div",{className:c.HAND.MESSAGE_TEXT,children:u.SELECT_DISC_MESSAGE})}),(0,t.jsx)("div",{className:c.HAND.DISCS_CONTAINER,children:i.map(e=>(0,t.jsx)(d,{id:e.id,color:e.color,type:e.type,isUsed:e.isUsed,isSelected:l===e.id,isDisabled:!a,onClick:()=>o(e.id)},e.id))})]})};function m(e,t,s){return t in e?Object.defineProperty(e,t,{value:s,enumerable:!0,configurable:!0,writable:!0}):e[t]=s,e}class T{isNormal(){return"normal"===this.type}isButter(){return"butter"===this.type}isCat(){return"cat"===this.type}isButterCat(){return"buttercat"===this.type}constructor(e,t="normal"){m(this,"color",void 0),m(this,"type",void 0),this.color=e,this.type=t}}class _{getDisk(e){return this.grid[e.y][e.x]}setDisk(e,t){this.grid[e.y][e.x]=t}clone(){return new _(this.grid)}isInBounds(e){return e.x>=0&&e.x<8&&e.y>=0&&e.y<8}toArray(){return this.grid.map(e=>e.slice())}constructor(e){m(this,"grid",void 0),e?this.grid=e.map(e=>e.slice()):(this.grid=Array.from({length:8},()=>Array(8).fill(null)),this.grid[3][3]=new T("white"),this.grid[3][4]=new T("black"),this.grid[4][3]=new T("black"),this.grid[4][4]=new T("white"))}}class g{equals(e){return this.x===e.x&&this.y===e.y}toString(){return"".concat(this.x,",").concat(this.y)}static directionOffsets(){let e=[];for(let t=-1;t<=1;t++)for(let s=-1;s<=1;s++)(0!==t||0!==s)&&e.push({dx:t,dy:s});return e}move(e,t){let s=this.x+e,i=this.y+t;return s<0||s>7||i<0||i>7?null:new g(s,i)}isInCenter16(){return this.x>=2&&this.x<=5&&this.y>=2&&this.y<=5}constructor(e,t){if(m(this,"x",void 0),m(this,"y",void 0),this.x=e,this.y=t,e<0||e>7||t<0||t>7)throw Error("Invalid position: (".concat(e,", ").concat(t,")"))}}let D=e=>"black"===e?"white":"black";class b{use(){return new b(this.id,this.color,this.type,!0)}reset(){return new b(this.id,this.color,this.type,!1)}isNormal(){return"normal"===this.type}isSpecial(){return"normal"!==this.type}constructor(e,t,s="normal",i=!1){if(m(this,"id",void 0),m(this,"color",void 0),m(this,"type",void 0),m(this,"isUsed",void 0),this.id=e,this.color=t,this.type=s,this.isUsed=i,e<0||e>7)throw Error("HandDisc id must be between 0 and 7")}}class E{randomDiscType(){if(this.discs.every(e=>"normal"===e.type)){let e=Math.random();return e<.33?"butter":e<.66?"cat":"buttercat"}let e=Math.random();return e<.7?"normal":e<.8?"butter":e<.9?"cat":"buttercat"}selectDisc(e){let t=this.discs.findIndex(t=>t.id===e);if(-1===t)throw Error("Disc with id ".concat(e," not found"));if(this.discs[t].isUsed)throw Error("Cannot select a used disc");let s=this.clone();return s.selectedDiscId=e,s}deselectDisc(){let e=this.clone();return e.selectedDiscId=null,e}useSelectedDisc(){if(null===this.selectedDiscId)throw Error("No disc is selected");let e=this.clone();return e.discs=this.discs.map(t=>{if(t.id===this.selectedDiscId){let s=e.randomDiscType();return new b(t.id,t.color,s,!1)}return t}),e.selectedDiscId=null,e}getSelectedDiscId(){return this.selectedDiscId}hasSelection(){return null!==this.selectedDiscId}getDiscs(){return this.discs}hasAvailableDiscs(){return this.discs.some(e=>!e.isUsed)}resetAllDiscs(){let e=this.clone();return e.discs=this.discs.map(e=>e.reset()),e.selectedDiscId=null,e}clone(){let e=this.discs.map(e=>new b(e.id,e.color,e.type,e.isUsed));return new E(this.discs[0].color,this.selectedDiscId,e)}constructor(e,t=null,s){if(m(this,"discs",void 0),m(this,"selectedDiscId",void 0),s)this.discs=s;else{let t=4*("black"!==e);this.discs=[new b(t+0,e),new b(t+1,e),new b(t+2,e),new b(t+3,e)]}this.selectedDiscId=t}}class C{selectHandDisc(e){let t=this.blackHand.getDiscs().find(t=>t.id===e),s=this.whiteHand.getDiscs().find(t=>t.id===e);if(t){this.whiteHand=this.whiteHand.deselectDisc();let t=this.blackHand.selectDisc(e);this.blackHand=t}else if(s){this.blackHand=this.blackHand.deselectDisc();let t=this.whiteHand.selectDisc(e);this.whiteHand=t}}deselectHandDisc(){let e=this.getCurrentHand().deselectDisc();this.setCurrentHand(e)}placeDisk(e,t){if(this.isOperationLocked||t!==this.currentTurn)return null;let s=this.getCurrentHand();if(!s.hasSelection())return null;let i=s.getSelectedDiscId();if(null===i)return null;let l=s.getDiscs().find(e=>e.id===i);if(!l)return null;let r=l.type;if("normal"!==r&&e.isInCenter16()||!this.canPlaceDisk(e,t))return null;let a=t;"butter"===r?a=D(t):"buttercat"===r&&(a=t);let c=new T(a,r);this.board.setDisk(e,c);let o=[];if("buttercat"===r){let e=this.getCurrentHand().useSelectedDisc();return this.setCurrentHand(e),this.currentTurn=D(this.currentTurn),o}let n="butter"===r?t:a;for(let t of g.directionOffsets()){let s=[],i=e.move(t.dx,t.dy);for(;i;){let e=this.board.getDisk(i);if(!e||e.isButterCat())break;if(e.color===D(n))s.push(i);else if(e.color===n){for(let e of s){let t=this.board.getDisk(e);t&&(t.isCat()||t.isButter()?this.board.setDisk(e,new T(t.color,t.type)):this.board.setDisk(e,new T(n,t.type)),o.push(e))}break}else break;i=i.move(t.dx,t.dy)}}let d=this.getCurrentHand().useSelectedDisc();return this.setCurrentHand(d),this.currentTurn=D(this.currentTurn),o}startFlipping(e){this.isOperationLocked=!0,this.flippingPositions.clear(),e.forEach(e=>{this.flippingPositions.add("".concat(e.x,",").concat(e.y))})}endFlipping(){this.isOperationLocked=!1,this.flippingPositions.clear()}isFlipping(e){return this.flippingPositions.has("".concat(e.x,",").concat(e.y))}isLocked(){return this.isOperationLocked}getValidMoves(e){let t=[],s=this.getHand(e),i=s.getSelectedDiscId(),l=null;if(null!==i){let e=s.getDiscs().find(e=>e.id===i);e&&(l=e.type)}for(let s=0;s<8;s++)for(let i=0;i<8;i++){let r=new g(i,s);!(l&&"normal"!==l&&r.isInCenter16())&&this.canPlaceDisk(r,e)&&t.push(r)}return t}canPlaceDisk(e,t){if(this.board.getDisk(e))return!1;for(let s of g.directionOffsets()){let i=e.move(s.dx,s.dy),l=!1;for(;i;){let e=this.board.getDisk(i);if(!e||e.isButterCat())break;if(e.color===D(t))l=!0;else if(e.color===t&&l)return!0;else break;i=i.move(s.dx,s.dy)}}return!1}hasValidMoves(){return this.getValidMoves(this.currentTurn).length>0}pass(){this.deselectHandDisc(),this.currentTurn=D(this.currentTurn)}isGameOver(){if(0===this.getValidMoves(this.currentTurn).length){let e=D(this.currentTurn);return 0===this.getValidMoves(e).length}return!1}getDiscCount(e){let t=0;for(let s=0;s<8;s++)for(let i=0;i<8;i++){let l=new g(i,s),r=this.board.getDisk(l);r&&r.color===e&&t++}return t}getWinner(){if(!this.isGameOver())return null;let e=this.getDiscCount("black"),t=this.getDiscCount("white");return e>t?"black":t>e?"white":"draw"}getCurrentTurn(){return this.currentTurn}getBoard(){return this.board}getBoardAsArray(){return this.board.toArray()}getCurrentHand(){return"black"===this.currentTurn?this.blackHand:this.whiteHand}getHand(e){return"black"===e?this.blackHand:this.whiteHand}setCurrentHand(e){"black"===this.currentTurn?this.blackHand=e:this.whiteHand=e}clone(){let e=new C(this.board.clone(),this.currentTurn);return e.isOperationLocked=this.isOperationLocked,e.flippingPositions=new Set(this.flippingPositions),e.blackHand=this.blackHand,e.whiteHand=this.whiteHand,e}constructor(e,t="black"){m(this,"board",void 0),m(this,"currentTurn",void 0),m(this,"flippingPositions",void 0),m(this,"isOperationLocked",void 0),m(this,"blackHand",void 0),m(this,"whiteHand",void 0),this.board=e||new _,this.currentTurn=t,this.flippingPositions=new Set,this.isOperationLocked=!1,this.blackHand=new E("black"),this.whiteHand=new E("white")}}class S{execute(e){let t=new g(e.x,e.y),s=this.game.getCurrentTurn(),i=this.game.placeDisk(t,s);return null===i?{success:!1,flippedPositions:[],gameState:this.getGameState()}:(i.length>0&&this.game.startFlipping(i),{success:!0,flippedPositions:i,gameState:this.getGameState()})}endFlipping(){return this.game.endFlipping(),this.getGameState()}selectHandDisc(e){return this.game.selectHandDisc(e),this.getGameState()}deselectHandDisc(){return this.game.deselectHandDisc(),this.getGameState()}pass(){return this.game.pass(),this.getGameState()}hasValidMoves(){return this.game.hasValidMoves()}getGame(){return this.game}getGameState(){let e=this.game.getBoardAsArray(),t=this.game.getCurrentTurn(),s=new Set(this.game.getValidMoves(t).map(e=>"".concat(e.x,",").concat(e.y))),i=e.map((e,t)=>e.map((e,i)=>{let l=new g(i,t);return{x:i,y:t,color:(null==e?void 0:e.color)||null,discType:(null==e?void 0:e.type)||null,isValidMove:s.has("".concat(i,",").concat(t)),isFlipping:this.game.isFlipping(l)}})),l=this.game.getHand("black"),r=this.game.getHand("white"),a={color:"black",discs:l.getDiscs().map(e=>({id:e.id,color:e.color,type:e.type,isUsed:e.isUsed})),selectedDiscId:l.getSelectedDiscId(),hasSelection:l.hasSelection()},c={color:"white",discs:r.getDiscs().map(e=>({id:e.id,color:e.color,type:e.type,isUsed:e.isUsed})),selectedDiscId:r.getSelectedDiscId(),hasSelection:r.hasSelection()};return{board:i,currentTurn:t,isGameOver:this.game.isGameOver(),isLocked:this.game.isLocked(),blackHand:a,whiteHand:c,blackDiscCount:this.game.getDiscCount("black"),whiteDiscCount:this.game.getDiscCount("white"),winner:this.game.getWinner(),hasValidMoves:this.game.hasValidMoves()}}constructor(e){m(this,"game",void 0),this.game=e}}var x=e.i(82162);let p=e=>{let{isOpen:s,onClose:i,onNewGame:l}=e,{settings:r,updateSettings:a}=(0,x.useGameSettings)();return s?(0,t.jsx)("div",{className:c.SETTINGS.OVERLAY,onClick:i,children:(0,t.jsxs)("div",{className:c.SETTINGS.MODAL,onClick:e=>e.stopPropagation(),children:[(0,t.jsx)("h2",{className:c.SETTINGS.TITLE,children:u.SETTINGS_TITLE}),(0,t.jsxs)("div",{className:c.SETTINGS.SECTION,children:[(0,t.jsx)("label",{className:c.SETTINGS.LABEL,children:u.GAME_MODE_LABEL}),(0,t.jsxs)("select",{className:c.SETTINGS.SELECT,value:r.mode,onChange:e=>{a({mode:e.target.value})},children:[(0,t.jsx)("option",{value:"pvp",children:u.MODE_PVP}),(0,t.jsx)("option",{value:"cpu-easy",children:u.MODE_CPU_EASY}),(0,t.jsx)("option",{value:"cpu-hard",children:u.MODE_CPU_HARD})]})]}),"pvp"!==r.mode&&(0,t.jsxs)("div",{className:c.SETTINGS.SECTION,children:[(0,t.jsx)("label",{className:c.SETTINGS.LABEL,children:u.CPU_COLOR_LABEL}),(0,t.jsxs)("select",{className:c.SETTINGS.SELECT,value:r.cpuColor,onChange:e=>{a({cpuColor:e.target.value})},children:[(0,t.jsx)("option",{value:"black",children:u.BLACK}),(0,t.jsx)("option",{value:"white",children:u.WHITE})]})]}),(0,t.jsx)("button",{className:c.SETTINGS.BUTTON_PRIMARY,onClick:()=>{l(),i()},children:u.NEW_GAME_BUTTON}),(0,t.jsx)("button",{className:c.SETTINGS.BUTTON_SECONDARY,onClick:i,children:u.CLOSE_SETTINGS_BUTTON})]})}):null};class I{getAllValidMoves(e){let t=[],s=e.getCurrentTurn();for(let i of e.getHand(s).getDiscs().filter(e=>!e.isUsed)){let l=e.clone();for(let e of(l.selectHandDisc(i.id),l.getValidMoves(s)))t.push({discId:i.id,position:e})}return t}}class A extends I{decideMove(e){let t=e.getCurrentTurn(),s=e.getHand(t).getDiscs().filter(e=>!e.isUsed);if(0===s.length)return null;let i=s[0],l=e.clone();l.selectHandDisc(i.id);let r=l.getValidMoves(t);if(0===r.length)return null;let a=Math.floor(Math.random()*r.length),c=r[a];return{discId:i.id,position:c}}}class f extends I{decideMove(e){this.cpuColor=e.getCurrentTurn();let t=this.getAllValidMoves(e);if(0===t.length)return null;let s=null,i=-1/0;for(let l of t){let t=e.clone();if(t.selectHandDisc(l.discId),!t.placeDisk(l.position,t.getCurrentTurn()))continue;let r=this.minimax(t,this.MAX_DEPTH-1,-1/0,1/0,!1),a=e.getHand(e.getCurrentTurn()).getDiscs().find(e=>e.id===l.discId),c=r;if(a){if("butter"===a.type){let e=this.getPositionValue(l.position.x,l.position.y);e<-10?c+=30:e>50?c-=100:c-=15}else if("cat"===a.type){let e=this.getPositionValue(l.position.x,l.position.y);e>50?c+=40:e>0?c+=20:c+=10}else"buttercat"===a.type&&(c+=15);e.getDiscCount("black")+e.getDiscCount("white")<20&&"normal"!==a.type&&(c-=10)}c>i&&(i=c,s=l)}return s}minimax(e,t,s,i,l){if(0===t||e.isGameOver())return this.evaluatePosition(e);let r=e.getCurrentTurn(),a=this.getAllValidMoves(e);if(0===a.length){let r=e.clone();return r.pass(),this.minimax(r,t-1,s,i,!l)}if(l){let l=-1/0;for(let c of a){let a=e.clone();a.selectHandDisc(c.discId),a.placeDisk(c.position,r);let o=this.minimax(a,t-1,s,i,!1);if(l=Math.max(l,o),i<=(s=Math.max(s,o)))break}return l}{let l=1/0;for(let c of a){let a=e.clone();a.selectHandDisc(c.discId),a.placeDisk(c.position,r);let o=this.minimax(a,t-1,s,i,!0);if(l=Math.min(l,o),(i=Math.min(i,o))<=s)break}return l}}evaluatePosition(e){if(!this.cpuColor)return 0;let t=this.cpuColor,s=D(t);if(e.isGameOver()){let i=e.getWinner();return i===t?1e5:i===s?-1e5:0}let i=0,l=e.getDiscCount(t),r=e.getDiscCount(s);i+=(this.evaluatePositionWeights(e,t)-this.evaluatePositionWeights(e,s))*2,i+=(e.getValidMoves(t).length-e.getValidMoves(s).length)*10,i+=(this.countStableDiscs(e,t)-this.countStableDiscs(e,s))*25,l+r<40?i+=(l-r)*2:i+=(l-r)*15;let a=this.countDangerousPositions(e,t),c=this.countDangerousPositions(e,s);return i-=30*a,(i+=30*c)+(this.countEdgeControl(e,t)-this.countEdgeControl(e,s))*5}getPositionValue(e,t){return[[100,-20,10,5,5,10,-20,100],[-20,-50,-2,-2,-2,-2,-50,-20],[10,-2,5,1,1,5,-2,10],[5,-2,1,0,0,1,-2,5],[5,-2,1,0,0,1,-2,5],[10,-2,5,1,1,5,-2,10],[-20,-50,-2,-2,-2,-2,-50,-20],[100,-20,10,5,5,10,-20,100]][t][e]}evaluatePositionWeights(e,t){let s=[[100,-20,10,5,5,10,-20,100],[-20,-50,-2,-2,-2,-2,-50,-20],[10,-2,5,1,1,5,-2,10],[5,-2,1,0,0,1,-2,5],[5,-2,1,0,0,1,-2,5],[10,-2,5,1,1,5,-2,10],[-20,-50,-2,-2,-2,-2,-50,-20],[100,-20,10,5,5,10,-20,100]],i=0;for(let l=0;l<8;l++)for(let r=0;r<8;r++){let a=new g(r,l),c=e.getBoard().getDisk(a);c&&c.color===t&&(i+=s[l][r])}return i}countStableDiscs(e,t){let s=0;for(let i of[{x:0,y:0},{x:7,y:0},{x:0,y:7},{x:7,y:7}]){let l=new g(i.x,i.y),r=e.getBoard().getDisk(l);r&&r.color===t&&(s++,s+=this.countStableFromCorner(e,t,i.x,i.y))}return s}countStableFromCorner(e,t,s,i){let l=0;for(let r of[{dx:0===s?1:-1,dy:0},{dx:0,dy:0===i?1:-1}]){let a=s+r.dx,c=i+r.dy;for(;a>=0&&a<8&&c>=0&&c<8;){let s=new g(a,c),i=e.getBoard().getDisk(s);if(i&&i.color===t)l++;else break;a+=r.dx,c+=r.dy}}return l}countDangerousPositions(e,t){let s=0;for(let i of[{x:1,y:0},{x:0,y:1},{x:1,y:1},{x:6,y:0},{x:7,y:1},{x:6,y:1},{x:0,y:6},{x:1,y:7},{x:1,y:6},{x:6,y:6},{x:7,y:6},{x:6,y:7}]){let l=new g(i.x,i.y),r=e.getBoard().getDisk(l);if(r&&r.color===t){let t=this.getCornerForDangerousPosition(i.x,i.y);!e.getBoard().getDisk(new g(t.x,t.y))&&s++}}return s}getCornerForDangerousPosition(e,t){return e<=1&&t<=1?{x:0,y:0}:e>=6&&t<=1?{x:7,y:0}:e<=1&&t>=6?{x:0,y:7}:{x:7,y:7}}countEdgeControl(e,t){let s=0;for(let i=0;i<8;i++){let l=e.getBoard().getDisk(new g(i,0)),r=e.getBoard().getDisk(new g(i,7));l&&l.color===t&&s++,r&&r.color===t&&s++}for(let i=1;i<7;i++){let l=e.getBoard().getDisk(new g(0,i)),r=e.getBoard().getDisk(new g(7,i));l&&l.color===t&&s++,r&&r.color===t&&s++}return s}constructor(...e){super(...e),m(this,"MAX_DEPTH",3),m(this,"cpuColor",null)}}function N(){let{settings:e}=(0,x.useGameSettings)(),[i,l]=(0,s.useState)(()=>new S(new C)),[a,o]=(0,s.useState)(i.getGameState()),[d,m]=(0,s.useState)(null),[T,_]=(0,s.useState)(!1),g=(0,s.useRef)(null);(0,s.useEffect)(()=>{"cpu-easy"===e.mode?g.current=new A:"cpu-hard"===e.mode?g.current=new f:g.current=null},[e.mode]);let D=()=>{let e=new S(new C);l(e),o(e.getGameState()),m(null)};(0,s.useEffect)(()=>{if(d){let e=setTimeout(()=>{m(null)},3e3);return()=>clearTimeout(e)}},[d]),(0,s.useEffect)(()=>{if(!a.isGameOver&&!a.isLocked&&!a.hasValidMoves){let e=setTimeout(()=>{let e="black"===a.currentTurn?u.BLACK:u.WHITE;m("".concat(e).concat(u.PASS_MESSAGE)),o(i.pass())},1e3);return()=>clearTimeout(e)}},[a,i]),(0,s.useEffect)(()=>{if("pvp"===e.mode||!g.current||a.currentTurn!==e.cpuColor||a.isGameOver||a.isLocked||!a.hasValidMoves)return;let t=setTimeout(()=>{let e=i.getGame(),t=g.current.decideMove(e);t&&(o(i.selectHandDisc(t.discId)),setTimeout(()=>{let e=i.execute({x:t.position.x,y:t.position.y});e.success&&(o(e.gameState),e.flippedPositions.length>0&&setTimeout(()=>{o(i.endFlipping())},1e3))},500))},1e3);return()=>clearTimeout(t)},[a,e,i]);let b=t=>{("pvp"===e.mode||a.currentTurn!==e.cpuColor)&&o(i.selectHandDisc(t))};return(0,t.jsxs)("main",{className:c.PAGE.MAIN,children:[(0,t.jsx)("button",{className:c.SETTINGS.OPEN_BUTTON,onClick:()=>_(!0),children:u.OPEN_SETTINGS_BUTTON}),(0,t.jsx)(p,{isOpen:T,onClose:()=>_(!1),onNewGame:D}),(0,t.jsxs)("h1",{className:c.PAGE.TITLE,children:[u.GAME_TITLE,(0,t.jsx)("img",{src:r("/buttercat.svg"),alt:"buttercat",width:48,height:48,style:{display:"inline-block",marginLeft:"0.5rem",verticalAlign:"middle"}})]}),!a.isGameOver&&(0,t.jsx)("div",{className:c.PAGE.TURN_DISPLAY,children:d||(0,t.jsxs)(t.Fragment,{children:[u.CURRENT_TURN_LABEL," ","black"===a.currentTurn?u.BLACK:u.WHITE]})}),a.isGameOver&&(0,t.jsxs)(t.Fragment,{children:[(0,t.jsx)("p",{className:c.PAGE.GAME_OVER,children:u.GAME_OVER}),"black"===a.winner&&(0,t.jsx)("p",{className:c.PAGE.WINNER_MESSAGE,children:u.BLACK_WINS}),"white"===a.winner&&(0,t.jsx)("p",{className:c.PAGE.WINNER_MESSAGE,children:u.WHITE_WINS}),"draw"===a.winner&&(0,t.jsx)("p",{className:c.PAGE.WINNER_MESSAGE,children:u.DRAW})]}),(0,t.jsxs)("div",{className:c.PAGE.HANDS_CONTAINER,children:[(0,t.jsx)("div",{className:c.PAGE.HANDS_ITEM,children:(0,t.jsx)(h,{color:"black",discs:a.blackHand.discs,selectedDiscId:a.blackHand.selectedDiscId,hasSelection:a.blackHand.hasSelection,isCurrent:"black"===a.currentTurn,onSelectDisc:b,discCount:a.blackDiscCount,isCpu:"pvp"!==e.mode&&"black"===e.cpuColor})}),(0,t.jsx)("div",{className:c.PAGE.HANDS_ITEM,children:(0,t.jsx)(h,{color:"white",discs:a.whiteHand.discs,selectedDiscId:a.whiteHand.selectedDiscId,hasSelection:a.whiteHand.hasSelection,isCurrent:"white"===a.currentTurn,onSelectDisc:b,discCount:a.whiteDiscCount,isCpu:"pvp"!==e.mode&&"white"===e.cpuColor})})]}),(0,t.jsx)(n,{board:a.board,onCellClick:(t,s)=>{if("pvp"!==e.mode&&a.currentTurn===e.cpuColor||a.isGameOver||a.isLocked)return;let l=i.execute({x:t,y:s});l.success&&(o(l.gameState),l.flippedPositions.length>0&&setTimeout(()=>{o(i.endFlipping())},1e3))}}),a.isGameOver&&(0,t.jsx)("button",{className:c.PAGE.PLAY_AGAIN_BUTTON,onClick:D,children:u.PLAY_AGAIN_BUTTON}),(0,t.jsxs)("div",{className:c.SPECIAL_DISCS.CONTAINER,children:[(0,t.jsx)("h2",{className:c.SPECIAL_DISCS.TITLE,children:u.SPECIAL_DISCS_TITLE}),(0,t.jsxs)("div",{className:c.SPECIAL_DISCS.GRID,children:[(0,t.jsxs)("div",{className:"".concat(c.SPECIAL_DISCS.CARD_BASE," ").concat(c.SPECIAL_DISCS.CARD_BUTTER),children:[(0,t.jsxs)("div",{className:c.SPECIAL_DISCS.CARD_HEADER,children:[(0,t.jsx)("span",{className:c.SPECIAL_DISCS.CARD_EMOJI,children:(0,t.jsx)("img",{src:r("/butter.svg"),alt:"butter",width:64,height:64})}),(0,t.jsx)("h3",{className:c.SPECIAL_DISCS.CARD_TITLE,children:u.BUTTER_DISC_TITLE})]}),(0,t.jsx)("p",{className:c.SPECIAL_DISCS.CARD_TEXT,children:u.BUTTER_DISC_DESCRIPTION})]}),(0,t.jsxs)("div",{className:"".concat(c.SPECIAL_DISCS.CARD_BASE," ").concat(c.SPECIAL_DISCS.CARD_CAT),children:[(0,t.jsxs)("div",{className:c.SPECIAL_DISCS.CARD_HEADER,children:[(0,t.jsx)("span",{className:c.SPECIAL_DISCS.CARD_EMOJI,children:(0,t.jsx)("img",{src:r("/cat.svg"),alt:"cat",width:64,height:64})}),(0,t.jsx)("h3",{className:c.SPECIAL_DISCS.CARD_TITLE,children:u.CAT_DISC_TITLE})]}),(0,t.jsx)("p",{className:c.SPECIAL_DISCS.CARD_TEXT,children:u.CAT_DISC_DESCRIPTION})]}),(0,t.jsxs)("div",{className:"".concat(c.SPECIAL_DISCS.CARD_BASE," ").concat(c.SPECIAL_DISCS.CARD_BUTTERCAT),children:[(0,t.jsxs)("div",{className:c.SPECIAL_DISCS.CARD_HEADER,children:[(0,t.jsx)("span",{className:c.SPECIAL_DISCS.CARD_EMOJI,children:(0,t.jsx)("img",{src:r("/buttercat.svg"),alt:"buttercat",width:64,height:64})}),(0,t.jsx)("h3",{className:c.SPECIAL_DISCS.CARD_TITLE,children:u.BUTTERCAT_DISC_TITLE})]}),(0,t.jsx)("p",{className:c.SPECIAL_DISCS.CARD_TEXT,children:u.BUTTERCAT_DISC_DESCRIPTION})]})]})]})]})}}]);
+(globalThis.TURBOPACK || (globalThis.TURBOPACK = [])).push([
+  "object" == typeof document ? document.currentScript : void 0,
+  95608,
+  (e) => {
+    e.v({
+      bottomLeft: "GuideDot-module__6pWM-a__bottomLeft",
+      bottomRight: "GuideDot-module__6pWM-a__bottomRight",
+      guideDot: "GuideDot-module__6pWM-a__guideDot",
+      topLeft: "GuideDot-module__6pWM-a__topLeft",
+      topRight: "GuideDot-module__6pWM-a__topRight",
+    });
+  },
+  89633,
+  (e) => {
+    e.v({
+      alternateImage: "Disc-module__bexTPq__alternateImage",
+      black: "Disc-module__bexTPq__black",
+      blackBorder: "Disc-module__bexTPq__blackBorder",
+      bottom: "Disc-module__bexTPq__bottom",
+      buttercat: "Disc-module__bexTPq__buttercat",
+      buttercatRotate: "Disc-module__bexTPq__buttercatRotate",
+      buttercatSpinX: "Disc-module__bexTPq__buttercatSpinX",
+      catAlternateImageFade: "Disc-module__bexTPq__catAlternateImageFade",
+      catPrimaryImageFade: "Disc-module__bexTPq__catPrimaryImageFade",
+      colorChange: "Disc-module__bexTPq__colorChange",
+      colorChangeToBlackSide: "Disc-module__bexTPq__colorChangeToBlackSide",
+      colorChangeToBlackTop: "Disc-module__bexTPq__colorChangeToBlackTop",
+      colorChangeToWhiteSide: "Disc-module__bexTPq__colorChangeToWhiteSide",
+      colorChangeToWhiteTop: "Disc-module__bexTPq__colorChangeToWhiteTop",
+      disc: "Disc-module__bexTPq__disc",
+      flatImage: "Disc-module__bexTPq__flatImage",
+      flatImageRotateWithDisc: "Disc-module__bexTPq__flatImageRotateWithDisc",
+      flatImageSpin360: "Disc-module__bexTPq__flatImageSpin360",
+      flip: "Disc-module__bexTPq__flip",
+      flipping: "Disc-module__bexTPq__flipping",
+      imageBack: "Disc-module__bexTPq__imageBack",
+      imageFront: "Disc-module__bexTPq__imageFront",
+      primaryImage: "Disc-module__bexTPq__primaryImage",
+      side: "Disc-module__bexTPq__side",
+      specialDiscBlackToWhiteToBlackSide:
+        "Disc-module__bexTPq__specialDiscBlackToWhiteToBlackSide",
+      specialDiscBlackToWhiteToBlackTop:
+        "Disc-module__bexTPq__specialDiscBlackToWhiteToBlackTop",
+      specialDiscWhiteToBlackToWhiteSide:
+        "Disc-module__bexTPq__specialDiscWhiteToBlackToWhiteSide",
+      specialDiscWhiteToBlackToWhiteTop:
+        "Disc-module__bexTPq__specialDiscWhiteToBlackToWhiteTop",
+      spin360X: "Disc-module__bexTPq__spin360X",
+      top: "Disc-module__bexTPq__top",
+      white: "Disc-module__bexTPq__white",
+      whiteBorder: "Disc-module__bexTPq__whiteBorder",
+    });
+  },
+  52683,
+  (e) => {
+    "use strict";
+    e.s(["default", () => N], 52683);
+    var t = e.i(43476),
+      s = e.i(71645),
+      i = e.i(95608),
+      l = e.i(89633);
+    e.i(47167);
+    let r = (e) => "".concat("/ButterCatOthello").concat(e),
+      a = (e) => {
+        let { color: s, discType: i, isFlipping: a } = e,
+          c =
+            "buttercat" === i
+              ? l.default.buttercat
+              : "black" === s
+              ? l.default.black
+              : l.default.white,
+          o = "buttercat" === i ? l.default.buttercatRotate : "",
+          n =
+            "butter" === i
+              ? r("/butter.png")
+              : "cat" === i || "buttercat" === i
+              ? r("/buttercat.png")
+              : null,
+          d = "cat" === i ? r("/buttercat.png") : null,
+          u =
+            "butter" === i
+              ? l.default.blackBorder
+              : "cat" === i
+              ? "black" === s
+                ? l.default.blackBorder
+                : l.default.whiteBorder
+              : "buttercat" === i
+              ? l.default.whiteBorder
+              : "",
+          h = "normal" !== i;
+        return (0, t.jsx)("div", {
+          className: ""
+            .concat(l.default.disc, " ")
+            .concat(!h ? c : "", " ")
+            .concat(a ? l.default.flipping : "", " ")
+            .concat(o),
+          "data-flipping-to": a ? ("black" === s ? "black" : "white") : void 0,
+          "data-disc-type": i,
+          children: h
+            ? (0, t.jsxs)(t.Fragment, {
+                children: [
+                  (0, t.jsxs)("div", {
+                    className: l.default.imageFront,
+                    children: [
+                      (0, t.jsx)("img", {
+                        src: n,
+                        alt: i,
+                        width: 48,
+                        height: 48,
+                        className: ""
+                          .concat(l.default.flatImage, " ")
+                          .concat(u, " ")
+                          .concat(
+                            "cat" === i && a ? l.default.primaryImage : ""
+                          ),
+                      }),
+                      d &&
+                        a &&
+                        (0, t.jsx)("img", {
+                          src: d,
+                          alt: i,
+                          width: 48,
+                          height: 48,
+                          className: ""
+                            .concat(l.default.flatImage, " ")
+                            .concat(u, " ")
+                            .concat(l.default.alternateImage),
+                        }),
+                    ],
+                  }),
+                  (0, t.jsx)("div", {
+                    className: l.default.imageBack,
+                    children: (0, t.jsx)("img", {
+                      src: n,
+                      alt: i,
+                      width: 48,
+                      height: 48,
+                      className: "".concat(l.default.flatImage, " ").concat(u),
+                    }),
+                  }),
+                ],
+              })
+            : (0, t.jsxs)(t.Fragment, {
+                children: [
+                  (0, t.jsx)("div", { className: l.default.top }),
+                  (0, t.jsx)("div", { className: l.default.side }),
+                  (0, t.jsx)("div", { className: l.default.bottom }),
+                ],
+              }),
+        });
+      },
+      c = {
+        HAND_DISC: {
+          BASE: "w-12 h-12 sm:w-16 sm:h-16 border-2 flex items-center justify-center transition-all",
+          CURSOR_DISABLED: "cursor-not-allowed",
+          CURSOR_POINTER: "cursor-pointer",
+          BORDER_SELECTED: "border-yellow-400 bg-yellow-100",
+          BORDER_DEFAULT: "border-gray-400 bg-gray-100",
+          HOVER: "hover:bg-gray-200",
+          DISABLED: "opacity-30",
+          DISC_CONTAINER:
+            "rounded-full w-8 h-8 sm:w-10 sm:h-10 relative flex items-center justify-center",
+          EMOJI: "text-base sm:text-xl",
+        },
+        HAND: {
+          CONTAINER_BASE: "p-3 sm:p-4 rounded-lg border-2",
+          CONTAINER_ACTIVE: "border-gray-300",
+          CONTAINER_INACTIVE: "bg-gray-50 border-gray-300",
+          BG_PULSE: "animate-pulse bg-yellow-200",
+          TITLE: "mb-2 font-bold text-base sm:text-lg h-6 sm:h-7",
+          MESSAGE_CONTAINER: "mb-2 h-4 sm:h-5",
+          MESSAGE_TEXT: "text-xs sm:text-sm text-red-600",
+          DISCS_CONTAINER: "flex gap-1 sm:gap-2 flex-wrap justify-center",
+          DISC_COUNT:
+            "text-sm sm:text-base font-semibold mt-2 pt-2 border-t border-gray-300",
+        },
+        CELL: {
+          BASE: "w-10 h-10 sm:w-16 sm:h-16 md:w-20 md:h-20 border border-neutral-900 flex items-center justify-center relative",
+          BG: "bg-emerald-700",
+          HOVER: "cursor-pointer hover:bg-emerald-600",
+          VALID_MOVE_DOT:
+            "rounded-full w-2 h-2 sm:w-3 sm:h-3 md:w-4 md:h-4 bg-yellow-300",
+        },
+        BOARD: {
+          GRID: "grid grid-cols-8 gap-0 border-2 sm:border-4 border-neutral-900 max-w-[320px] sm:max-w-none mx-auto",
+        },
+        PAGE: {
+          MAIN: "min-h-screen flex flex-col items-center justify-center bg-orange-200 p-4 sm:p-4 md:p-8 overflow-x-hidden",
+          TITLE:
+            "text-xl sm:text-2xl md:text-3xl text-neutral-900 font-bold mb-2 sm:mb-4 flex items-center justify-center",
+          TURN_DISPLAY:
+            "mb-2 sm:mb-4 text-base sm:text-lg md:text-xl text-neutral-900 font-semibold",
+          GAME_OVER:
+            "mb-2 sm:mb-4 text-lg sm:text-xl md:text-2xl text-red-600 font-bold",
+          HANDS_CONTAINER:
+            "flex flex-col sm:flex-row gap-3 sm:gap-4 md:gap-8 mb-4 sm:mb-8 w-full max-w-[min(100vw-2rem,64rem)] px-2",
+          HANDS_ITEM: "flex-1",
+          WINNER_MESSAGE:
+            "mb-2 sm:mb-4 text-xl sm:text-2xl md:text-3xl font-bold text-green-600",
+          PLAY_AGAIN_BUTTON:
+            "mt-4 sm:mt-6 md:mt-8 px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg shadow-lg transition-colors text-base sm:text-lg md:text-xl",
+        },
+        SPECIAL_DISCS: {
+          CONTAINER:
+            "mt-4 sm:mt-6 md:mt-8 p-3 sm:p-4 md:p-6 bg-white rounded-lg shadow-lg max-w-4xl w-full",
+          TITLE:
+            "text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-3 md:mb-4 text-neutral-900",
+          GRID: "grid grid-cols-1 md:grid-cols-3 gap-2 sm:gap-3 md:gap-4",
+          CARD_BASE: "p-2 sm:p-3 md:p-4 rounded-lg",
+          CARD_BUTTER: "border-2 border-amber-400",
+          CARD_CAT: "border-2 border-blue-400",
+          CARD_BUTTERCAT:
+            "border-2 border-gradient-to-br from-amber-400 to-red-900",
+          CARD_HEADER: "flex items-center mb-1 sm:mb-2",
+          CARD_EMOJI: "text-xl sm:text-2xl md:text-3xl mr-1 sm:mr-2",
+          CARD_TITLE:
+            "text-sm sm:text-base md:text-lg font-bold text-neutral-900",
+          CARD_TEXT: "text-xs sm:text-sm text-neutral-700",
+        },
+        DISC_COLORS: {
+          BLACK: "bg-black",
+          WHITE: "bg-white border border-gray-300",
+          BUTTERCAT: "bg-gradient-to-br from-amber-400 to-red-900",
+        },
+        SETTINGS: {
+          OVERLAY:
+            "fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4",
+          MODAL:
+            "bg-yellow-50 rounded-lg shadow-xl p-4 sm:p-6 md:p-8 max-w-md w-full border-4 border-amber-800",
+          TITLE: "text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-amber-900",
+          SECTION: "mb-4 sm:mb-6",
+          LABEL: "block text-sm sm:text-base font-semibold mb-2 text-amber-900",
+          SELECT:
+            "w-full p-2 border-2 border-amber-600 rounded-lg text-sm sm:text-base bg-white hover:border-amber-700 focus:border-amber-800 focus:ring-2 focus:ring-amber-300 outline-none transition-colors",
+          BUTTON_PRIMARY:
+            "w-full px-4 py-2 sm:py-3 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg transition-colors text-sm sm:text-base shadow-md",
+          BUTTON_SECONDARY:
+            "w-full px-4 py-2 sm:py-3 bg-amber-200 hover:bg-amber-300 text-amber-900 font-semibold rounded-lg transition-colors mt-2 text-sm sm:text-base",
+          OPEN_BUTTON:
+            "fixed top-2 sm:top-4 right-2 sm:right-4 px-3 sm:px-4 py-1.5 sm:py-2 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-lg shadow-lg transition-colors text-sm sm:text-base z-10",
+        },
+      },
+      o = (e) => {
+        let {
+            x: s,
+            y: l,
+            color: r,
+            discType: o,
+            isValidMove: n,
+            isFlipping: d,
+            onClick: u,
+          } = e,
+          h =
+            s % 4 == 2 && l % 4 == 2
+              ? i.default.topLeft
+              : s % 4 == 1 && l % 4 == 2
+              ? i.default.topRight
+              : s % 4 == 2 && l % 4 == 1
+              ? i.default.bottomLeft
+              : s % 4 == 1 && l % 4 == 1
+              ? i.default.bottomRight
+              : null;
+        return (0, t.jsxs)("div", {
+          className: ""
+            .concat(c.CELL.BASE, " ")
+            .concat(c.CELL.BG, " ")
+            .concat(n ? c.CELL.HOVER : ""),
+          onClick: u,
+          children: [
+            r &&
+              (0, t.jsx)(a, {
+                color: r,
+                discType: o || "normal",
+                isFlipping: d,
+              }),
+            !r && n && (0, t.jsx)("div", { className: c.CELL.VALID_MOVE_DOT }),
+            h &&
+              (0, t.jsx)("div", {
+                className: "".concat(i.default.guideDot, " ").concat(h),
+              }),
+          ],
+        });
+      },
+      n = (e) => {
+        let { board: s, onCellClick: i } = e;
+        return (0, t.jsx)("div", {
+          className: "mb-4 sm:mb-6 w-full flex justify-center px-2",
+          children: (0, t.jsx)("div", {
+            className: c.BOARD.GRID,
+            children: s.map((e, s) =>
+              e.map((e, l) =>
+                (0, t.jsx)(
+                  o,
+                  {
+                    x: e.x,
+                    y: e.y,
+                    color: e.color,
+                    discType: e.discType,
+                    isValidMove: e.isValidMove,
+                    isFlipping: e.isFlipping,
+                    onClick: () => i(e.x, e.y),
+                  },
+                  "".concat(l, "-").concat(s)
+                )
+              )
+            ),
+          }),
+        });
+      },
+      d = (e) => {
+        let {
+            color: s,
+            type: i,
+            isUsed: l,
+            isSelected: a,
+            isDisabled: o,
+            onClick: n,
+          } = e,
+          d =
+            "buttercat" === i
+              ? c.DISC_COLORS.BUTTERCAT
+              : "butter" === i
+              ? "black" === s
+                ? c.DISC_COLORS.WHITE
+                : c.DISC_COLORS.BLACK
+              : "black" === s
+              ? c.DISC_COLORS.BLACK
+              : c.DISC_COLORS.WHITE,
+          u =
+            "butter" === i
+              ? r("/butter.png")
+              : "cat" === i
+              ? "black" === s
+                ? r("/cat.png")
+                : r("/whitecat.png")
+              : "buttercat" === i
+              ? r("/buttercat.png")
+              : null;
+        return (0, t.jsx)("div", {
+          className: ""
+            .concat(c.HAND_DISC.BASE, " ")
+            .concat(
+              l || o ? c.HAND_DISC.CURSOR_DISABLED : c.HAND_DISC.CURSOR_POINTER,
+              " "
+            )
+            .concat(
+              a ? c.HAND_DISC.BORDER_SELECTED : c.HAND_DISC.BORDER_DEFAULT,
+              " "
+            )
+            .concat(l || o ? "" : c.HAND_DISC.HOVER, " ")
+            .concat(l || o ? c.HAND_DISC.DISABLED : ""),
+          onClick: l || o ? void 0 : n,
+          children:
+            !l &&
+            (0, t.jsx)("div", {
+              className: "".concat(c.HAND_DISC.DISC_CONTAINER, " ").concat(d),
+              children:
+                u &&
+                (0, t.jsx)("img", {
+                  src: u,
+                  alt: i,
+                  width: 32,
+                  height: 32,
+                  className: c.HAND_DISC.EMOJI,
+                }),
+            }),
+        });
+      },
+      u = {
+        GAME_TITLE: "ButterCatOthello",
+        BLACK_PLAYER: "黒プレイヤー",
+        WHITE_PLAYER: "白プレイヤー",
+        CURRENT_TURN_SUFFIX: " (現在のターン)",
+        CURRENT_TURN_LABEL: "現在のターン:",
+        BLACK: "黒",
+        WHITE: "白",
+        GAME_OVER: "ゲーム終了！",
+        SELECT_DISC_MESSAGE: "手札からディスクを選択してください",
+        PASS_MESSAGE: "がパスしました",
+        PLAY_AGAIN_BUTTON: "もう一度やる",
+        BLACK_WINS: "黒の勝利！",
+        WHITE_WINS: "白の勝利！",
+        DRAW: "引き分け！",
+        SPECIAL_DISCS_TITLE: "特殊駒の説明",
+        BUTTER_DISC_TITLE: "バター駒",
+        BUTTER_DISC_DESCRIPTION:
+          "配置すると相手の色になります。挟まれても色は変わりません。中央16マスには置けません。",
+        CAT_DISC_TITLE: "猫駒",
+        CAT_DISC_DESCRIPTION:
+          "配置すると自分の色になります。挟まれても色は変わりません。中央16マスには置けません。",
+        BUTTERCAT_DISC_TITLE: "バター猫駒",
+        BUTTERCAT_DISC_DESCRIPTION:
+          "常に回転し続けます。挟むことができませんが、挟まれることもありません。中央16マスには置けません。",
+        SETTINGS_TITLE: "ゲーム設定",
+        GAME_MODE_LABEL: "ゲームモード:",
+        MODE_PVP: "対戦モード",
+        MODE_CPU_EASY: "CPU (Easy)",
+        MODE_CPU_HARD: "CPU (Hard)",
+        CPU_COLOR_LABEL: "CPUの色:",
+        NEW_GAME_BUTTON: "新しいゲームを開始",
+        CLOSE_SETTINGS_BUTTON: "閉じる",
+        OPEN_SETTINGS_BUTTON: "設定",
+      },
+      h = (e) => {
+        let {
+          color: s,
+          discs: i,
+          selectedDiscId: l,
+          hasSelection: r,
+          isCurrent: a,
+          onSelectDisc: o,
+          discCount: n,
+          isCpu: h = !1,
+        } = e;
+        return (0, t.jsxs)("div", {
+          className: ""
+            .concat(
+              (() => {
+                let e = c.HAND.CONTAINER_BASE,
+                  t =
+                    a && !r
+                      ? c.HAND.CONTAINER_ACTIVE
+                      : c.HAND.CONTAINER_INACTIVE;
+                return "".concat(e, " ").concat(t);
+              })(),
+              " "
+            )
+            .concat(a && !r ? c.HAND.BG_PULSE : ""),
+          children: [
+            (0, t.jsxs)("div", {
+              className: c.HAND.TITLE,
+              children: [
+                (() => {
+                  let e = "black" === s ? u.BLACK_PLAYER : u.WHITE_PLAYER;
+                  return h ? "".concat(e, " (CPU)") : e;
+                })(),
+                a && u.CURRENT_TURN_SUFFIX,
+              ],
+            }),
+            (0, t.jsxs)("div", {
+              className: c.HAND.DISC_COUNT,
+              children: ["black" === s ? u.BLACK : u.WHITE, ": ", n],
+            }),
+            (0, t.jsx)("div", {
+              className: c.HAND.MESSAGE_CONTAINER,
+              children:
+                a &&
+                !r &&
+                (0, t.jsx)("div", {
+                  className: c.HAND.MESSAGE_TEXT,
+                  children: u.SELECT_DISC_MESSAGE,
+                }),
+            }),
+            (0, t.jsx)("div", {
+              className: c.HAND.DISCS_CONTAINER,
+              children: i.map((e) =>
+                (0, t.jsx)(
+                  d,
+                  {
+                    id: e.id,
+                    color: e.color,
+                    type: e.type,
+                    isUsed: e.isUsed,
+                    isSelected: l === e.id,
+                    isDisabled: !a,
+                    onClick: () => o(e.id),
+                  },
+                  e.id
+                )
+              ),
+            }),
+          ],
+        });
+      };
+    function m(e, t, s) {
+      return (
+        t in e
+          ? Object.defineProperty(e, t, {
+              value: s,
+              enumerable: !0,
+              configurable: !0,
+              writable: !0,
+            })
+          : (e[t] = s),
+        e
+      );
+    }
+    class T {
+      isNormal() {
+        return "normal" === this.type;
+      }
+      isButter() {
+        return "butter" === this.type;
+      }
+      isCat() {
+        return "cat" === this.type;
+      }
+      isButterCat() {
+        return "buttercat" === this.type;
+      }
+      constructor(e, t = "normal") {
+        m(this, "color", void 0),
+          m(this, "type", void 0),
+          (this.color = e),
+          (this.type = t);
+      }
+    }
+    class _ {
+      getDisk(e) {
+        return this.grid[e.y][e.x];
+      }
+      setDisk(e, t) {
+        this.grid[e.y][e.x] = t;
+      }
+      clone() {
+        return new _(this.grid);
+      }
+      isInBounds(e) {
+        return e.x >= 0 && e.x < 8 && e.y >= 0 && e.y < 8;
+      }
+      toArray() {
+        return this.grid.map((e) => e.slice());
+      }
+      constructor(e) {
+        m(this, "grid", void 0),
+          e
+            ? (this.grid = e.map((e) => e.slice()))
+            : ((this.grid = Array.from({ length: 8 }, () =>
+                Array(8).fill(null)
+              )),
+              (this.grid[3][3] = new T("white")),
+              (this.grid[3][4] = new T("black")),
+              (this.grid[4][3] = new T("black")),
+              (this.grid[4][4] = new T("white")));
+      }
+    }
+    class g {
+      equals(e) {
+        return this.x === e.x && this.y === e.y;
+      }
+      toString() {
+        return "".concat(this.x, ",").concat(this.y);
+      }
+      static directionOffsets() {
+        let e = [];
+        for (let t = -1; t <= 1; t++)
+          for (let s = -1; s <= 1; s++)
+            (0 !== t || 0 !== s) && e.push({ dx: t, dy: s });
+        return e;
+      }
+      move(e, t) {
+        let s = this.x + e,
+          i = this.y + t;
+        return s < 0 || s > 7 || i < 0 || i > 7 ? null : new g(s, i);
+      }
+      isInCenter16() {
+        return this.x >= 2 && this.x <= 5 && this.y >= 2 && this.y <= 5;
+      }
+      constructor(e, t) {
+        if (
+          (m(this, "x", void 0),
+          m(this, "y", void 0),
+          (this.x = e),
+          (this.y = t),
+          e < 0 || e > 7 || t < 0 || t > 7)
+        )
+          throw Error("Invalid position: (".concat(e, ", ").concat(t, ")"));
+      }
+    }
+    let D = (e) => ("black" === e ? "white" : "black");
+    class b {
+      use() {
+        return new b(this.id, this.color, this.type, !0);
+      }
+      reset() {
+        return new b(this.id, this.color, this.type, !1);
+      }
+      isNormal() {
+        return "normal" === this.type;
+      }
+      isSpecial() {
+        return "normal" !== this.type;
+      }
+      constructor(e, t, s = "normal", i = !1) {
+        if (
+          (m(this, "id", void 0),
+          m(this, "color", void 0),
+          m(this, "type", void 0),
+          m(this, "isUsed", void 0),
+          (this.id = e),
+          (this.color = t),
+          (this.type = s),
+          (this.isUsed = i),
+          e < 0 || e > 7)
+        )
+          throw Error("HandDisc id must be between 0 and 7");
+      }
+    }
+    class E {
+      randomDiscType() {
+        if (this.discs.every((e) => "normal" === e.type)) {
+          let e = Math.random();
+          return e < 0.33 ? "butter" : e < 0.66 ? "cat" : "buttercat";
+        }
+        let e = Math.random();
+        return e < 0.7
+          ? "normal"
+          : e < 0.8
+          ? "butter"
+          : e < 0.9
+          ? "cat"
+          : "buttercat";
+      }
+      selectDisc(e) {
+        let t = this.discs.findIndex((t) => t.id === e);
+        if (-1 === t) throw Error("Disc with id ".concat(e, " not found"));
+        if (this.discs[t].isUsed) throw Error("Cannot select a used disc");
+        let s = this.clone();
+        return (s.selectedDiscId = e), s;
+      }
+      deselectDisc() {
+        let e = this.clone();
+        return (e.selectedDiscId = null), e;
+      }
+      useSelectedDisc() {
+        if (null === this.selectedDiscId) throw Error("No disc is selected");
+        let e = this.clone();
+        return (
+          (e.discs = this.discs.map((t) => {
+            if (t.id === this.selectedDiscId) {
+              let s = e.randomDiscType();
+              return new b(t.id, t.color, s, !1);
+            }
+            return t;
+          })),
+          (e.selectedDiscId = null),
+          e
+        );
+      }
+      getSelectedDiscId() {
+        return this.selectedDiscId;
+      }
+      hasSelection() {
+        return null !== this.selectedDiscId;
+      }
+      getDiscs() {
+        return this.discs;
+      }
+      hasAvailableDiscs() {
+        return this.discs.some((e) => !e.isUsed);
+      }
+      resetAllDiscs() {
+        let e = this.clone();
+        return (
+          (e.discs = this.discs.map((e) => e.reset())),
+          (e.selectedDiscId = null),
+          e
+        );
+      }
+      clone() {
+        let e = this.discs.map((e) => new b(e.id, e.color, e.type, e.isUsed));
+        return new E(this.discs[0].color, this.selectedDiscId, e);
+      }
+      constructor(e, t = null, s) {
+        if ((m(this, "discs", void 0), m(this, "selectedDiscId", void 0), s))
+          this.discs = s;
+        else {
+          let t = 4 * ("black" !== e);
+          this.discs = [
+            new b(t + 0, e),
+            new b(t + 1, e),
+            new b(t + 2, e),
+            new b(t + 3, e),
+          ];
+        }
+        this.selectedDiscId = t;
+      }
+    }
+    class C {
+      selectHandDisc(e) {
+        let t = this.blackHand.getDiscs().find((t) => t.id === e),
+          s = this.whiteHand.getDiscs().find((t) => t.id === e);
+        if (t) {
+          this.whiteHand = this.whiteHand.deselectDisc();
+          let t = this.blackHand.selectDisc(e);
+          this.blackHand = t;
+        } else if (s) {
+          this.blackHand = this.blackHand.deselectDisc();
+          let t = this.whiteHand.selectDisc(e);
+          this.whiteHand = t;
+        }
+      }
+      deselectHandDisc() {
+        let e = this.getCurrentHand().deselectDisc();
+        this.setCurrentHand(e);
+      }
+      placeDisk(e, t) {
+        if (this.isOperationLocked || t !== this.currentTurn) return null;
+        let s = this.getCurrentHand();
+        if (!s.hasSelection()) return null;
+        let i = s.getSelectedDiscId();
+        if (null === i) return null;
+        let l = s.getDiscs().find((e) => e.id === i);
+        if (!l) return null;
+        let r = l.type;
+        if (("normal" !== r && e.isInCenter16()) || !this.canPlaceDisk(e, t))
+          return null;
+        let a = t;
+        "butter" === r ? (a = D(t)) : "buttercat" === r && (a = t);
+        let c = new T(a, r);
+        this.board.setDisk(e, c);
+        let o = [];
+        if ("buttercat" === r) {
+          let e = this.getCurrentHand().useSelectedDisc();
+          return (
+            this.setCurrentHand(e), (this.currentTurn = D(this.currentTurn)), o
+          );
+        }
+        let n = "butter" === r ? t : a;
+        for (let t of g.directionOffsets()) {
+          let s = [],
+            i = e.move(t.dx, t.dy);
+          for (; i; ) {
+            let e = this.board.getDisk(i);
+            if (!e || e.isButterCat()) break;
+            if (e.color === D(n)) s.push(i);
+            else if (e.color === n) {
+              for (let e of s) {
+                let t = this.board.getDisk(e);
+                t &&
+                  (t.isCat() || t.isButter()
+                    ? this.board.setDisk(e, new T(t.color, t.type))
+                    : this.board.setDisk(e, new T(n, t.type)),
+                  o.push(e));
+              }
+              break;
+            } else break;
+            i = i.move(t.dx, t.dy);
+          }
+        }
+        let d = this.getCurrentHand().useSelectedDisc();
+        return (
+          this.setCurrentHand(d), (this.currentTurn = D(this.currentTurn)), o
+        );
+      }
+      startFlipping(e) {
+        (this.isOperationLocked = !0),
+          this.flippingPositions.clear(),
+          e.forEach((e) => {
+            this.flippingPositions.add("".concat(e.x, ",").concat(e.y));
+          });
+      }
+      endFlipping() {
+        (this.isOperationLocked = !1), this.flippingPositions.clear();
+      }
+      isFlipping(e) {
+        return this.flippingPositions.has("".concat(e.x, ",").concat(e.y));
+      }
+      isLocked() {
+        return this.isOperationLocked;
+      }
+      getValidMoves(e) {
+        let t = [],
+          s = this.getHand(e),
+          i = s.getSelectedDiscId(),
+          l = null;
+        if (null !== i) {
+          let e = s.getDiscs().find((e) => e.id === i);
+          e && (l = e.type);
+        }
+        for (let s = 0; s < 8; s++)
+          for (let i = 0; i < 8; i++) {
+            let r = new g(i, s);
+            !(l && "normal" !== l && r.isInCenter16()) &&
+              this.canPlaceDisk(r, e) &&
+              t.push(r);
+          }
+        return t;
+      }
+      canPlaceDisk(e, t) {
+        if (this.board.getDisk(e)) return !1;
+        for (let s of g.directionOffsets()) {
+          let i = e.move(s.dx, s.dy),
+            l = !1;
+          for (; i; ) {
+            let e = this.board.getDisk(i);
+            if (!e || e.isButterCat()) break;
+            if (e.color === D(t)) l = !0;
+            else if (e.color === t && l) return !0;
+            else break;
+            i = i.move(s.dx, s.dy);
+          }
+        }
+        return !1;
+      }
+      hasValidMoves() {
+        return this.getValidMoves(this.currentTurn).length > 0;
+      }
+      pass() {
+        this.deselectHandDisc(), (this.currentTurn = D(this.currentTurn));
+      }
+      isGameOver() {
+        if (0 === this.getValidMoves(this.currentTurn).length) {
+          let e = D(this.currentTurn);
+          return 0 === this.getValidMoves(e).length;
+        }
+        return !1;
+      }
+      getDiscCount(e) {
+        let t = 0;
+        for (let s = 0; s < 8; s++)
+          for (let i = 0; i < 8; i++) {
+            let l = new g(i, s),
+              r = this.board.getDisk(l);
+            r && r.color === e && t++;
+          }
+        return t;
+      }
+      getWinner() {
+        if (!this.isGameOver()) return null;
+        let e = this.getDiscCount("black"),
+          t = this.getDiscCount("white");
+        return e > t ? "black" : t > e ? "white" : "draw";
+      }
+      getCurrentTurn() {
+        return this.currentTurn;
+      }
+      getBoard() {
+        return this.board;
+      }
+      getBoardAsArray() {
+        return this.board.toArray();
+      }
+      getCurrentHand() {
+        return "black" === this.currentTurn ? this.blackHand : this.whiteHand;
+      }
+      getHand(e) {
+        return "black" === e ? this.blackHand : this.whiteHand;
+      }
+      setCurrentHand(e) {
+        "black" === this.currentTurn
+          ? (this.blackHand = e)
+          : (this.whiteHand = e);
+      }
+      clone() {
+        let e = new C(this.board.clone(), this.currentTurn);
+        return (
+          (e.isOperationLocked = this.isOperationLocked),
+          (e.flippingPositions = new Set(this.flippingPositions)),
+          (e.blackHand = this.blackHand),
+          (e.whiteHand = this.whiteHand),
+          e
+        );
+      }
+      constructor(e, t = "black") {
+        m(this, "board", void 0),
+          m(this, "currentTurn", void 0),
+          m(this, "flippingPositions", void 0),
+          m(this, "isOperationLocked", void 0),
+          m(this, "blackHand", void 0),
+          m(this, "whiteHand", void 0),
+          (this.board = e || new _()),
+          (this.currentTurn = t),
+          (this.flippingPositions = new Set()),
+          (this.isOperationLocked = !1),
+          (this.blackHand = new E("black")),
+          (this.whiteHand = new E("white"));
+      }
+    }
+    class S {
+      execute(e) {
+        let t = new g(e.x, e.y),
+          s = this.game.getCurrentTurn(),
+          i = this.game.placeDisk(t, s);
+        return null === i
+          ? {
+              success: !1,
+              flippedPositions: [],
+              gameState: this.getGameState(),
+            }
+          : (i.length > 0 && this.game.startFlipping(i),
+            {
+              success: !0,
+              flippedPositions: i,
+              gameState: this.getGameState(),
+            });
+      }
+      endFlipping() {
+        return this.game.endFlipping(), this.getGameState();
+      }
+      selectHandDisc(e) {
+        return this.game.selectHandDisc(e), this.getGameState();
+      }
+      deselectHandDisc() {
+        return this.game.deselectHandDisc(), this.getGameState();
+      }
+      pass() {
+        return this.game.pass(), this.getGameState();
+      }
+      hasValidMoves() {
+        return this.game.hasValidMoves();
+      }
+      getGame() {
+        return this.game;
+      }
+      getGameState() {
+        let e = this.game.getBoardAsArray(),
+          t = this.game.getCurrentTurn(),
+          s = new Set(
+            this.game
+              .getValidMoves(t)
+              .map((e) => "".concat(e.x, ",").concat(e.y))
+          ),
+          i = e.map((e, t) =>
+            e.map((e, i) => {
+              let l = new g(i, t);
+              return {
+                x: i,
+                y: t,
+                color: (null == e ? void 0 : e.color) || null,
+                discType: (null == e ? void 0 : e.type) || null,
+                isValidMove: s.has("".concat(i, ",").concat(t)),
+                isFlipping: this.game.isFlipping(l),
+              };
+            })
+          ),
+          l = this.game.getHand("black"),
+          r = this.game.getHand("white"),
+          a = {
+            color: "black",
+            discs: l
+              .getDiscs()
+              .map((e) => ({
+                id: e.id,
+                color: e.color,
+                type: e.type,
+                isUsed: e.isUsed,
+              })),
+            selectedDiscId: l.getSelectedDiscId(),
+            hasSelection: l.hasSelection(),
+          },
+          c = {
+            color: "white",
+            discs: r
+              .getDiscs()
+              .map((e) => ({
+                id: e.id,
+                color: e.color,
+                type: e.type,
+                isUsed: e.isUsed,
+              })),
+            selectedDiscId: r.getSelectedDiscId(),
+            hasSelection: r.hasSelection(),
+          };
+        return {
+          board: i,
+          currentTurn: t,
+          isGameOver: this.game.isGameOver(),
+          isLocked: this.game.isLocked(),
+          blackHand: a,
+          whiteHand: c,
+          blackDiscCount: this.game.getDiscCount("black"),
+          whiteDiscCount: this.game.getDiscCount("white"),
+          winner: this.game.getWinner(),
+          hasValidMoves: this.game.hasValidMoves(),
+        };
+      }
+      constructor(e) {
+        m(this, "game", void 0), (this.game = e);
+      }
+    }
+    var x = e.i(82162);
+    let p = (e) => {
+      let { isOpen: s, onClose: i, onNewGame: l } = e,
+        { settings: r, updateSettings: a } = (0, x.useGameSettings)();
+      return s
+        ? (0, t.jsx)("div", {
+            className: c.SETTINGS.OVERLAY,
+            onClick: i,
+            children: (0, t.jsxs)("div", {
+              className: c.SETTINGS.MODAL,
+              onClick: (e) => e.stopPropagation(),
+              children: [
+                (0, t.jsx)("h2", {
+                  className: c.SETTINGS.TITLE,
+                  children: u.SETTINGS_TITLE,
+                }),
+                (0, t.jsxs)("div", {
+                  className: c.SETTINGS.SECTION,
+                  children: [
+                    (0, t.jsx)("label", {
+                      className: c.SETTINGS.LABEL,
+                      children: u.GAME_MODE_LABEL,
+                    }),
+                    (0, t.jsxs)("select", {
+                      className: c.SETTINGS.SELECT,
+                      value: r.mode,
+                      onChange: (e) => {
+                        a({ mode: e.target.value });
+                      },
+                      children: [
+                        (0, t.jsx)("option", {
+                          value: "pvp",
+                          children: u.MODE_PVP,
+                        }),
+                        (0, t.jsx)("option", {
+                          value: "cpu-easy",
+                          children: u.MODE_CPU_EASY,
+                        }),
+                        (0, t.jsx)("option", {
+                          value: "cpu-hard",
+                          children: u.MODE_CPU_HARD,
+                        }),
+                      ],
+                    }),
+                  ],
+                }),
+                "pvp" !== r.mode &&
+                  (0, t.jsxs)("div", {
+                    className: c.SETTINGS.SECTION,
+                    children: [
+                      (0, t.jsx)("label", {
+                        className: c.SETTINGS.LABEL,
+                        children: u.CPU_COLOR_LABEL,
+                      }),
+                      (0, t.jsxs)("select", {
+                        className: c.SETTINGS.SELECT,
+                        value: r.cpuColor,
+                        onChange: (e) => {
+                          a({ cpuColor: e.target.value });
+                        },
+                        children: [
+                          (0, t.jsx)("option", {
+                            value: "black",
+                            children: u.BLACK,
+                          }),
+                          (0, t.jsx)("option", {
+                            value: "white",
+                            children: u.WHITE,
+                          }),
+                        ],
+                      }),
+                    ],
+                  }),
+                (0, t.jsx)("button", {
+                  className: c.SETTINGS.BUTTON_PRIMARY,
+                  onClick: () => {
+                    l(), i();
+                  },
+                  children: u.NEW_GAME_BUTTON,
+                }),
+                (0, t.jsx)("button", {
+                  className: c.SETTINGS.BUTTON_SECONDARY,
+                  onClick: i,
+                  children: u.CLOSE_SETTINGS_BUTTON,
+                }),
+              ],
+            }),
+          })
+        : null;
+    };
+    class I {
+      getAllValidMoves(e) {
+        let t = [],
+          s = e.getCurrentTurn();
+        for (let i of e
+          .getHand(s)
+          .getDiscs()
+          .filter((e) => !e.isUsed)) {
+          let l = e.clone();
+          for (let e of (l.selectHandDisc(i.id), l.getValidMoves(s)))
+            t.push({ discId: i.id, position: e });
+        }
+        return t;
+      }
+    }
+    class A extends I {
+      decideMove(e) {
+        let t = e.getCurrentTurn(),
+          s = e
+            .getHand(t)
+            .getDiscs()
+            .filter((e) => !e.isUsed);
+        if (0 === s.length) return null;
+        let i = s[0],
+          l = e.clone();
+        l.selectHandDisc(i.id);
+        let r = l.getValidMoves(t);
+        if (0 === r.length) return null;
+        let a = Math.floor(Math.random() * r.length),
+          c = r[a];
+        return { discId: i.id, position: c };
+      }
+    }
+    class f extends I {
+      decideMove(e) {
+        this.cpuColor = e.getCurrentTurn();
+        let t = this.getAllValidMoves(e);
+        if (0 === t.length) return null;
+        let s = null,
+          i = -1 / 0;
+        for (let l of t) {
+          let t = e.clone();
+          if (
+            (t.selectHandDisc(l.discId),
+            !t.placeDisk(l.position, t.getCurrentTurn()))
+          )
+            continue;
+          let r = this.minimax(t, this.MAX_DEPTH - 1, -1 / 0, 1 / 0, !1),
+            a = e
+              .getHand(e.getCurrentTurn())
+              .getDiscs()
+              .find((e) => e.id === l.discId),
+            c = r;
+          if (a) {
+            if ("butter" === a.type) {
+              let e = this.getPositionValue(l.position.x, l.position.y);
+              e < -10 ? (c += 30) : e > 50 ? (c -= 100) : (c -= 15);
+            } else if ("cat" === a.type) {
+              let e = this.getPositionValue(l.position.x, l.position.y);
+              e > 50 ? (c += 40) : e > 0 ? (c += 20) : (c += 10);
+            } else "buttercat" === a.type && (c += 15);
+            e.getDiscCount("black") + e.getDiscCount("white") < 20 &&
+              "normal" !== a.type &&
+              (c -= 10);
+          }
+          c > i && ((i = c), (s = l));
+        }
+        return s;
+      }
+      minimax(e, t, s, i, l) {
+        if (0 === t || e.isGameOver()) return this.evaluatePosition(e);
+        let r = e.getCurrentTurn(),
+          a = this.getAllValidMoves(e);
+        if (0 === a.length) {
+          let r = e.clone();
+          return r.pass(), this.minimax(r, t - 1, s, i, !l);
+        }
+        if (l) {
+          let l = -1 / 0;
+          for (let c of a) {
+            let a = e.clone();
+            a.selectHandDisc(c.discId), a.placeDisk(c.position, r);
+            let o = this.minimax(a, t - 1, s, i, !1);
+            if (((l = Math.max(l, o)), i <= (s = Math.max(s, o)))) break;
+          }
+          return l;
+        }
+        {
+          let l = 1 / 0;
+          for (let c of a) {
+            let a = e.clone();
+            a.selectHandDisc(c.discId), a.placeDisk(c.position, r);
+            let o = this.minimax(a, t - 1, s, i, !0);
+            if (((l = Math.min(l, o)), (i = Math.min(i, o)) <= s)) break;
+          }
+          return l;
+        }
+      }
+      evaluatePosition(e) {
+        if (!this.cpuColor) return 0;
+        let t = this.cpuColor,
+          s = D(t);
+        if (e.isGameOver()) {
+          let i = e.getWinner();
+          return i === t ? 1e5 : i === s ? -1e5 : 0;
+        }
+        let i = 0,
+          l = e.getDiscCount(t),
+          r = e.getDiscCount(s);
+        (i +=
+          (this.evaluatePositionWeights(e, t) -
+            this.evaluatePositionWeights(e, s)) *
+          2),
+          (i += (e.getValidMoves(t).length - e.getValidMoves(s).length) * 10),
+          (i +=
+            (this.countStableDiscs(e, t) - this.countStableDiscs(e, s)) * 25),
+          l + r < 40 ? (i += (l - r) * 2) : (i += (l - r) * 15);
+        let a = this.countDangerousPositions(e, t),
+          c = this.countDangerousPositions(e, s);
+        return (
+          (i -= 30 * a),
+          (i += 30 * c) +
+            (this.countEdgeControl(e, t) - this.countEdgeControl(e, s)) * 5
+        );
+      }
+      getPositionValue(e, t) {
+        return [
+          [100, -20, 10, 5, 5, 10, -20, 100],
+          [-20, -50, -2, -2, -2, -2, -50, -20],
+          [10, -2, 5, 1, 1, 5, -2, 10],
+          [5, -2, 1, 0, 0, 1, -2, 5],
+          [5, -2, 1, 0, 0, 1, -2, 5],
+          [10, -2, 5, 1, 1, 5, -2, 10],
+          [-20, -50, -2, -2, -2, -2, -50, -20],
+          [100, -20, 10, 5, 5, 10, -20, 100],
+        ][t][e];
+      }
+      evaluatePositionWeights(e, t) {
+        let s = [
+            [100, -20, 10, 5, 5, 10, -20, 100],
+            [-20, -50, -2, -2, -2, -2, -50, -20],
+            [10, -2, 5, 1, 1, 5, -2, 10],
+            [5, -2, 1, 0, 0, 1, -2, 5],
+            [5, -2, 1, 0, 0, 1, -2, 5],
+            [10, -2, 5, 1, 1, 5, -2, 10],
+            [-20, -50, -2, -2, -2, -2, -50, -20],
+            [100, -20, 10, 5, 5, 10, -20, 100],
+          ],
+          i = 0;
+        for (let l = 0; l < 8; l++)
+          for (let r = 0; r < 8; r++) {
+            let a = new g(r, l),
+              c = e.getBoard().getDisk(a);
+            c && c.color === t && (i += s[l][r]);
+          }
+        return i;
+      }
+      countStableDiscs(e, t) {
+        let s = 0;
+        for (let i of [
+          { x: 0, y: 0 },
+          { x: 7, y: 0 },
+          { x: 0, y: 7 },
+          { x: 7, y: 7 },
+        ]) {
+          let l = new g(i.x, i.y),
+            r = e.getBoard().getDisk(l);
+          r &&
+            r.color === t &&
+            (s++, (s += this.countStableFromCorner(e, t, i.x, i.y)));
+        }
+        return s;
+      }
+      countStableFromCorner(e, t, s, i) {
+        let l = 0;
+        for (let r of [
+          { dx: 0 === s ? 1 : -1, dy: 0 },
+          { dx: 0, dy: 0 === i ? 1 : -1 },
+        ]) {
+          let a = s + r.dx,
+            c = i + r.dy;
+          for (; a >= 0 && a < 8 && c >= 0 && c < 8; ) {
+            let s = new g(a, c),
+              i = e.getBoard().getDisk(s);
+            if (i && i.color === t) l++;
+            else break;
+            (a += r.dx), (c += r.dy);
+          }
+        }
+        return l;
+      }
+      countDangerousPositions(e, t) {
+        let s = 0;
+        for (let i of [
+          { x: 1, y: 0 },
+          { x: 0, y: 1 },
+          { x: 1, y: 1 },
+          { x: 6, y: 0 },
+          { x: 7, y: 1 },
+          { x: 6, y: 1 },
+          { x: 0, y: 6 },
+          { x: 1, y: 7 },
+          { x: 1, y: 6 },
+          { x: 6, y: 6 },
+          { x: 7, y: 6 },
+          { x: 6, y: 7 },
+        ]) {
+          let l = new g(i.x, i.y),
+            r = e.getBoard().getDisk(l);
+          if (r && r.color === t) {
+            let t = this.getCornerForDangerousPosition(i.x, i.y);
+            !e.getBoard().getDisk(new g(t.x, t.y)) && s++;
+          }
+        }
+        return s;
+      }
+      getCornerForDangerousPosition(e, t) {
+        return e <= 1 && t <= 1
+          ? { x: 0, y: 0 }
+          : e >= 6 && t <= 1
+          ? { x: 7, y: 0 }
+          : e <= 1 && t >= 6
+          ? { x: 0, y: 7 }
+          : { x: 7, y: 7 };
+      }
+      countEdgeControl(e, t) {
+        let s = 0;
+        for (let i = 0; i < 8; i++) {
+          let l = e.getBoard().getDisk(new g(i, 0)),
+            r = e.getBoard().getDisk(new g(i, 7));
+          l && l.color === t && s++, r && r.color === t && s++;
+        }
+        for (let i = 1; i < 7; i++) {
+          let l = e.getBoard().getDisk(new g(0, i)),
+            r = e.getBoard().getDisk(new g(7, i));
+          l && l.color === t && s++, r && r.color === t && s++;
+        }
+        return s;
+      }
+      constructor(...e) {
+        super(...e), m(this, "MAX_DEPTH", 3), m(this, "cpuColor", null);
+      }
+    }
+    function N() {
+      let { settings: e } = (0, x.useGameSettings)(),
+        [i, l] = (0, s.useState)(() => new S(new C())),
+        [a, o] = (0, s.useState)(i.getGameState()),
+        [d, m] = (0, s.useState)(null),
+        [T, _] = (0, s.useState)(!1),
+        g = (0, s.useRef)(null);
+      (0, s.useEffect)(() => {
+        "cpu-easy" === e.mode
+          ? (g.current = new A())
+          : "cpu-hard" === e.mode
+          ? (g.current = new f())
+          : (g.current = null);
+      }, [e.mode]);
+      let D = () => {
+        let e = new S(new C());
+        l(e), o(e.getGameState()), m(null);
+      };
+      (0, s.useEffect)(() => {
+        if (d) {
+          let e = setTimeout(() => {
+            m(null);
+          }, 3e3);
+          return () => clearTimeout(e);
+        }
+      }, [d]),
+        (0, s.useEffect)(() => {
+          if (!a.isGameOver && !a.isLocked && !a.hasValidMoves) {
+            let e = setTimeout(() => {
+              let e = "black" === a.currentTurn ? u.BLACK : u.WHITE;
+              m("".concat(e).concat(u.PASS_MESSAGE)), o(i.pass());
+            }, 1e3);
+            return () => clearTimeout(e);
+          }
+        }, [a, i]),
+        (0, s.useEffect)(() => {
+          if (
+            "pvp" === e.mode ||
+            !g.current ||
+            a.currentTurn !== e.cpuColor ||
+            a.isGameOver ||
+            a.isLocked ||
+            !a.hasValidMoves
+          )
+            return;
+          let t = setTimeout(() => {
+            let e = i.getGame(),
+              t = g.current.decideMove(e);
+            t &&
+              (o(i.selectHandDisc(t.discId)),
+              setTimeout(() => {
+                let e = i.execute({ x: t.position.x, y: t.position.y });
+                e.success &&
+                  (o(e.gameState),
+                  e.flippedPositions.length > 0 &&
+                    setTimeout(() => {
+                      o(i.endFlipping());
+                    }, 1e3));
+              }, 500));
+          }, 1e3);
+          return () => clearTimeout(t);
+        }, [a, e, i]);
+      let b = (t) => {
+        ("pvp" === e.mode || a.currentTurn !== e.cpuColor) &&
+          o(i.selectHandDisc(t));
+      };
+      return (0, t.jsxs)("main", {
+        className: c.PAGE.MAIN,
+        children: [
+          (0, t.jsx)("button", {
+            className: c.SETTINGS.OPEN_BUTTON,
+            onClick: () => _(!0),
+            children: u.OPEN_SETTINGS_BUTTON,
+          }),
+          (0, t.jsx)(p, { isOpen: T, onClose: () => _(!1), onNewGame: D }),
+          (0, t.jsxs)("h1", {
+            className: c.PAGE.TITLE,
+            children: [
+              u.GAME_TITLE,
+              (0, t.jsx)("img", {
+                src: r("/buttercat.png"),
+                alt: "buttercat",
+                width: 48,
+                height: 48,
+                style: {
+                  display: "inline-block",
+                  marginLeft: "0.5rem",
+                  verticalAlign: "middle",
+                },
+              }),
+            ],
+          }),
+          !a.isGameOver &&
+            (0, t.jsx)("div", {
+              className: c.PAGE.TURN_DISPLAY,
+              children:
+                d ||
+                (0, t.jsxs)(t.Fragment, {
+                  children: [
+                    u.CURRENT_TURN_LABEL,
+                    " ",
+                    "black" === a.currentTurn ? u.BLACK : u.WHITE,
+                  ],
+                }),
+            }),
+          a.isGameOver &&
+            (0, t.jsxs)(t.Fragment, {
+              children: [
+                (0, t.jsx)("p", {
+                  className: c.PAGE.GAME_OVER,
+                  children: u.GAME_OVER,
+                }),
+                "black" === a.winner &&
+                  (0, t.jsx)("p", {
+                    className: c.PAGE.WINNER_MESSAGE,
+                    children: u.BLACK_WINS,
+                  }),
+                "white" === a.winner &&
+                  (0, t.jsx)("p", {
+                    className: c.PAGE.WINNER_MESSAGE,
+                    children: u.WHITE_WINS,
+                  }),
+                "draw" === a.winner &&
+                  (0, t.jsx)("p", {
+                    className: c.PAGE.WINNER_MESSAGE,
+                    children: u.DRAW,
+                  }),
+              ],
+            }),
+          (0, t.jsxs)("div", {
+            className: c.PAGE.HANDS_CONTAINER,
+            children: [
+              (0, t.jsx)("div", {
+                className: c.PAGE.HANDS_ITEM,
+                children: (0, t.jsx)(h, {
+                  color: "black",
+                  discs: a.blackHand.discs,
+                  selectedDiscId: a.blackHand.selectedDiscId,
+                  hasSelection: a.blackHand.hasSelection,
+                  isCurrent: "black" === a.currentTurn,
+                  onSelectDisc: b,
+                  discCount: a.blackDiscCount,
+                  isCpu: "pvp" !== e.mode && "black" === e.cpuColor,
+                }),
+              }),
+              (0, t.jsx)("div", {
+                className: c.PAGE.HANDS_ITEM,
+                children: (0, t.jsx)(h, {
+                  color: "white",
+                  discs: a.whiteHand.discs,
+                  selectedDiscId: a.whiteHand.selectedDiscId,
+                  hasSelection: a.whiteHand.hasSelection,
+                  isCurrent: "white" === a.currentTurn,
+                  onSelectDisc: b,
+                  discCount: a.whiteDiscCount,
+                  isCpu: "pvp" !== e.mode && "white" === e.cpuColor,
+                }),
+              }),
+            ],
+          }),
+          (0, t.jsx)(n, {
+            board: a.board,
+            onCellClick: (t, s) => {
+              if (
+                ("pvp" !== e.mode && a.currentTurn === e.cpuColor) ||
+                a.isGameOver ||
+                a.isLocked
+              )
+                return;
+              let l = i.execute({ x: t, y: s });
+              l.success &&
+                (o(l.gameState),
+                l.flippedPositions.length > 0 &&
+                  setTimeout(() => {
+                    o(i.endFlipping());
+                  }, 1e3));
+            },
+          }),
+          a.isGameOver &&
+            (0, t.jsx)("button", {
+              className: c.PAGE.PLAY_AGAIN_BUTTON,
+              onClick: D,
+              children: u.PLAY_AGAIN_BUTTON,
+            }),
+          (0, t.jsxs)("div", {
+            className: c.SPECIAL_DISCS.CONTAINER,
+            children: [
+              (0, t.jsx)("h2", {
+                className: c.SPECIAL_DISCS.TITLE,
+                children: u.SPECIAL_DISCS_TITLE,
+              }),
+              (0, t.jsxs)("div", {
+                className: c.SPECIAL_DISCS.GRID,
+                children: [
+                  (0, t.jsxs)("div", {
+                    className: ""
+                      .concat(c.SPECIAL_DISCS.CARD_BASE, " ")
+                      .concat(c.SPECIAL_DISCS.CARD_BUTTER),
+                    children: [
+                      (0, t.jsxs)("div", {
+                        className: c.SPECIAL_DISCS.CARD_HEADER,
+                        children: [
+                          (0, t.jsx)("span", {
+                            className: c.SPECIAL_DISCS.CARD_EMOJI,
+                            children: (0, t.jsx)("img", {
+                              src: r("/butter.png"),
+                              alt: "butter",
+                              width: 64,
+                              height: 64,
+                            }),
+                          }),
+                          (0, t.jsx)("h3", {
+                            className: c.SPECIAL_DISCS.CARD_TITLE,
+                            children: u.BUTTER_DISC_TITLE,
+                          }),
+                        ],
+                      }),
+                      (0, t.jsx)("p", {
+                        className: c.SPECIAL_DISCS.CARD_TEXT,
+                        children: u.BUTTER_DISC_DESCRIPTION,
+                      }),
+                    ],
+                  }),
+                  (0, t.jsxs)("div", {
+                    className: ""
+                      .concat(c.SPECIAL_DISCS.CARD_BASE, " ")
+                      .concat(c.SPECIAL_DISCS.CARD_CAT),
+                    children: [
+                      (0, t.jsxs)("div", {
+                        className: c.SPECIAL_DISCS.CARD_HEADER,
+                        children: [
+                          (0, t.jsx)("span", {
+                            className: c.SPECIAL_DISCS.CARD_EMOJI,
+                            children: (0, t.jsx)("img", {
+                              src: r("/cat.png"),
+                              alt: "cat",
+                              width: 64,
+                              height: 64,
+                            }),
+                          }),
+                          (0, t.jsx)("h3", {
+                            className: c.SPECIAL_DISCS.CARD_TITLE,
+                            children: u.CAT_DISC_TITLE,
+                          }),
+                        ],
+                      }),
+                      (0, t.jsx)("p", {
+                        className: c.SPECIAL_DISCS.CARD_TEXT,
+                        children: u.CAT_DISC_DESCRIPTION,
+                      }),
+                    ],
+                  }),
+                  (0, t.jsxs)("div", {
+                    className: ""
+                      .concat(c.SPECIAL_DISCS.CARD_BASE, " ")
+                      .concat(c.SPECIAL_DISCS.CARD_BUTTERCAT),
+                    children: [
+                      (0, t.jsxs)("div", {
+                        className: c.SPECIAL_DISCS.CARD_HEADER,
+                        children: [
+                          (0, t.jsx)("span", {
+                            className: c.SPECIAL_DISCS.CARD_EMOJI,
+                            children: (0, t.jsx)("img", {
+                              src: r("/buttercat.png"),
+                              alt: "buttercat",
+                              width: 64,
+                              height: 64,
+                            }),
+                          }),
+                          (0, t.jsx)("h3", {
+                            className: c.SPECIAL_DISCS.CARD_TITLE,
+                            children: u.BUTTERCAT_DISC_TITLE,
+                          }),
+                        ],
+                      }),
+                      (0, t.jsx)("p", {
+                        className: c.SPECIAL_DISCS.CARD_TEXT,
+                        children: u.BUTTERCAT_DISC_DESCRIPTION,
+                      }),
+                    ],
+                  }),
+                ],
+              }),
+            ],
+          }),
+        ],
+      });
+    }
+  },
+]);

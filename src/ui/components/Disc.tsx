@@ -28,12 +28,17 @@ export const Disc: React.FC<Props> = ({ color, discType, isFlipping }) => {
    * 画像のパスを決定
    */
   const getImagePath = () => {
-    if (discType === "butter") return getAssetPath("/butter.svg");
+    if (discType === "butter")
+      return color === "black"
+        ? getAssetPath("/ogura.png")
+        : getAssetPath("/butter.png");
     if (discType === "cat") {
       // 猫駒は黒猫・白猫の画像を使用
-      return color === "black" ? getAssetPath("/cat.svg") : getAssetPath("/whitecat.svg");
+      return color === "black"
+        ? getAssetPath("/cat.png")
+        : getAssetPath("/whitecat.png");
     }
-    if (discType === "buttercat") return getAssetPath("/buttercat.svg");
+    if (discType === "buttercat") return getAssetPath("/buttercat.png");
     return null;
   };
 

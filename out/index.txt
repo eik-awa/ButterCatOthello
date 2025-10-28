@@ -18,5 +18,5 @@ f:I[97367,["/ButterCatOthello/_next/static/chunks/2039c3fdf9f628ce.js","/ButterC
 e:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
 a:null
 13:I[27201,["/ButterCatOthello/_next/static/chunks/2039c3fdf9f628ce.js","/ButterCatOthello/_next/static/chunks/060f9a97930f3d04.js"],"IconMark"]
-c:{"metadata":[["$","title","0",{"children":"ButterCatOthello"}],["$","meta","1",{"name":"description","content":"A simple Othello game with special discs"}],["$","link","2",{"rel":"icon","href":"/buttercat.svg"}],["$","$L13","3",{}]],"error":null,"digest":"$undefined"}
+c:{"metadata":[["$","title","0",{"children":"ButterCatOthello"}],["$","meta","1",{"name":"description","content":"A simple Othello game with special discs"}],["$","link","2",{"rel":"icon","href":"/buttercat.png"}],["$","$L13","3",{}]],"error":null,"digest":"$undefined"}
 11:"$c:metadata"

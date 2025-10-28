@@ -72,7 +72,8 @@ export default function Home() {
     if (
       !gameState.isGameOver &&
       !gameState.isLocked &&
-      !gameState.hasValidMoves
+      !gameState.hasValidMoves &&
+      !gameState.hasValidMovesWithNormalDiscs // 通常駒で置ける場所がない場合のみパス
     ) {
       // 1秒後に自動パス
       const timer = setTimeout(() => {
@@ -231,15 +232,10 @@ export default function Home() {
         />
       </h1>
 
-      {/* ターン表示 / パス通知（同じ位置に表示） */}
-      {!gameState.isGameOver && (
+      {/* パス通知のみ表示 */}
+      {!gameState.isGameOver && passNotification && (
         <div className={STYLES.PAGE.TURN_DISPLAY}>
-          {passNotification || (
-            <>
-              {TEXTS.CURRENT_TURN_LABEL}{" "}
-              {gameState.currentTurn === "black" ? TEXTS.BLACK : TEXTS.WHITE}
-            </>
-          )}
+          {passNotification}
         </div>
       )}
 

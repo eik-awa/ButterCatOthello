@@ -18,7 +18,7 @@ export const TEXTS = {
 
   // メッセージ
   GAME_OVER: "ゲーム終了！",
-  SELECT_DISC_MESSAGE: "手札からディスクを選択してください",
+  SELECT_DISC_MESSAGE: "手札から駒を選択してください",
   CPU_THINKING_MESSAGE: "思考中です...",
   NO_VALID_MOVES: "置ける場所がありません",
   PASS_MESSAGE: "がパスしました",
@@ -40,11 +40,6 @@ export const TEXTS = {
   BUTTERCAT_DISC_TITLE: "バター猫駒",
   BUTTERCAT_DISC_DESCRIPTION:
     "常に回転し続けます。挟むことができませんが、挟まれることもありません。中央16マスには置けません。",
-
-  // 絵文字
-  BUTTER_EMOJI: "🧈",
-  CAT_EMOJI: "🐈",
-  BUTTERCAT_EMOJI: "🧈🐈",
 
   // 設定メニュー
   SETTINGS_TITLE: "ゲーム設定",

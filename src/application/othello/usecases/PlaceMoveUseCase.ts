@@ -152,6 +152,7 @@ export class PlaceMoveUseCase {
       whiteDiscCount: this.game.getDiscCount("white"),
       winner: this.game.getWinner(),
       hasValidMoves: this.game.hasValidMoves(),
+      hasValidMovesWithNormalDiscs: this.game.hasValidMovesWithNormalDiscs(),
     };
   }
 }

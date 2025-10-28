@@ -23,13 +23,21 @@ body::before {
   width: 200%;
   height: 200%;
   background-image: url('/butter.svg');
-  background-repeat: space; /* 余白を持たせる */
-  background-size: 150px 150px; /* 大きめに表示 */
-  opacity: 0.35;
-  transform: rotate(-15deg);
+  background-repeat: repeat;
+  background-size: 120px 120px; /* スマホでも見えるサイズに */
+  opacity: 0.3;
+  transform: rotate(-15deg); /* 斜めに表示 */
   z-index: 0;
   pointer-events: none;
   filter: none; /* フィルターを解除してバターの色を正しく表示 */
+}
+
+/* デスクトップではもう少し大きく */
+@media (min-width: 768px) {
+  body::before {
+    background-size: 150px 150px;
+    opacity: 0.35;
+  }
 }
 
 /* メインコンテンツは背景パターンの上に表示 */

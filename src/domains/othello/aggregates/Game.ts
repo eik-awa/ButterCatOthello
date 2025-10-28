@@ -275,11 +275,37 @@ export class Game {
   }
 
   /**
-   * 現在のプレイヤーが有効な手を持っているか
+   * 現在のプレイヤーが有効な手を持っているか（選択された駒のみ）
    */
   hasValidMoves(): boolean {
     const currentMoves = this.getValidMoves(this.currentTurn);
     return currentMoves.length > 0;
+  }
+
+  /**
+   * 現在のプレイヤーが通常駒で有効な手を持っているか
+   */
+  hasValidMovesWithNormalDiscs(): boolean {
+    const hand = this.getCurrentHand();
+    const normalDiscs = hand.getDiscs().filter(d => !d.isUsed && d.type === "normal");
+
+    // 通常駒がない場合はfalse
+    if (normalDiscs.length === 0) {
+      return false;
+    }
+
+    // 通常駒のいずれかで置ける場所があるかチェック
+    for (const disc of normalDiscs) {
+      // 一時的に駒を選択してチェック
+      const tempGame = this.clone();
+      tempGame.selectHandDisc(disc.id);
+      const moves = tempGame.getValidMoves(this.currentTurn);
+      if (moves.length > 0) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   /**

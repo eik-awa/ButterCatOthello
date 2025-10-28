@@ -69,16 +69,20 @@ export const Hand: React.FC<Props> = ({
 
   return (
     <div className={`${getContainerClass()} ${getBgClass()}`}>
-      <div className={STYLES.HAND.TITLE}>
-        {getPlayerName()}
-        {isCurrent && TEXTS.CURRENT_TURN_SUFFIX}
-      </div>
-      <div
-        className={`${STYLES.HAND.DISC_COUNT} ${
-          color === "black" ? "border-emerald-600" : "border-amber-500"
-        }`}
-      >
-        {color === "black" ? TEXTS.BLACK : TEXTS.WHITE}: {discCount}
+      {/* ヘッダー部分（タイトルと駒数を横並び） */}
+      <div className="flex justify-between items-start mb-2">
+        <div className={STYLES.HAND.TITLE}>
+          {getPlayerName()}
+          {isCurrent && TEXTS.CURRENT_TURN_SUFFIX}
+        </div>
+        {/* 駒数を右側に大きめに表示（枠の色と合わせる） */}
+        <div
+          className={`text-2xl sm:text-3xl font-bold ${
+            color === "black" ? "text-emerald-600" : "text-amber-500"
+          }`}
+        >
+          {discCount}
+        </div>
       </div>
       <div className={STYLES.HAND.MESSAGE_CONTAINER}>
         {isCurrent && !hasSelection && (

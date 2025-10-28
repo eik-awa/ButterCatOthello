@@ -37,7 +37,7 @@ export default function Home() {
     const style = document.createElement("style");
     style.textContent = `
       body::before {
-        background-image: url('${getAssetPath("/butter.svg")}');
+        background-image: url('${getAssetPath("/butter.png")}');
       }
     `;
     document.head.appendChild(style);
@@ -236,7 +236,7 @@ export default function Home() {
       <h1 className={STYLES.PAGE.TITLE}>
         {TEXTS.GAME_TITLE}
         <img
-          src={getAssetPath("/buttercat.svg")}
+          src={getAssetPath("/buttercat.png")}
           alt="buttercat"
           width={48}
           height={48}
@@ -322,7 +322,7 @@ export default function Home() {
             <div className={STYLES.SPECIAL_DISCS.CARD_HEADER}>
               <span className={STYLES.SPECIAL_DISCS.CARD_EMOJI}>
                 <img
-                  src={getAssetPath("/butter.svg")}
+                  src={getAssetPath("/butter.png")}
                   alt="butter"
                   width={64}
                   height={64}
@@ -343,7 +343,7 @@ export default function Home() {
             <div className={STYLES.SPECIAL_DISCS.CARD_HEADER}>
               <span className={STYLES.SPECIAL_DISCS.CARD_EMOJI}>
                 <img
-                  src={getAssetPath("/cat.svg")}
+                  src={getAssetPath("/cat.png")}
                   alt="cat"
                   width={64}
                   height={64}
@@ -364,7 +364,7 @@ export default function Home() {
             <div className={STYLES.SPECIAL_DISCS.CARD_HEADER}>
               <span className={STYLES.SPECIAL_DISCS.CARD_EMOJI}>
                 <img
-                  src={getAssetPath("/buttercat.svg")}
+                  src={getAssetPath("/buttercat.png")}
                   alt="buttercat"
                   width={64}
                   height={64}

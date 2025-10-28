@@ -10,17 +10,15 @@ body {
 }
 
 /* 背景にバターのパターンを表示（疑似要素を使用） */
-html,
 body {
   position: relative;
   overflow-x: hidden;
-  min-height: 100vh;
 }
 
 /* 背景パターンはJavaScriptで動的に設定 */
 body::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: -50%;
   left: -50%;
   width: 200%;
